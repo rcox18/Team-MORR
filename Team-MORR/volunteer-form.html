@@ -1,0 +1,279 @@
+<!--
+    The HTML is used for team Morr's version of a volunteer sign-up form that could be
+    potentially used for Brandi Day's website, non-profit organization iD.A.Y Dream
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/sign-up-form.css">
+
+    <title>iD.A.Y Dream Volunteer Form</title>
+
+</head>
+<body>
+<div class="container" id="main">
+    <form id="sign-up">
+        <!--Intro-->
+        <h1>Volunteer Form</h1>
+        <div>
+            <p>Thank you so much for your interest in ID.A.Y.Dream! Before you can volunteer with us,
+                we just need to get a little bit of personal info. If you have any questions or concerns,
+                feel free to contact us through <a href="https://idaydream.org/contact/">this</a> link.</p>
+        </div>
+
+        <!--Contact Info-->
+        <fieldset class="form-group" id="contact">
+            <!--First Name-->
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" >
+            <span class="err" id="err-fname" class="err">
+                Please enter a first name
+            </span>
+
+            <!--Last Name-->
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" >
+            <span class="err" id="err-lname">
+                Please enter a last name
+            </span>
+
+            <!--Email-->
+            <label for="email">Email address</label>
+            <span class="err" id="err-email" class="err">
+                Please enter a valid email address
+            </span>
+            <input type="text" class="form-control" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
+
+            <!--Phone Number-->
+            <label for="phone">Phone number</label>
+            <span class="err" id="err-phone" class="err">
+                Please enter a phone number
+            </span>
+            <input type="text" class="form-control" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
+        </fieldset>
+
+        <!--New Section for more personal such as address, city, and state-->
+        <fieldset class="form-group" id="address">
+            <!--Address-->
+            <label for="street1">Street address</label>
+            <input type="text" class="form-control" id="street1" >
+
+            <!--Apartment or PO Box Number-->
+            <label for="street2">Apt/PO Box#</label>
+            <input type="text" class="form-control" id="street2" >
+
+            <!--City-->
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" >
+
+            <!--Select State with dropdown-->
+            <label for="state">State</label>
+            <select class="form-control" id="state">
+                <option value="select">Select</option>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+            </select>
+
+            <!--ZIP code-->
+            <label for="zip">ZIP code</label>
+            <input type="text" class="form-control" id="zip" pattern="^\d{5}$">
+        </fieldset>
+
+        <!--Interests Section-->
+        <fieldset class="form-group">
+            <legend>Interests</legend>
+
+            <!--Select which volunteer opportunities interest you-->
+            <legend>Tell us in which areas you are interested in volunteering</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Events" id="Events" name="interests[]">
+                <label class="form-check-label" for="Events">
+                    Events (Annual College Tour, Community Service, Annual New Year’s Eve Day Event)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Fundraising" id="Fundraising" name="interests[]">
+                <label class="form-check-label" for="Fundraising">
+                    Fundraising
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Newsletter production" id="Newsletter production" name="interests[]">
+                <label class="form-check-label" for="Newsletter production">
+                    Newsletter production (monthly)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Volunteer coordination " id="Volunteer coordination " name="interests[]">
+                <label class="form-check-label" for="Volunteer coordination ">
+                    Volunteer coordination
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Mentoring" id="Mentoring" name="interests[]">
+                <label class="form-check-label" for="Mentoring">
+                    Mentoring
+                </label>
+            </div>
+        </fieldset>
+
+        <!--How did you hear about us drop down-->
+        <fieldset class="form-group">
+            <legend>How did you hear about us</legend>
+            <div class="form-group">
+                <select class="form-control" id="hearUs">
+                    <option value="none">Select from the following</option>
+                    <option value="word">Word of mouth / Friend / Colleague</option>
+                    <option value="media">Web / Social Media (Facebook, Twitter, Google, iD.A.Y.dream website)</option>
+                    <option value="print">Print (flyer, poster, brochure)</option>
+                    <option value="sponsor">Corporate sponsor</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!--Experience and Availability-->
+        <fieldset class="form-group">
+            <div id="exp-available">
+                <!--Text box to enter volunteer roles that interest you-->
+                <legend>Please detail volunteer roles that interest you! We want to ensure we utilize your skills!</legend>
+                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+
+                <!--Text box to enter previous experience that relates to iD.A.Y Dream-->
+                <legend>Do you have any previous volunteer experience with other youth serving organizations?</legend>
+                <textarea class="form-control" rows="10" form="sign-up" placeholder="Please give brief description of your role and responsibilities"></textarea>
+
+                <!--Text box to enter other applicable experience-->
+                <legend>Any other applicable experience you would like to mention?</legend>
+                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+
+                <!--Text box to enter motivation for volunteering-->
+                <legend>What motivated you to volunteer with us?</legend>
+                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+
+                <!--Checkbox list for volunteering availability-->
+                <legend>Please select the choices that most fit your volunteer availability:</legend>
+                <input type="checkbox" form="sign-up" id="four-hour-shift" value="four-hour-shift" name="availability[]">
+                <label for="four-hour-shift">
+                    Weekend Workshop (4 hour shift)
+                </label><br>
+                <input type="checkbox" form="sign-up" id="eight-hour-shift" value="eight-hour-shift" name="availability[]">
+                <label for="eight-hour-shift">
+                    Weekend Workshop (8 hour shift)
+                </label><br>
+                <input type="checkbox" form="sign-up" id="summer-camp" value="summer-camp" name="availability[]">
+                <label for="summer-camp">
+                    One Week Summer Camp
+                </label><br>
+                <input type="checkbox" form="sign-up" id="weekday" value="weekday" name="availability[]">
+                <label for="weekday">
+                    Weekday Workshop
+                </label><br>
+                <input type="checkbox" form="sign-up" id="ongoing" value="ongoing" name="availability[]">
+                <label for="ongoing">
+                    Ongoing, Weekday Commitment
+                </label>
+            </div>
+        </fieldset>
+
+        <!--Character References-->
+        <div class="row justify-content-center">
+            <fieldset class="form-group topLevel col" id="references-form">
+                    <legend class="charRef">Character References</legend>
+                    <fieldset class="form-group">
+                        <legend>Reference 1</legend>
+                        <label for="firstRef">Name</label>
+                        <input type="text" class="form-control" id="firstRef">
+                        <label for="firstRefPhone">Phone</label>
+                        <input type="text" class="form-control" id="firstRefPhone">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <legend>Reference 2</legend>
+                        <label for="secondRef">Name</label>
+                        <input type="text" class="form-control" id="secondRef">
+                        <label for="secondRefPhone">Phone</label>
+                        <input type="text" class="form-control" id="secondRefPhone">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <legend>Reference 3</legend>
+                        <label for="thirdRef">Name </label>
+                        <input type="text" class="form-control" id="thirdRef">
+                        <label for="thirdRefPhone">Phone</label>
+                        <input type="text" class="form-control" id="thirdRefPhone">
+                    </fieldset>
+                </fieldset>
+
+            <!--Policy Section-->
+            <fieldset class="form-group topLevel col-12" id="policy-form">
+                <legend>Our Policy</legend>
+                <p>It is the policy of this organization to provide equal opportunities without regard to race, color, religion, national origin, gender, sexual preference, age, or disability</p>
+                <p>Thank you for completing this application form and for your information in volunteering with us.</p>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                    <label class="custom-control-label" for="switch1">Agree</label>
+                </div>
+            </fieldset>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary invisible">Submit</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

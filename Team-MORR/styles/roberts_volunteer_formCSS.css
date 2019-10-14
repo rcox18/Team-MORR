@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+fieldset.topLevel
+{
+    border: 1px solid darkgreen;
+    padding: 1em;
+}
+
+legend
+{
+    width: auto;
+}
+
