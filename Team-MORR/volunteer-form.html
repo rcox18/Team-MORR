@@ -249,45 +249,57 @@
         </fieldset>
 
         <!--Character References-->
-        <div class="row justify-content-center">
-            <fieldset class="form-group topLevel col" id="references-form">
-                    <legend class="charRef">Character References</legend>
-                    <fieldset class="form-group">
-                        <legend>Reference 1</legend>
-                        <label for="firstRef">Name</label>
-                        <input type="text" class="form-control" id="firstRef">
-                        <label for="firstRefPhone">Phone</label>
-                        <input type="text" class="form-control" id="firstRefPhone">
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <legend>Reference 2</legend>
-                        <label for="secondRef">Name</label>
-                        <input type="text" class="form-control" id="secondRef">
-                        <label for="secondRefPhone">Phone</label>
-                        <input type="text" class="form-control" id="secondRefPhone">
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <legend>Reference 3</legend>
-                        <label for="thirdRef">Name </label>
-                        <input type="text" class="form-control" id="thirdRef">
-                        <label for="thirdRefPhone">Phone</label>
-                        <input type="text" class="form-control" id="thirdRefPhone">
-                    </fieldset>
-                </fieldset>
-
-            <!--Policy Section-->
-            <fieldset class="form-group topLevel col-12" id="policy-form">
-                <legend>Our Policy</legend>
-                <p>It is the policy of this organization to provide equal opportunities without regard to race, color, religion, national origin, gender, sexual preference, age, or disability</p>
-                <p>Thank you for completing this application form and for your information in volunteering with us.</p>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="switch1" name="example">
-                    <label class="custom-control-label" for="switch1">Agree</label>
-                </div>
+        <fieldset class="form-group" id="references-form">
+            <legend>Character References</legend>
+            <fieldset class="form-group innerFieldset">
+                <legend>Reference 1</legend>
+                <label for="firstRef">Name</label>
+                <input type="text" class="form-control" id="firstRef">
+                <label for="firstRefPhone">Phone</label>
+                <input type="text" class="form-control" id="firstRefPhone">
             </fieldset>
-        </div>
+            <fieldset class="form-group innerFieldset">
+                <legend>Reference 2</legend>
+                <label for="secondRef">Name</label>
+                <input type="text" class="form-control" id="secondRef">
+                <label for="secondRefPhone">Phone</label>
+                <input type="text" class="form-control" id="secondRefPhone">
+            </fieldset>
+            <fieldset class="form-group innerFieldset">
+                <legend>Reference 3</legend>
+                <label for="thirdRef">Name </label>
+                <input type="text" class="form-control" id="thirdRef">
+                <label for="thirdRefPhone">Phone</label>
+                <input type="text" class="form-control" id="thirdRefPhone">
+            </fieldset>
+        </fieldset>
+
+        <!--Policy Section-->
+        <fieldset class="form-group" id="policy-form">
+            <legend>Our Policy</legend>
+            <p>It is the policy of this organization to provide equal opportunities without regard to race, color, religion, national origin, gender, sexual preference, age, or disability</p>
+            <p>Thank you for completing this application form and for your information in volunteering with us.</p>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                <label class="custom-control-label" for="switch1">Agree</label>
+            </div>
+        </fieldset>
+
+        <!--Signature Section-->
+        <fieldset class="form-group" id="signature-form">
+            <legend >Agreement Signature</legend>
+            <label for="signature">Signature</label>
+            <input type="text" class="form-control" id="signature">
+            <label for="date">Date</label>
+            <input type="datetime-local" class="form-control" id="date">
+        </fieldset>
         <br>
-        <button type="submit" class="btn btn-primary invisible">Submit</button>
+        <!--Submit button-->
+        <div class="row ">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

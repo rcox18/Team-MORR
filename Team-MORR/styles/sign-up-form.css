@@ -1,20 +1,18 @@
+@charset "UTF-8";
 /**
     The following stylesheet is done by Olivia, as stated by Marcos
     The charset, fieldset.toplevel, and legend done by Robert, as stated by Marcos
     Please add on more or update from other members to stylesheet
  */
 
-@charset "UTF-8";
-
-fieldset.topLevel
-{
-    border: 1px solid darkgreen;
-    padding: 1em;
+fieldset.innerFieldset{
+    border: 1px solid black;
 }
 
 body {
     margin: 3em;
 }
+
 fieldset {
     border: 3px solid black;
     padding: 2em;
