@@ -1,31 +1,47 @@
 document.getElementById("sign-up").onsubmit = validate;
-const referenceInputErrs = document.getElementsByClassName("refErr");
+const requiredInputErrs = document.getElementsByClassName("required-inputErr");
+const shirtSize = document.getElementById("shirtSize");
+const shirtSizeErr = document.getElementById("tshirtErr");
 
-for (let i = 0; i < referenceInputErrs.length; i++)
+for (let i = 0; i < requiredInputErrs.length; i++)
 {
-    referenceInputErrs[i].style.visibility = "hidden";
+    requiredInputErrs[i].style.visibility = "hidden";
 }
+shirtSizeErr.style.visibility = "hidden";
 
 function validate()
 {
-    let isvalid = true;
-    let referenceInputValues = document.getElementsByClassName("ref");
+    let isValid = true;
 
+    let requiredInputValues = document.getElementsByClassName("required-input");
 
-    for (let i = 0; i < referenceInputValues.length; i++)
+    for (let i = 0; i < requiredInputValues.length; i++)
     {
 
-        if (referenceInputValues[i].value === "")
+        if (requiredInputValues[i].value === "")
         {
-            referenceInputValues[i].classList.add("border-danger");
-            referenceInputErrs[i].style.visibility = "visible";
-            isvalid = false;
+            requiredInputValues[i].classList.add("border-danger");
+            requiredInputErrs[i].style.visibility = "visible";
+            isValid = false;
         }
         else
         {
-            referenceInputValues[i].classList.remove("border-danger");
-            referenceInputErrs[i].style.visibility = "hidden";
+            requiredInputValues[i].classList.remove("border-danger");
+            requiredInputErrs[i].style.visibility = "hidden";
         }
     }
-    return isvalid;
+
+    if(shirtSize[shirtSize.selectedIndex].value === "none")
+    {
+        shirtSizeErr.style.visibility = "visible";
+        shirtSize.classList.add("border-danger");
+        isValid = false;
+    }
+    else
+    {
+        shirtSize.classList.remove("border-danger");
+        shirtSizeErr.style.visibility = "hidden";
+    }
+
+    return isValid;
 }

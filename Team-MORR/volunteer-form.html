@@ -30,25 +30,18 @@
         <!--Contact Info-->
         <fieldset class="form-group" id="contact">
             <!--First Name-->
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" >
-            <span class="err" id="err-fname">
-                Please enter a first name
-            </span>
+            <label for="firstName">First name<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="firstName" >
+
 
             <!--Last Name-->
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" >
-            <span class="err" id="err-lname">
-                Please enter a last name
-            </span>
+            <label for="lastName">Last name<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="lastName" >
+
 
             <!--Email-->
-            <label for="email">Email address</label>
-            <span class="err" id="err-email">
-                Please enter a valid email address
-            </span>
-            <input type="text" class="form-control" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
+            <label for="email">Email address<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
             <div class="row">
                 <div class="col">
                     <div class="form-group form-check">
@@ -60,26 +53,26 @@
                 </div>
             </div>
             <!--Phone Number-->
-            <label for="phone">Phone number</label>
+            <label for="phone">Phone number<span class="text-danger required-inputErr">*required</span></label>
             <span class="err" id="err-phone">
                 Please enter a phone number
             </span>
-            <input type="text" class="form-control" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
+            <input type="text" class="form-control required-input" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
         </fieldset>
 
         <!--New Section for more personal such as address, city, and state-->
         <fieldset class="form-group" id="address">
             <!--Address-->
-            <label for="street1">Street address</label>
-            <input type="text" class="form-control" id="street1" >
+            <label for="street1">Street address<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="street1" >
 
             <!--Apartment or PO Box Number-->
-            <label for="street2">Apt/PO Box#</label>
-            <input type="text" class="form-control" id="street2" >
+            <label for="street2">Apt/PO Box#<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="street2" >
 
             <!--City-->
-            <label for="city">City</label>
-            <input type="text" class="form-control" id="city" >
+            <label for="city">City<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="city" >
 
             <!--Select State with dropdown-->
             <label for="state">State</label>
@@ -139,8 +132,8 @@
             </select>
 
             <!--ZIP code-->
-            <label for="zip">ZIP code</label>
-            <input type="text" class="form-control" id="zip" pattern="^\d{5}$">
+            <label for="zip">ZIP code<span class="text-danger required-inputErr">*required</span></label>
+            <input type="text" class="form-control required-input" id="zip" pattern="^\d{5}$">
         </fieldset>
 
         <!--Interests Section-->
@@ -198,10 +191,10 @@
 
         <!--T Shirt size-->
         <fieldset class="form-group">
-            <legend>What is your t-shirt size></legend>
+            <legend>What is your t-shirt size<span class="text-danger" id="tshirtErr">*required</span></legend>
             <div class="form-group">
                 <select class="form-control" id="shirtSize">
-                    <option value="select">Select a t-shirt size (adult)</option>
+                    <option value="none">Select a t-shirt size (adult)</option>
                     <option value="xsmall">Extra Small</option>
                     <option value="small">Small</option>
                     <option value="medium">Medium</option>
@@ -229,8 +222,8 @@
                 <textarea class="form-control" rows="10" form="sign-up"></textarea>
 
                 <!--Text box to enter motivation for volunteering-->
-                <label>What motivated you to volunteer with us?</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <label>What motivated you to volunteer with us?<span class="text-danger required-inputErr">*required</span></label>
+                <textarea class="form-control required-input" rows="10" form="sign-up"></textarea>
 
                 <!--Checkbox list for volunteering availability-->
                 <label>Please select the choices that most fit your volunteer availability:</label>
@@ -264,22 +257,22 @@
                 <legend>Reference 1</legend>
                 <div class="form-row">
                     <div class="col">
-                        <label for="firstRef">Name<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="firstRef">
+                        <label for="firstRef">Name<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="firstRef">
                     </div>
                     <div class="col">
-                        <label for="firstRefRel">Relationship<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="firstRefRel">
+                        <label for="firstRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="firstRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="firstRefPhone">Phone<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="firstRefPhone">
+                        <label for="firstRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="firstRefPhone">
                     </div>
                     <div class="col">
-                        <label for="firstRefEmail">Email<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="firstRefEmail">
+                        <label for="firstRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="firstRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -287,22 +280,22 @@
                 <legend>Reference 2</legend>
                 <div class="form-row">
                     <div class="col">
-                        <label for="secondRef">Name<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="secondRef">
+                        <label for="secondRef">Name<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="secondRef">
                     </div>
                     <div class="col">
-                        <label for="secondRefRel">Relationship<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="secondRefRel">
+                        <label for="secondRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="secondRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="secondRefPhone">Phone<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="secondRefPhone">
+                        <label for="secondRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="secondRefPhone">
                     </div>
                     <div class="col">
-                        <label for="secondRefEmail">Email<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="secondRefEmail">
+                        <label for="secondRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="secondRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -311,22 +304,22 @@
                 <legend>Reference 3</legend>
                 <div class="form-row">
                     <div class="col">
-                        <label for="thirdRef">Name<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="thirdRef">
+                        <label for="thirdRef">Name<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="thirdRef">
                     </div>
                     <div class="col">
-                        <label for="thirdRefRel">Relationship<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="thirdRefRel">
+                        <label for="thirdRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="thirdRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="thirdRefPhone">Phone<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="thirdRefPhone">
+                        <label for="thirdRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="thirdRefPhone">
                     </div>
                     <div class="col">
-                        <label for="thirdRefEmail">Email<span class="text-danger refErr">*required</span></label>
-                        <input type="text" class="form-control ref" id="thirdRefEmail">
+                        <label for="thirdRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
+                        <input type="text" class="form-control required-input" id="thirdRefEmail">
                     </div>
                 </div>
             </fieldset>
