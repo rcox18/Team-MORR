@@ -2,12 +2,48 @@ document.getElementById("sign-up").onsubmit = validate;
 const requiredInputErrs = document.getElementsByClassName("required-inputErr");
 const shirtSize = document.getElementById("shirtSize");
 const shirtSizeErr = document.getElementById("tshirtErr");
+const hearAboutUsOptions = document.getElementById("hearUs").childNodes;
+const otherAboutTextArea = document.getElementById("other-about-us");
+const interestOptions = document.getElementsByName("interests[]");
+const otherInterestsTextArea = document.getElementById("other-interests-text");
 
 for (let i = 0; i < requiredInputErrs.length; i++)
 {
     requiredInputErrs[i].style.visibility = "hidden";
 }
 shirtSizeErr.style.visibility = "hidden";
+otherAboutTextArea.style.display = "none";
+otherInterestsTextArea.style.display  = "none";
+
+for (let i = 0; i < hearAboutUsOptions.length; i++)
+{
+    hearAboutUsOptions[i].addEventListener("click", function ()
+    {
+        if(hearAboutUsOptions[i].selected && hearAboutUsOptions[i].value === "other")
+        {
+            otherAboutTextArea.style.display = "block";
+        }
+        else
+        {
+            otherAboutTextArea.style.display = "none";
+        }
+    });
+}
+
+for (let i = 0; i < interestOptions.length; i++)
+{
+    interestOptions[i].addEventListener("click", function ()
+    {
+        if(interestOptions[i].checked && interestOptions[i].value === "other")
+        {
+            otherInterestsTextArea.style.display = "block";
+        }
+        else if(!interestOptions[i].checked && interestOptions[i].value === "other")
+        {
+            otherInterestsTextArea.style.display = "none";
+        }
+    });
+}
 
 function validate()
 {

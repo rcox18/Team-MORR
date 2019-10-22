@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container" id="main">
-    <form id="sign-up">
+    <form action="#" id="sign-up">
         <!--Intro-->
         <h1>Volunteer Form</h1>
         <div>
@@ -44,10 +44,15 @@
             <input type="text" class="form-control required-input" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
             <div class="row">
                 <div class="col">
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="mail-list">
-                            Please add me to your mailing list.
+                    <p class="mb-0">Please add me to your mailing list.</p>
+                    <div class="form-group form-check mt-0">
+                        <label class="form-check-label" for="mail-list-yes">
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-yes" checked>
+                            Yes
+                        </label>
+                        <label class="form-check-label ml-5" for="mail-list-no">
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-no">
+                            No, thank you.
                         </label>
                     </div>
                 </div>
@@ -78,57 +83,23 @@
             <label for="state">State</label>
             <select class="form-control" id="state">
                 <option value="select">Select</option>
-                <option value="AL">AL</option>
-                <option value="AK">AK</option>
-                <option value="AR">AR</option>
-                <option value="AZ">AZ</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DC">DC</option>
-                <option value="DE">DE</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="IA">IA</option>
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="MA">MA</option>
-                <option value="MD">MD</option>
-                <option value="ME">ME</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MO">MO</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="NC">NC</option>
-                <option value="NE">NE</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>
-                <option value="NV">NV</option>
-                <option value="NY">NY</option>
-                <option value="ND">ND</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WI">WI</option>
-                <option value="WV">WV</option>
-                <option value="WY">WY</option>
+                <option value="AL">AL</option><option value="AK">AK</option><option value="AR">AR</option>
+                <option value="AZ">AZ</option><option value="CA">CA</option><option value="CO">CO</option>
+                <option value="CT">CT</option><option value="DC">DC</option><option value="DE">DE</option>
+                <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+                <option value="IA">IA</option><option value="ID">ID</option><option value="IL">IL</option>
+                <option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option>
+                <option value="LA">LA</option><option value="MA">MA</option><option value="MD">MD</option>
+                <option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option>
+                <option value="MO">MO</option><option value="MS">MS</option><option value="MT">MT</option>
+                <option value="NC">NC</option><option value="NE">NE</option><option value="NH">NH</option>
+                <option value="NJ">NJ</option><option value="NM">NM</option><option value="NV">NV</option>
+                <option value="NY">NY</option><option value="ND">ND</option><option value="OH">OH</option>
+                <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+                <option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+                <option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+                <option value="VT">VT</option><option value="VA">VA</option><option value="WA" selected>WA</option>
+                <option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option>
             </select>
 
             <!--ZIP code-->
@@ -172,6 +143,13 @@
                     Mentoring
                 </label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="other" id="other-interests" name="interests[]">
+                <label class="form-check-label" for="other-interests">
+                    Other
+                </label>
+            </div>
+            <textarea class="form-control mt-2" name="other-interests-text" id="other-interests-text" rows="5"></textarea>
         </fieldset>
 
         <!--How did you hear about us drop down-->
@@ -186,6 +164,7 @@
                     <option value="sponsor">Corporate sponsor</option>
                     <option value="other">Other</option>
                 </select>
+                <textarea class="form-control mt-2" name="other-about-us" id="other-about-us" rows="5"></textarea>
             </div>
         </fieldset>
 
@@ -332,7 +311,7 @@
             <p>Thank you for completing this application form and for your information in volunteering with us.</p>
             <p>By agreeing to the terms above you are also agreeing to a background check.</p>
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                <input type="checkbox" class="custom-control-input" id="switch1" name="agreement-switch">
                 <label class="custom-control-label" for="switch1">Agree</label>
             </div>
         </fieldset>
@@ -354,9 +333,15 @@
         </div>
     </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script src="volunteer-form-JS.js"></script>
 </body>
 </html>
