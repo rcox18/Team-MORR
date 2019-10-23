@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container" id="main">
-    <form action="#" id="sign-up">
+    <form action="volunteer-confirmation-page.php" id="sign-up" method="post" name="volunteer-form">
         <!--Intro-->
         <h1>Volunteer Form</h1>
         <div>
@@ -31,27 +31,27 @@
         <fieldset class="form-group" id="contact">
             <!--First Name-->
             <label for="firstName">First name<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="firstName" >
+            <input type="text" class="form-control required-input" name="first-name" id="firstName">
 
 
             <!--Last Name-->
             <label for="lastName">Last name<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="lastName" >
+            <input type="text" class="form-control required-input" name="last-name" id="lastName" >
 
 
             <!--Email-->
             <label for="email">Email address<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
+            <input type="text" class="form-control required-input" name="email" id="email">
             <div class="row">
                 <div class="col">
                     <p class="mb-0">Please add me to your mailing list.</p>
                     <div class="form-group form-check mt-0">
                         <label class="form-check-label" for="mail-list-yes">
-                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-yes" checked>
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-yes" value="yes" checked>
                             Yes
                         </label>
                         <label class="form-check-label ml-5" for="mail-list-no">
-                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-no">
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-no" value="no">
                             No, thank you.
                         </label>
                     </div>
@@ -62,26 +62,26 @@
             <span class="err" id="err-phone">
                 Please enter a phone number
             </span>
-            <input type="text" class="form-control required-input" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
+            <input type="text" class="form-control required-input" name="phone" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
         </fieldset>
 
         <!--New Section for more personal such as address, city, and state-->
         <fieldset class="form-group" id="address">
             <!--Address-->
             <label for="street1">Street address<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="street1" >
+            <input type="text" class="form-control required-input" name="address-street" id="street1" >
 
             <!--Apartment or PO Box Number-->
-            <label for="street2">Apt/PO Box#<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="street2" >
+            <label for="street2">Apt/PO Box#</label>
+            <input type="text" class="form-control" name="apo-po-box" id="street2" >
 
             <!--City-->
             <label for="city">City<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="city" >
+            <input type="text" class="form-control required-input" name="city" id="city" >
 
             <!--Select State with dropdown-->
             <label for="state">State</label>
-            <select class="form-control" id="state">
+            <select class="form-control" name="state" id="state">
                 <option value="select">Select</option>
                 <option value="AL">AL</option><option value="AK">AK</option><option value="AR">AR</option>
                 <option value="AZ">AZ</option><option value="CA">CA</option><option value="CO">CO</option>
@@ -104,7 +104,7 @@
 
             <!--ZIP code-->
             <label for="zip">ZIP code<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="zip" pattern="^\d{5}$">
+            <input type="text" class="form-control required-input" name="zip" id="zip" pattern="^\d{5}$">
         </fieldset>
 
         <!--Interests Section-->
@@ -156,13 +156,13 @@
         <fieldset class="form-group">
             <legend>How did you hear about us</legend>
             <div class="form-group">
-                <select class="form-control" id="hearUs">
-                    <option value="none">Select from the following</option>
-                    <option value="word">Word of mouth / Friend / Colleague</option>
-                    <option value="media">Web / Social Media (Facebook, Twitter, Google, iD.A.Y.dream website)</option>
-                    <option value="print">Print (flyer, poster, brochure)</option>
-                    <option value="sponsor">Corporate sponsor</option>
-                    <option value="other">Other</option>
+                <select class="form-control" name="hear-about-us" id="hearUs">
+                    <option class="hear-option" value="none">Select from the following</option>
+                    <option class="hear-option" value="word">Word of mouth / Friend / Colleague</option>
+                    <option class="hear-option" value="media">Web / Social Media (Facebook, Twitter, Google, iD.A.Y.dream website)</option>
+                    <option class="hear-option" value="print">Print (flyer, poster, brochure)</option>
+                    <option class="hear-option" value="sponsor">Corporate sponsor</option>
+                    <option class="hear-option" value="other">Other</option>
                 </select>
                 <textarea class="form-control mt-2" name="other-about-us" id="other-about-us" rows="5"></textarea>
             </div>
@@ -172,7 +172,7 @@
         <fieldset class="form-group">
             <legend>What is your t-shirt size<span class="text-danger" id="tshirtErr">*required</span></legend>
             <div class="form-group">
-                <select class="form-control" id="shirtSize">
+                <select class="form-control" name="tshirt-size" id="shirtSize">
                     <option value="none">Select a t-shirt size (adult)</option>
                     <option value="xsmall">Extra Small</option>
                     <option value="small">Small</option>
@@ -190,22 +190,22 @@
             <div id="exp-available">
                 <!--Text box to enter volunteer roles that interest you-->
                 <label>Please detail volunteer roles that interest you! We want to ensure we utilize your skills!</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="roles" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter previous experience that relates to iD.A.Y Dream-->
                 <label>Do you have any previous volunteer experience with other youth serving organizations?</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="prev-experience" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter other applicable experience-->
                 <label>Any other applicable experience you would like to mention?</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="applicable-exp" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter motivation for volunteering-->
                 <label>What motivated you to volunteer with us?<span class="text-danger required-inputErr">*required</span></label>
-                <textarea class="form-control required-input" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control required-input" name="motivation" rows="5" form="sign-up"></textarea>
 
                 <!--Checkbox list for volunteering availability-->
-                <label>Please select the choices that most fit your volunteer availability:</label>
+                <label>Please select the choices that most fit your volunteer availability:</label><br>
                 <input type="checkbox" form="sign-up" id="four-hour-shift" value="four-hour-shift" name="availability[]">
                 <label for="four-hour-shift">
                     Weekend Workshop (4 hour shift)
@@ -237,21 +237,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="firstRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRef">
+                        <input type="text" class="form-control required-input" name="ref1-name" id="firstRef">
                     </div>
                     <div class="col">
                         <label for="firstRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefRel">
+                        <input type="text" class="form-control required-input" name="ref1-relation" id="firstRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="firstRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefPhone">
+                        <input type="text" class="form-control required-input" name="ref1-phone" id="firstRefPhone">
                     </div>
                     <div class="col">
                         <label for="firstRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefEmail">
+                        <input type="text" class="form-control required-input" name="ref1-email" id="firstRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -260,21 +260,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="secondRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRef">
+                        <input type="text" class="form-control required-input" name="ref2-name" id="secondRef">
                     </div>
                     <div class="col">
                         <label for="secondRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefRel">
+                        <input type="text" class="form-control required-input" name="ref2-relation" id="secondRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="secondRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefPhone">
+                        <input type="text" class="form-control required-input" name="ref2-phone" id="secondRefPhone">
                     </div>
                     <div class="col">
                         <label for="secondRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefEmail">
+                        <input type="text" class="form-control required-input" name="ref2-email" id="secondRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -284,21 +284,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="thirdRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRef">
+                        <input type="text" class="form-control required-input" name="ref3-name" id="thirdRef">
                     </div>
                     <div class="col">
                         <label for="thirdRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefRel">
+                        <input type="text" class="form-control required-input" name="ref3-relation" id="thirdRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="thirdRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefPhone">
+                        <input type="text" class="form-control required-input" name="ref3-phone" id="thirdRefPhone">
                     </div>
                     <div class="col">
                         <label for="thirdRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefEmail">
+                        <input type="text" class="form-control required-input" name="ref3-email" id="thirdRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -325,15 +325,15 @@
         <fieldset class="form-group" id="signature-form">
             <legend >Agreement Signature</legend>
             <label for="signature">Signature</label>
-            <input type="text" class="form-control" id="signature">
+            <input type="text" class="form-control" name="signature" id="signature">
             <label for="date">Date</label>
-            <input type="date" class="form-control" id="date">
+            <input type="date" class="form-control" name="date" id="date">
         </fieldset>
         <br>
         <!--Submit button-->
         <div class="row ">
             <div class="col text-center">
-                <button id="submitBtn" type="submit" class="btn btn-primary" disabled>Submit</button>
+                <button id="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
