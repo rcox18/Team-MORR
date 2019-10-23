@@ -314,6 +314,11 @@
                 <input type="checkbox" class="custom-control-input" id="switch1" name="agreement-switch">
                 <label class="custom-control-label" for="switch1">Agree</label>
             </div>
+            <span class="err" id="err-agree">Because of our values as an organization and out of the safety of the youth
+            we serve it is a requirement that a background check must be submitted.
+            You have chosen to decline. Thank you for your consideration in volunteering
+            with iD.A.Y. dream, at this time we are unable to move forward with your submission.
+            Please visit us again!</span>
         </fieldset>
 
         <!--Signature Section-->
@@ -328,7 +333,7 @@
         <!--Submit button-->
         <div class="row ">
             <div class="col text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="submitBtn" type="submit" class="btn btn-primary" disabled>Submit</button>
             </div>
         </div>
     </form>

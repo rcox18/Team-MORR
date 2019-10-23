@@ -6,6 +6,9 @@ const hearAboutUsOptions = document.getElementById("hearUs").childNodes;
 const otherAboutTextArea = document.getElementById("other-about-us");
 const interestOptions = document.getElementsByName("interests[]");
 const otherInterestsTextArea = document.getElementById("other-interests-text");
+const agreeToPolicySwitch = document.getElementById("switch1");
+const agreeToPolicyErr = document.getElementById("err-agree");
+const btnSubmit = document.getElementById("submitBtn");
 
 for (let i = 0; i < requiredInputErrs.length; i++)
 {
@@ -44,6 +47,17 @@ for (let i = 0; i < interestOptions.length; i++)
         }
     });
 }
+
+agreeToPolicySwitch.addEventListener("change", function() {
+    if(!agreeToPolicySwitch.checked) {
+        agreeToPolicyErr.style.display = "block";
+        btnSubmit.disabled = true;
+
+    } else {
+        agreeToPolicyErr.style.display = "none";
+        btnSubmit.disabled = false;
+    }
+});
 
 function validate()
 {
