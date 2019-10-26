@@ -8,7 +8,7 @@ const interestOptions = document.getElementsByName("interests[]");
 const otherInterestsTextArea = document.getElementById("other-interests-text");
 const agreeToPolicySwitch = document.getElementById("switch1");
 const agreeToPolicyErr = document.getElementById("err-agree");
-const btnSubmit = document.getElementById("submitBtn");
+const btnSubmit = document.getElementById("submit");
 
 for (let i = 0; i < requiredInputErrs.length; i++)
 {
@@ -17,6 +17,7 @@ for (let i = 0; i < requiredInputErrs.length; i++)
 shirtSizeErr.style.visibility = "hidden";
 otherAboutTextArea.style.display = "none";
 otherInterestsTextArea.style.display  = "none";
+btnSubmit.disabled = true;
 
 for (let i = 0; i < hearAboutUsOptions.length; i++)
 {
