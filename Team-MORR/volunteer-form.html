@@ -12,13 +12,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/sign-up-form.css">
+    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
 
     <title>iD.A.Y Dream Volunteer Form</title>
 
 </head>
 <body>
 <div class="container" id="main">
-    <form action="#" id="sign-up">
+    <form action="volunteer-confirmation-page.php" id="sign-up" method="post" name="volunteer-form">
         <!--Intro-->
         <h1>Volunteer Form</h1>
         <div>
@@ -31,27 +32,27 @@
         <fieldset class="form-group" id="contact">
             <!--First Name-->
             <label for="firstName">First name<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="firstName" >
+            <input type="text" class="form-control required-input" name="first-name" id="firstName">
 
 
             <!--Last Name-->
             <label for="lastName">Last name<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="lastName" >
+            <input type="text" class="form-control required-input" name="last-name" id="lastName" >
 
 
             <!--Email-->
             <label for="email">Email address<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="email" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$" >
+            <input type="text" class="form-control required-input" name="email" id="email">
             <div class="row">
                 <div class="col">
                     <p class="mb-0">Please add me to your mailing list.</p>
                     <div class="form-group form-check mt-0">
                         <label class="form-check-label" for="mail-list-yes">
-                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-yes" checked>
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-yes" value="yes" checked>
                             Yes
                         </label>
                         <label class="form-check-label ml-5" for="mail-list-no">
-                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-no">
+                            <input class="form-check-input" type="radio" name="add-to-email" id="mail-list-no" value="no">
                             No, thank you.
                         </label>
                     </div>
@@ -62,26 +63,26 @@
             <span class="err" id="err-phone">
                 Please enter a phone number
             </span>
-            <input type="text" class="form-control required-input" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
+            <input type="text" class="form-control required-input" name="phone" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
         </fieldset>
 
         <!--New Section for more personal such as address, city, and state-->
         <fieldset class="form-group" id="address">
             <!--Address-->
             <label for="street1">Street address<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="street1" >
+            <input type="text" class="form-control required-input" name="address-street" id="street1" >
 
             <!--Apartment or PO Box Number-->
-            <label for="street2">Apt/PO Box#<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="street2" >
+            <label for="street2">Apt/PO Box#</label>
+            <input type="text" class="form-control" name="apo-po-box" id="street2" >
 
             <!--City-->
             <label for="city">City<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="city" >
+            <input type="text" class="form-control required-input" name="city" id="city" >
 
             <!--Select State with dropdown-->
             <label for="state">State</label>
-            <select class="form-control" id="state">
+            <select class="form-control" name="state" id="state">
                 <option value="select">Select</option>
                 <option value="AL">AL</option><option value="AK">AK</option><option value="AR">AR</option>
                 <option value="AZ">AZ</option><option value="CA">CA</option><option value="CO">CO</option>
@@ -104,7 +105,7 @@
 
             <!--ZIP code-->
             <label for="zip">ZIP code<span class="text-danger required-inputErr">*required</span></label>
-            <input type="text" class="form-control required-input" id="zip" pattern="^\d{5}$">
+            <input type="text" class="form-control required-input" name="zip" id="zip" pattern="^\d{5}$">
         </fieldset>
 
         <!--Interests Section-->
@@ -156,13 +157,13 @@
         <fieldset class="form-group">
             <legend>How did you hear about us</legend>
             <div class="form-group">
-                <select class="form-control" id="hearUs">
-                    <option value="none">Select from the following</option>
-                    <option value="word">Word of mouth / Friend / Colleague</option>
-                    <option value="media">Web / Social Media (Facebook, Twitter, Google, iD.A.Y.dream website)</option>
-                    <option value="print">Print (flyer, poster, brochure)</option>
-                    <option value="sponsor">Corporate sponsor</option>
-                    <option value="other">Other</option>
+                <select class="form-control" name="hear-about-us" id="hearUs">
+                    <option class="hear-option" value="none">Select from the following</option>
+                    <option class="hear-option" value="word">Word of mouth / Friend / Colleague</option>
+                    <option class="hear-option" value="media">Web / Social Media (Facebook, Twitter, Google, iD.A.Y.dream website)</option>
+                    <option class="hear-option" value="print">Print (flyer, poster, brochure)</option>
+                    <option class="hear-option" value="sponsor">Corporate sponsor</option>
+                    <option class="hear-option" value="other">Other</option>
                 </select>
                 <textarea class="form-control mt-2" name="other-about-us" id="other-about-us" rows="5"></textarea>
             </div>
@@ -172,7 +173,7 @@
         <fieldset class="form-group">
             <legend>What is your t-shirt size<span class="text-danger" id="tshirtErr">*required</span></legend>
             <div class="form-group">
-                <select class="form-control" id="shirtSize">
+                <select class="form-control" name="tshirt-size" id="shirtSize">
                     <option value="none">Select a t-shirt size (adult)</option>
                     <option value="xsmall">Extra Small</option>
                     <option value="small">Small</option>
@@ -190,113 +191,42 @@
             <div id="exp-available">
                 <!--Text box to enter volunteer roles that interest you-->
                 <label>Please detail volunteer roles that interest you! We want to ensure we utilize your skills!</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="roles" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter previous experience that relates to iD.A.Y Dream-->
                 <label>Do you have any previous volunteer experience with other youth serving organizations?</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="prev-experience" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter other applicable experience-->
                 <label>Any other applicable experience you would like to mention?</label>
-                <textarea class="form-control" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control" name="applicable-exp" rows="5" form="sign-up"></textarea>
 
                 <!--Text box to enter motivation for volunteering-->
                 <label>What motivated you to volunteer with us?<span class="text-danger required-inputErr">*required</span></label>
-                <textarea class="form-control required-input" rows="10" form="sign-up"></textarea>
+                <textarea class="form-control required-input" name="motivation" rows="5" form="sign-up"></textarea>
 
                 <!--Checkbox list for volunteering availability-->
                 <label>Please select the choices that most fit your volunteer availability:</label><br>
-                <input type="checkbox" form="sign-up" id="weekdays" value="weekdays" name="availability[]">
-                <label for="weekdays">
-                    Weekdays
+                <input type="checkbox" form="sign-up" id="four-hour-shift" value="weekend-four-hour-shift" name="availability[]">
+                <label for="four-hour-shift">
+                    Weekend Workshop (4 hour shift)
                 </label><br>
-                <div id="weekday-options" class="day-options">
-                    <input type="checkbox" form="sign-up" id="monday" value="monday" name="availability[]">
-                    <label for="monday">Monday</label><br>
-                    <div id="mon-times" class ="time-options">
-                        <input type="checkbox" id="mon-morn" value="mon-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="mon-aft" value="mon-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="mon-eve" value="mon-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                    <input type="checkbox" form="sign-up" id="tuesday" value="tuesday" name="availability[]">
-                    <label for="tuesday">Tuesday</label><br>
-                    <div id="tues-times" class ="time-options">
-                        <input type="checkbox" id="tues-morn" value="tues-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="tues-aft" value="tues-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="tues-eve" value="tues-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                    <input type="checkbox" form="sign-up" id="wednesday" value="wednesday" name="availability[]">
-                    <label for="wednesday">Wednesday</label><br>
-                    <div id="wed-times" class ="time-options">
-                        <input type="checkbox" id="wed-morn" value="wed-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="wed-aft" value="wed-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="wed-eve" value="wed-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                    <input type="checkbox" form="sign-up" id="thursday" value="thursday" name="availability[]">
-                    <label for="thursday">Thursday</label><br>
-                    <div id="thurs-times" class ="time-options">
-                        <input type="checkbox" id="thurs-morn" value="thurs-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="thurs-aft" value="thurs-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="thurs-eve" value="thurs-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                    <input type="checkbox" form="sign-up" id="friday" value="friday" name="availability[]">
-                    <label for="friday">Friday</label>
-                    <div id="fri-times" class ="time-options">
-                        <input type="checkbox" id="fri-morn" value="fri-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="fri-aft" value="fri-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="fri-eve" value="fri-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                </div>
-                <input type="checkbox" form="sign-up" id="weekends" value="weekends" name="availability[]">
-                <label for="weekends">
-                    Weekends
+                <input type="checkbox" form="sign-up" id="eight-hour-shift" value="weekend-eight-hour-shift" name="availability[]">
+                <label for="eight-hour-shift">
+                    Weekend Workshop (8 hour shift)
                 </label><br>
-                <div id="weekend-options" class="day-options">
-                    <input type="checkbox" form="sign-up" id="saturday" value="saturday" name="availability[]">
-                    <label for="saturday">Saturday</label><br>
-                    <div id="sat-times" class ="time-options">
-                        <input type="checkbox" id="sat-morn" value="sat-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="sat-aft" value="sat-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="sat-eve" value="sat-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                    <input type="checkbox" form="sign-up" id="sunday" value="sunday" name="availability[]">
-                    <label for="sunday">Sunday</label><br>
-                    <div id="sun-times" class="time-options">
-                        <input type="checkbox" id="sun-morn" value="sun-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
-                        <input type="checkbox" id="sun-aft" value="sun-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
-                        <input type="checkbox" id="sun-eve" value="sun-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
-                    </div>
-                </div>
-                <input type="checkbox" form="sign-up" id="camp" value="summer-camp" name="availability[]">
-                <label for="camp">
-                    Summer Camp
+                <input type="checkbox" form="sign-up" id="summer-camp" value="one-week-summer-camp" name="availability[]">
+                <label for="summer-camp">
+                    One Week Summer Camp
                 </label><br>
-                <div id="summer-text" class="day-options">
-                    <label for="summer-avail">List any major time conflicts (vacations, other camps, etc.) that would
-                        prevent you from volunteering during a certain time periods in the summer</label>
-                    <textarea id="summer-avail"></textarea>
-                </div>
+                <input type="checkbox" form="sign-up" id="weekday" value="weekday-workshop" name="availability[]">
+                <label for="weekday">
+                    Weekday Workshop
+                </label><br>
+                <input type="checkbox" form="sign-up" id="ongoing" value="weekday-ongoing" name="availability[]">
+                <label for="ongoing">
+                    Ongoing, Weekday Commitment
+                </label>
             </div>
         </fieldset>
 
@@ -308,21 +238,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="firstRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRef">
+                        <input type="text" class="form-control required-input" name="ref1-name" id="firstRef">
                     </div>
                     <div class="col">
                         <label for="firstRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefRel">
+                        <input type="text" class="form-control required-input" name="ref1-relation" id="firstRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="firstRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefPhone">
+                        <input type="text" class="form-control required-input" name="ref1-phone" id="firstRefPhone">
                     </div>
                     <div class="col">
                         <label for="firstRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="firstRefEmail">
+                        <input type="text" class="form-control required-input" name="ref1-email" id="firstRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -331,21 +261,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="secondRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRef">
+                        <input type="text" class="form-control required-input" name="ref2-name" id="secondRef">
                     </div>
                     <div class="col">
                         <label for="secondRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefRel">
+                        <input type="text" class="form-control required-input" name="ref2-relation" id="secondRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="secondRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefPhone">
+                        <input type="text" class="form-control required-input" name="ref2-phone" id="secondRefPhone">
                     </div>
                     <div class="col">
                         <label for="secondRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="secondRefEmail">
+                        <input type="text" class="form-control required-input" name="ref2-email" id="secondRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -355,21 +285,21 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="thirdRef">Name<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRef">
+                        <input type="text" class="form-control required-input" name="ref3-name" id="thirdRef">
                     </div>
                     <div class="col">
                         <label for="thirdRefRel">Relationship<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefRel">
+                        <input type="text" class="form-control required-input" name="ref3-relation" id="thirdRefRel">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         <label for="thirdRefPhone">Phone<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefPhone">
+                        <input type="text" class="form-control required-input" name="ref3-phone" id="thirdRefPhone">
                     </div>
                     <div class="col">
                         <label for="thirdRefEmail">Email<span class="text-danger required-inputErr">*required</span></label>
-                        <input type="text" class="form-control required-input" id="thirdRefEmail">
+                        <input type="text" class="form-control required-input" name="ref3-email" id="thirdRefEmail">
                     </div>
                 </div>
             </fieldset>
@@ -385,21 +315,26 @@
                 <input type="checkbox" class="custom-control-input" id="switch1" name="agreement-switch">
                 <label class="custom-control-label" for="switch1">Agree</label>
             </div>
+            <span class="err" id="err-agree">Because of our values as an organization and out of the safety of the youth
+            we serve it is a requirement that a background check must be submitted.
+            You have chosen to decline. Thank you for your consideration in volunteering
+            with iD.A.Y. dream, at this time we are unable to move forward with your submission.
+            Please visit us again!</span>
         </fieldset>
 
         <!--Signature Section-->
         <fieldset class="form-group" id="signature-form">
             <legend >Agreement Signature</legend>
             <label for="signature">Signature</label>
-            <input type="text" class="form-control" id="signature">
+            <input type="text" class="form-control" name="signature" id="signature">
             <label for="date">Date</label>
-            <input type="date" class="form-control" id="date">
+            <input type="date" class="form-control" name="date" id="date">
         </fieldset>
         <br>
         <!--Submit button-->
         <div class="row ">
             <div class="col text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>
