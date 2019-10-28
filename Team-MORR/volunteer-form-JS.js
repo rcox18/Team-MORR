@@ -6,6 +6,16 @@ const hearAboutUsOptions = document.getElementById("hearUs").childNodes;
 const otherAboutTextArea = document.getElementById("other-about-us");
 const interestOptions = document.getElementsByName("interests[]");
 const otherInterestsTextArea = document.getElementById("other-interests-text");
+const weekdays = document.getElementById("weekdays");
+const weekends = document.getElementById("weekends");
+const summer = document.getElementById("camp");
+const mon = document.getElementById("monday");
+const tues = document.getElementById("tuesday");
+const wed = document.getElementById("wednesday");
+const thurs = document.getElementById("thursday");
+const fri = document.getElementById("friday");
+const sat = document.getElementById("saturday");
+const sun = document.getElementById("sunday");
 const agreeToPolicySwitch = document.getElementById("switch1");
 const agreeToPolicyErr = document.getElementById("err-agree");
 const btnSubmit = document.getElementById("submit");
@@ -48,6 +58,38 @@ for (let i = 0; i < interestOptions.length; i++)
         }
     });
 }
+
+weekdays.addEventListener("change", function() {
+    $("#weekday-options").toggle();
+});
+weekends.addEventListener("change", function() {
+    $("#weekend-options").toggle();
+});
+summer.addEventListener("change",function() {
+    $("#summer-text").toggle()
+});
+
+mon.addEventListener("change",function() {
+    $("#mon-times").toggle()
+});
+tues.addEventListener("change",function() {
+    $("#tues-times").toggle()
+});
+wed.addEventListener("change",function() {
+    $("#wed-times").toggle()
+});
+thurs.addEventListener("change",function() {
+    $("#thurs-times").toggle()
+});
+fri.addEventListener("change",function() {
+    $("#fri-times").toggle()
+});
+sat.addEventListener("change",function() {
+    $("#sat-times").toggle()
+});
+sun.addEventListener("change",function() {
+    $("#sun-times").toggle()
+});
 
 agreeToPolicySwitch.addEventListener("change", function() {
     if(!agreeToPolicySwitch.checked) {
