@@ -6,16 +6,16 @@
  */
 
 fieldset.innerFieldset{
-    border: 1px solid black;
+    border: none;
 }
 
 body {
     margin: 3em;
 }
 
-fieldset {
-    border: 3px solid black;
-    padding: 2em;
+.day-options {
+    display: none;
+    margin-left: 50px;
 }
 
 .err {
@@ -23,7 +23,17 @@ fieldset {
     display: none;
 }
 
+fieldset {
+    border: 3px solid black;
+    padding: 2em;
+}
+
 legend
 {
     width: auto;
+}
+
+.time-options {
+    display: none;
+    margin-left: 100px;
 }
