@@ -4,36 +4,88 @@
     The charset, fieldset.toplevel, and legend done by Robert, as stated by Marcos
     Please add on more or update from other members to stylesheet
  */
+fieldset{
+   <!-- background-color: #ffab94; -->
+}
 
 fieldset.innerFieldset{
     border: none;
 }
 
+label{
+    font-weight: bold;
+}
+
+
+.mb-0{
+    font-weight: bold;
+}
+
+.form-check-label{
+    font-weight: normal;
+}
+
 body {
     margin: 3em;
+   background-color: #3a9fb6;
 }
 
 .day-options {
     display: none;
     margin-left: 50px;
 }
-
 .err {
     color: darkred;
     display: none;
 }
 
 fieldset {
-    border: 3px solid black;
+    border: 3px solid #b65f3a;
     padding: 2em;
 }
 
 legend
 {
     width: auto;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 125%;
 }
+
 
 .time-options {
     display: none;
     margin-left: 100px;
+}
+
+a{
+    color: gold;
+}
+
+form{
+   background-color: white;
+}
+
+.jumbotron{
+    background-color: #b65f3a;
+    color: white;
+}
+
+.img-thumbnail {
+    background-color: rgba(0,0,0,0);
+    //padding-bottom: auto;
+   //padding: auto;
+    border: none;
+    height: auto;
+    max-height: 150px;
+    width: auto;
+    max-width: 150%;
+}
+
+#submit{
+    background-color: #b65f3a;
+}
+#main {
+    //background-color: white;
+    //margin: 0em 10em 15em 10em;
 }

@@ -16,20 +16,25 @@
 
     <title>iD.A.Y Dream Volunteer Form</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dabc823c0e45245a9c250cd/1571544129492-S9RDI79OWVWOWVJEJG7E/ke17ZwdGBToddI8pDm48kJycfsYb1urLU93EpFqOTQmoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp7zww8OjRrqjaM7_0x6HDLp42EP6IAa5vAmscK3sHI4MkNL5tmfZ3otlI9yi1IzH2Q/favicon.ico"/>
+
+
 </head>
 <body>
+<!--Intro-->
+<div class="jumbotron jumbotron-fluid container">
+    <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w" alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+<h1 class="display-4">Volunteer Form</h1>
+    <p class="lead">Thank you so much for your interest in ID.A.Y.Dream! Before you can volunteer with us,
+        we just need to get a little bit of personal info. If you have any questions or concerns,
+        feel free to contact us through <a href="https://idaydream.org/contact/">this</a> link.</p>
+</div>
+
 <div class="container" id="main">
     <form action="volunteer-confirmation-page.php" id="sign-up" method="post" name="volunteer-form">
-        <!--Intro-->
-        <h1>Volunteer Form</h1>
-        <div>
-            <p>Thank you so much for your interest in ID.A.Y.Dream! Before you can volunteer with us,
-                we just need to get a little bit of personal info. If you have any questions or concerns,
-                feel free to contact us through <a href="https://idaydream.org/contact/">this</a> link.</p>
-        </div>
-
         <!--Contact Info-->
         <fieldset class="form-group" id="contact">
+            <legend>Personal Info</legend>
             <!--First Name-->
             <label for="firstName">First name<span class="text-danger required-inputErr">*required</span></label>
             <input type="text" class="form-control required-input" name="first-name" id="firstName">
@@ -69,6 +74,7 @@
         <!--New Section for more personal such as address, city, and state-->
         <fieldset class="form-group" id="address">
             <!--Address-->
+            <legend>Address Info</legend>
             <label for="street1">Street address<span class="text-danger required-inputErr">*required</span></label>
             <input type="text" class="form-control required-input" name="address-street" id="street1" >
 
@@ -171,7 +177,8 @@
 
         <!--T Shirt size-->
         <fieldset class="form-group">
-            <legend>What is your t-shirt size<span class="text-danger" id="tshirtErr">*required</span></legend>
+            <legend>What is your t-shirt size</legend>
+                <span class="text-danger" id="tshirtErr">*required</span>
             <div class="form-group">
                 <select class="form-control" name="tshirt-size" id="shirtSize">
                     <option value="none">Select a t-shirt size (adult)</option>
@@ -208,95 +215,95 @@
                 <!--Checkbox list for volunteering availability-->
                 <label>Please select the choices that most fit your volunteer availability:</label><br>
                 <input type="checkbox" form="sign-up" id="weekdays" value="weekdays" name="availability[]">
-                <label for="weekdays">
+                <label for="weekdays" class="form-check-label">
                     Weekdays
                 </label><br>
-                <div id="weekday-options" class="day-options">
+                <div id="weekday-options" class="day-options" >
                     <input type="checkbox" form="sign-up" id="monday" value="monday" name="availability[]">
-                    <label for="monday">Monday</label><br>
+                    <label for="monday" class="form-check-label">Monday</label><br>
                     <div id="mon-times" class ="time-options">
                         <input type="checkbox" id="mon-morn" value="mon-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="mon-aft" value="mon-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="mon-eve" value="mon-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                     <input type="checkbox" form="sign-up" id="tuesday" value="tuesday" name="availability[]">
-                    <label for="tuesday">Tuesday</label><br>
+                    <label for="tuesday" class="form-check-label">Tuesday</label><br>
                     <div id="tues-times" class ="time-options">
                         <input type="checkbox" id="tues-morn" value="tues-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="tues-aft" value="tues-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="tues-eve" value="tues-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                     <input type="checkbox" form="sign-up" id="wednesday" value="wednesday" name="availability[]">
-                    <label for="wednesday">Wednesday</label><br>
+                    <label for="wednesday" class="form-check-label">Wednesday</label><br>
                     <div id="wed-times" class ="time-options">
                         <input type="checkbox" id="wed-morn" value="wed-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="wed-aft" value="wed-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="wed-eve" value="wed-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                     <input type="checkbox" form="sign-up" id="thursday" value="thursday" name="availability[]">
-                    <label for="thursday">Thursday</label><br>
+                    <label for="thursday" class="form-check-label">Thursday</label><br>
                     <div id="thurs-times" class ="time-options">
                         <input type="checkbox" id="thurs-morn" value="thurs-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="thurs-aft" value="thurs-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="thurs-eve" value="thurs-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                     <input type="checkbox" form="sign-up" id="friday" value="friday" name="availability[]">
-                    <label for="friday">Friday</label>
+                    <label for="friday" class="form-check-label">Friday</label>
                     <div id="fri-times" class ="time-options">
                         <input type="checkbox" id="fri-morn" value="fri-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="fri-aft" value="fri-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="fri-eve" value="fri-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                 </div>
                 <input type="checkbox" form="sign-up" id="weekends" value="weekends" name="availability[]">
-                <label for="weekends">
+                <label for="weekends" class="form-check-label">
                     Weekends
                 </label><br>
                 <div id="weekend-options" class="day-options">
                     <input type="checkbox" form="sign-up" id="saturday" value="saturday" name="availability[]">
-                    <label for="saturday">Saturday</label><br>
+                    <label for="saturday" class="form-check-label">Saturday</label><br>
                     <div id="sat-times" class ="time-options">
                         <input type="checkbox" id="sat-morn" value="sat-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="sat-aft" value="sat-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="sat-eve" value="sat-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                     <input type="checkbox" form="sign-up" id="sunday" value="sunday" name="availability[]">
-                    <label for="sunday">Sunday</label><br>
+                    <label for="sunday" class="form-check-label">Sunday</label><br>
                     <div id="sun-times" class="time-options">
                         <input type="checkbox" id="sun-morn" value="sun-morn " name="availability[]">
-                        <label for="mon-morn">Morning</label><br>
+                        <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="sun-aft" value="sun-aft" name="availability[]">
-                        <label for="mon-aft">Afternoon</label><br>
+                        <label for="mon-aft" class="form-check-label">Afternoon</label><br>
                         <input type="checkbox" id="sun-eve" value="sun-eve" name="availability[]">
-                        <label for="mon-eve">Evening</label><br>
+                        <label for="mon-eve" class="form-check-label">Evening</label><br>
                     </div>
                 </div>
                 <input type="checkbox" form="sign-up" id="camp" value="summer-camp" name="availability[]">
-                <label for="camp">
+                <label for="camp" class="form-check-label">
                     Summer Camp
                 </label><br>
                 <div id="summer-text" class="day-options">
-                    <label for="summer-avail">List any major time conflicts (vacations, other camps, etc.) that would
+                    <label for="summer-avail" class="form-check-label">List any major time conflicts (vacations, other camps, etc.) that would
                         prevent you from volunteering during a certain time periods in the summer</label>
-                    <textarea id="summer-avail"></textarea>
+                    <textarea id="summer-avail" ></textarea>
                 </div>
             </div>
         </fieldset>
