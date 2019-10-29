@@ -27,7 +27,8 @@ label{
 
 body {
     margin: 3em;
-   background-color: #3a9fb6;
+   //background-color: #3a9fb6;
+    background-color: white;
 }
 
 .day-options {
@@ -40,7 +41,8 @@ body {
 }
 
 fieldset {
-    border: 3px solid #b65f3a;
+    //border: 3px solid #b65f3a;
+    border: 3px solid #3a9fb6;
     padding: 2em;
 }
 
@@ -67,7 +69,8 @@ form{
 }
 
 .jumbotron{
-    background-color: #b65f3a;
+    //background-color: #b65f3a;
+    background-color: #3a9fb6;
     color: white;
 }
 
@@ -83,7 +86,8 @@ form{
 }
 
 #submit{
-    background-color: #b65f3a;
+    //background-color: #b65f3a;
+    background-color: #3a9fb6;
 }
 #main {
     //background-color: white;
