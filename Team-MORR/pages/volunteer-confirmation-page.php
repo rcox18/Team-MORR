@@ -1,3 +1,12 @@
+<!--
+    Filename: volunteer-confirmation-page.php
+    By: Team MORR
+	Marcos, Olivia, Raj, and Robert Cox
+	10/30/2019
+	url: http://team-morr.greenriverdev.com/pages/volunteer-confirmation-page.php
+	The confirmation page when volunteer-form.html is submitted successfully. Sends email containing the submitted data.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,27 +15,30 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/sign-up-form.css">
+    <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
 
     <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
-    <title>Welcome Page Success</title>
+    <title>Volunteer Application Success</title>
 </head>
 <body>
 <?php
-$fName = $_POST["First name"];
-$lName = $_POST["Last name"];
+//generating messages
+$fName = $_POST["first-name"];
+$lName = $_POST["last-name"];
 $info = "<p>";
-$email = "oringhiser@mail.greenriver.edu";
+$email = "rcox18@mail.greenriver.edu";
 $email_body = "Applicant Information --\r\n";
 $email_body .= "Name: $fName $lName\r\n";
-$email_subject = "Welcome to ID.A.Y.Dream!";
+$email_subject = "New Volunteer application";
 $to = $email;
 $headers = "From: $email\r\n";
 $headers .= "Reply-To: $email \r\n";
-echo "<h1>Your Information Has Been Submitted</h1>
-            <p>$fName, thank you for telling us a little bit about yourself! This information
-            is vital to our goals of best serving our students. If you see any errors in
-            the following submitted info, please contact us ASAP for corrections.</p>";
+
+echo "<h1>Your Application Has Been Submitted</h1>
+                <p>$fName, thank you for your interest in supporting our youth. 
+                Your information has been sent to iD.A.Y. dream.</p>";
+
+//adds the raw data to the messages
 foreach ($_POST as $key => $value){
     if(is_array($value)){
         foreach ($value as $k => $v){
@@ -38,11 +50,12 @@ foreach ($_POST as $key => $value){
         $email_body.= $key.': '.$value."\r\n";
     }
 }
+
+//finish and print confirmation message
 $info .= "</p>";
 echo $info;
+//sends email
 $success = mail($to, $email_subject, $email_body, $headers);
-echo ($success ?  "<script>console.log('success');</script>" :
-    "<script>console.log('failure');</script>" );
 ?>
 </body>
 </html>

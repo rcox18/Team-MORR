@@ -1,9 +1,11 @@
 @charset "UTF-8";
-/**
-    The following stylesheet is done by Olivia, as stated by Marcos
-    The charset, fieldset.toplevel, and legend done by Robert, as stated by Marcos
-    Please add on more or update from other members to stylesheet
- */
+/*
+    Filename: sign-up-form-JS.js
+    By: Team MORR
+	Marcos, Olivia, Raj, and Robert Cox
+    10/30/2019
+    Styling for volunteer-form.html
+*/
 
 fieldset.innerFieldset{
     border: none;
@@ -60,11 +62,11 @@ a{
 }
 
 form{
-   background-color: white;
+    background-color: white;
 }
 
 .jumbotron{
-    //background-color: #b65f3a;
+
     background-color: #3a9fb6;
     border-radius: 20px;
     margin-bottom: -10px;
@@ -85,8 +87,9 @@ form{
     display: none;
 }
 
+
 #submit{
-    //background-color: #b65f3a;
+
     background-color: #3a9fb6;
 }
 

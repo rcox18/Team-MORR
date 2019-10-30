@@ -6,28 +6,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/sign-up-form.css">
+    <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
 
     <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
-    <title>Volunteer Application Success</title>
+    <title>Welcome Page Success</title>
 </head>
 <body>
 <?php
-$fName = $_POST["first-name"];
-$lName = $_POST["last-name"];
+$fName = $_POST["First name"];
+$lName = $_POST["Last name"];
 $info = "<p>";
-$email = "rcox18@mail.greenriver.edu";
+$email = "oringhiser@mail.greenriver.edu";
 $email_body = "Applicant Information --\r\n";
 $email_body .= "Name: $fName $lName\r\n";
-$email_subject = "New Volunteer application";
+$email_subject = "Welcome to ID.A.Y.Dream!";
 $to = $email;
 $headers = "From: $email\r\n";
 $headers .= "Reply-To: $email \r\n";
-
-echo "<h1>Your Application Has Been Submitted</h1>
-            <p>$fName, thank you for your interest in supporting our youth. 
-            The following information has been sent to iD.A.Y. dream:</p>";
-
+echo "<h1>Your Information Has Been Submitted</h1>
+            <p>$fName, thank you for telling us a little bit about yourself! This information
+            is vital to our goals of best serving our students. If you see any errors in
+            the following submitted info, please contact us ASAP for corrections.</p>";
 foreach ($_POST as $key => $value){
     if(is_array($value)){
         foreach ($value as $k => $v){
