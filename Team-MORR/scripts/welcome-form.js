@@ -18,8 +18,10 @@ for (let i = 0; i < requiredInputErrs.length; i++)
 }
 
 gender.addEventListener("change", function() {
-    if (gender.value == "other") {
-        $("#other-gender").toggle();
+    if (gender.value === "other") {
+        document.getElementById("other-gender").style.display = "block";
+    } else {
+        document.getElementById("other-gender").style.display = "none";
     }
 });
 
