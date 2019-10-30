@@ -1,6 +1,15 @@
+/*
+    Filename: volunteer-form-JS.js
+    By: Team MORR
+	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
+    10/30/2019
+    JavaScript for volunteer-form.html
+    Adds client-side validation for the welcome-form application.
+*/
+
 document.getElementById("welcome-form").onsubmit = validate;
 const requiredInputErrs = document.getElementsByClassName("required-inputErr");
-const gender = $("#gender");
+const gender = document.getElementById("gender");
 const btnSubmit = document.getElementById("submit");
 
 for (let i = 0; i < requiredInputErrs.length; i++)

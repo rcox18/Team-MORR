@@ -1,7 +1,7 @@
 /*
     Filename: volunteer-form-JS.js
     By: Team MORR
-	Marcos, Olivia, Raj, and Robert Cox
+	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
     10/30/2019
     JavaScript for volunteer-form.html
     Adds client-side validation for the volunteer application.
