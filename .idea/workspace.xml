@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc794386-78c3-47f4-8944-8c151696845f" name="Default Changelist" comment="First iteration of the welcome page, HTML and PHP. Need to add JS validation.">
-      <change afterPath="$PROJECT_DIR$/Team-MORR/welcome-confirmation-page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Team-MORR/welcome.html" afterDir="false" />
+    <list default="true" id="bc794386-78c3-47f4-8944-8c151696845f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team-MORR/welcome-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/Team-MORR/welcome-form.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +93,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571078357099</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="First iteration of the welcome page, HTML and PHP. Need to add JS validation.">
+      <created>1572417795577</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572417795577</updated>
+    </task>
+    <task id="LOCAL-00006" summary="JS validation for welcome page">
+      <created>1572418598290</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1572418598290</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +134,7 @@
     <MESSAGE value="HTML validation continued --Olivia" />
     <MESSAGE value="hi I made it 2.0" />
     <MESSAGE value="First iteration of the welcome page, HTML and PHP. Need to add JS validation." />
-    <option name="LAST_COMMIT_MESSAGE" value="First iteration of the welcome page, HTML and PHP. Need to add JS validation." />
+    <MESSAGE value="JS validation for welcome page" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS validation for welcome page" />
   </component>
 </project>

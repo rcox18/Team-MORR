@@ -1,5 +1,6 @@
 document.getElementById("welcome-form").onsubmit = validate;
 const requiredInputErrs = document.getElementsByClassName("required-inputErr");
+const gender = $("#gender");
 const btnSubmit = document.getElementById("submit");
 
 for (let i = 0; i < requiredInputErrs.length; i++)
@@ -7,8 +8,8 @@ for (let i = 0; i < requiredInputErrs.length; i++)
     requiredInputErrs[i].style.visibility = "hidden";
 }
 
-addEventListener("change", function() {
-    if ($("#gender").value == "other") {
+gender.addEventListener("change", function() {
+    if gender.value == "other") {
         $("#other-gender").toggle();
     }
     });
