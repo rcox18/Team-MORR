@@ -13,8 +13,8 @@
 </head>
 <body>
 <?php
-$fName = $_POST["First name"];
-$lName = $_POST["Last name"];
+$fName = $_POST["firstName"];
+$lName = $_POST["lastName"];
 $info = "<p>";
 $email = "oringhiser@mail.greenriver.edu";
 $email_body = "Applicant Information --\r\n";
