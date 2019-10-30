@@ -1,3 +1,11 @@
+<!--
+    Filename: volunteer-confirmation-page.php
+    By: Team MORR
+	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
+	10/30/2019
+	url: http://team-morr.greenriverdev.com/pages/volunteer-confirmation-page.php
+	The confirmation page when volunteer-form.html is submitted successfully. Sends email containing the submitted data.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
