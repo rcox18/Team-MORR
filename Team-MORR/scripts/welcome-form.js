@@ -8,14 +8,29 @@
 */
 
 document.getElementById("welcome-form").onsubmit = validate;
-const requiredInputErrs = document.getElementsByClassName("required-inputErr");
+const fName = document.getElementById("firstName");
+const lName = document.getElementById("lastName");
+const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const dob = document.getElementById("dob");
+const gradYear = document.getElementById("graduationYear");
+const fNameErr = document.getElementById("fName-err");
+const lNameErr = document.getElementById("lName-err");
+const dobErr = document.getElementById("dob-err");
+const genderErr = document.getElementById("gender-err");
+const emailErr = document.getElementById("email-err");
+const phoneErr = document.getElementById("phone-err");
+const gradYearErr = document.getElementById("gradYear-err");
+
+
+
+const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
+const phoneRegex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+
 const gender = document.getElementById("gender");
 const btnSubmit = document.getElementById("submit");
 
-for (let i = 0; i < requiredInputErrs.length; i++)
-{
-    requiredInputErrs[i].style.visibility = "hidden";
-}
+
 
 gender.addEventListener("change", function() {
     if (gender.value === "other") {
@@ -28,18 +43,38 @@ gender.addEventListener("change", function() {
 function validate() {
     let isValid = true;
 
-    let requiredInputValues = document.getElementsByClassName("required-input");
+    var requiredInputValues = document.getElementsByClassName("text-danger err");
+    for(i = 0; i < requiredInputValues.length; i++) {
+        requiredInputValues[i].style.display = "none";
+    }
 
-    for (let i = 0; i < requiredInputValues.length; i++) {
-
-        if (requiredInputValues[i].value === "") {
-            requiredInputValues[i].classList.add("border-danger");
-            requiredInputErrs[i].style.visibility = "visible";
-            isValid = false;
-        } else {
-            requiredInputValues[i].classList.remove("border-danger");
-            requiredInputErrs[i].style.visibility = "hidden";
-        }
+    if(fName.value === "") {
+        fNameErr.style.display = "block";
+        isValid = false;
+    }
+    if(lName.value === "") {
+        lNameErr.style.display = "block";
+        isValid = false;
+    }
+    if(phone.value === "" || !phoneRegex.test(phone.value)) {
+        phoneErr.style.display = "block"
+        isValid = false;
+    }
+    if(email.value === "" || !emailRegex.test(email.value)) {
+        emailErr.style.display = "block"
+        isValid = false;
+    }
+    if(dob.value === "") {
+        dobErr.style.display = "block";
+        isValid = false;
+    }
+    if(gradYear.value === "none") {
+        gradYearErr.style.display = "block";
+        isValid = false;
+    }
+    if(gender.value === "none") {
+        genderErr.style.display = "block";
+        isValid = false;
     }
 
     return isValid;
