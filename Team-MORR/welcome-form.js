@@ -12,7 +12,7 @@ gender.addEventListener("change", function() {
     if gender.value == "other") {
         $("#other-gender").toggle();
     }
-    });
+});
 
 function validate() {
     let isValid = true;
