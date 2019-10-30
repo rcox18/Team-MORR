@@ -81,6 +81,10 @@ form{
     max-width: 150%;
 }
 
+#other-gender {
+    display: none;
+}
+
 #submit{
     //background-color: #b65f3a;
     background-color: #3a9fb6;
