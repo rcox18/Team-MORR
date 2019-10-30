@@ -9,7 +9,7 @@ for (let i = 0; i < requiredInputErrs.length; i++)
 }
 
 gender.addEventListener("change", function() {
-    if gender.value == "other") {
+    if (gender.value == "other") {
         $("#other-gender").toggle();
     }
 });
