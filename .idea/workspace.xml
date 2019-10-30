@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc794386-78c3-47f4-8944-8c151696845f" name="Default Changelist" comment="">
+    <list default="true" id="bc794386-78c3-47f4-8944-8c151696845f" name="Default Changelist" comment="First iteration of the welcome page, HTML and PHP. Need to add JS validation.">
+      <change afterPath="$PROJECT_DIR$/Team-MORR/welcome-confirmation-page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Team-MORR/welcome.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,6 +17,13 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -25,7 +34,11 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1SCdVqqt8ux3gupikbT9rgn464x" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
@@ -107,6 +120,7 @@
     <MESSAGE value="Attempting to fix HTML validation errors --Olivia" />
     <MESSAGE value="HTML validation continued --Olivia" />
     <MESSAGE value="hi I made it 2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="hi I made it 2.0" />
+    <MESSAGE value="First iteration of the welcome page, HTML and PHP. Need to add JS validation." />
+    <option name="LAST_COMMIT_MESSAGE" value="First iteration of the welcome page, HTML and PHP. Need to add JS validation." />
   </component>
 </project>
