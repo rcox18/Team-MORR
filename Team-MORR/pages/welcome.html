@@ -15,9 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dabc823c0e45245a9c250cd/1571544129492-S9RDI79OWVWOWVJEJG7E/ke17ZwdGBToddI8pDm48kJycfsYb1urLU93EpFqOTQmoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp7zww8OjRrqjaM7_0x6HDLp42EP6IAa5vAmscK3sHI4MkNL5tmfZ3otlI9yi1IzH2Q/favicon.ico"/>
@@ -26,12 +35,12 @@
 
 <body>
 <div class="container" id="main">
-<div class="jumbotron jumbotron-fluid fixed-top mb-3 pr-2">
-    <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w" alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
-    <h1 class="display-4">ID.A.Y.Dream</h1>
-    <p class="lead">Welcome to ID.A.Y.Dream! In order to best serve your needs, we need to get to know a little bit about you.
-        Please take a moment to fill out this form. The more you tell us about yourself, the better!</p>
-</div>
+    <div class="jumbotron jumbotron-fluid fixed-top mb-3 pr-2">
+        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w" alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+        <h1 class="display-4">ID.A.Y.Dream</h1>
+        <p class="lead">Welcome to ID.A.Y.Dream! In order to best serve your needs, we need to get to know a little bit about you.
+            Please take a moment to fill out this form. The more you tell us about yourself, the better!</p>
+    </div>
 
     <form action="welcome-confirmation-page.php" id="welcome-form" method="post">
         <fieldset class="form-group" id="personal">
@@ -45,33 +54,26 @@
             <input type="text" class="form-control required-input" id="last-name" name="last-name">
 
             <!--Date of Birth-->
-            <label for="dob">Date of Birth<span class="text-danger err" id="dob-err">*required</span></label>
-            <input type="date" class="form-control required-input" id="dob" name="date-of-birth" max="2007-01-01" min="2000-12-31">
-            <script>
-            //date workaround for browser support
-            if (dob.type != "date") {
-                dob.datepicker();
-            }
-            </script>
+            <label for="date-of-birth">Date of Birth<span class="text-danger err" id="dob-err">*required</span></label>
+            <input type="date" class="form-control required-input" id="date-of-birth" name="date-of-birth" max="2007-01-01" min="2000-12-31">
 
             <!--Gender-->
             <label for="gender">Gender<span class="text-danger err" id="gender-err">*required</span></label>
             <select class="form-control required-input" id="gender" name="gender">
-                <option value="none">Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option class="gender-option" value="none">Gender</option>
+                <option class="gender-option" value="male">Male</option>
+                <option class="gender-option" value="female">Female</option>
+                <option class="gender-option" value="other">Other</option>
             </select>
-            <span id="other-gender">
-               <label for="identity">My gender is </label> <input type="text" id="identity">
+            <div id="other-gender">
+                <label for="identity">My gender is </label> <input type="text" id="identity">
                 <label for="pronouns">and I use the following pronouns: </label> <input type="text" id="pronouns">
-            </span>
+            </div>
 
             <!--Race/Ethnicity-->
-            <fieldset class="form-group"></fieldset>
-            <label for="race-dropdown">Race/Ethnicity</label><span class="text-danger err" id="race-err">*required</span>
+            <label for="race-selector">Race/Ethnicity</label><span class="text-danger err">*required</span>
             <div class="form-group">
-                <select class="form-control" id="race-dropdown" name="race-ethnicity">
+                <select class="form-control" id="race-selector" name="race-ethnicity">
                     <option class="race-option" value="none">Select from the following</option>
                     <option class="race-option" value="black">Black/African American</option>
                     <option class="race-option" value="latinx">Latinx/Hispanic</option>
@@ -81,15 +83,15 @@
                     <option class="race-option" value="white">White</option>
                     <option class="race-option" value="other">Other</option>
                 </select>
-            </div>
-            <div id="other-race-div">
-                <label for="other-race-text">Please specify</label>
-                <input type="text" class="form-control" id="other-race-text" name="other-race-ethnicity">
+                <div id="other-race" >
+                    <label for="other-race-text">Please specify</label>
+                    <input type="text" class="form-control" id="other-race-text" name="other-race-ethnicity">
+                </div>
             </div>
 
             <!--Favorite food/snacks-->
-            <label>My favorite snacks and foods are...</label><br>
-            <textarea class = "form-control" name="snacks"></textarea>
+            <label for="snacks">My favorite snacks and foods are...</label><br>
+            <textarea class = "form-control" name="snacks" id="snacks"></textarea>
         </fieldset>
 
         <fieldset class="form-group" id="contact">
@@ -125,31 +127,20 @@
                 Please enter in a graduation year
             </span>
 
-            <label>College(s) of interest</label><br>
-            <textarea class="form-control" name="colleges-of-interest"></textarea><br>
+            <label for="colleges-of-interest">College(s) of interest</label><br>
+            <textarea class="form-control" name="colleges-of-interest" id="colleges-of-interest"></textarea><br>
 
-            <label>Career aspirations</label><br>
-            <textarea class="form-control" name="career-aspirations"></textarea><br>
+            <label for="career-aspirations">Career aspirations</label><br>
+            <textarea class="form-control" name="career-aspirations" id="career-aspirations"></textarea><br>
 
-            <label>Any questions or concerns about the program</label><br>
-            <textarea class="form-control" name="questions-and-concerns"></textarea>
+            <label for="questions-and-concerns">Any questions or concerns about the program</label><br>
+            <textarea class="form-control" name="questions-and-concerns" id="questions-and-concerns"></textarea>
         </fieldset>
 
         <button id="submit" class="btn btn-success">Submit</button>
 
     </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 <script src="../scripts/welcome-form.js"></script>
 </body>
 </html>
