@@ -2,45 +2,51 @@
 /*
     Filename: sign-up-form-JS.js
     By: Team MORR
-	Marcos, Olivia, Raj, and Robert Cox
+	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
     10/30/2019
     Styling for volunteer-form.html
 */
 
-fieldset.innerFieldset{
+fieldset.innerFieldset
+{
     border: none;
 }
 
-label{
+label
+{
     font-weight: bold;
 }
 
-.mb-0{
+.mb-0
+{
     font-weight: bold;
 }
 
-.form-check-label{
+.form-check-label
+{
     font-weight: normal;
 }
 
-body {
+body
+{
     margin: 3em;
     background-color: white;
 }
 
-.day-options {
+.day-options
+{
     display: none;
     margin-left: 50px;
 }
-.err {
+
+.err
+{
     color: darkred;
     display: none;
 }
 
-fieldset {
-   // border: 3px solid #3a9fb6;
-    //border-radius: 20px;
-    //padding: 2em;
+fieldset
+{
     position: relative;
 }
 
@@ -52,22 +58,24 @@ legend
     font-size: 125%;
 }
 
-.time-options {
+.time-options
+{
     display: none;
     margin-left: 100px;
 }
 
-a{
+a
+{
     color: #3a9fb6;
 }
 
-form{
+form
+{
     background-color: white;
 }
 
-.jumbotron{
-    //background-color: #3a9fb6;
-   // border-radius: 20px;
+.jumbotron
+{
     background-color: rgba(0,0,0,0);
     margin-bottom: -10px;
     position: relative;
@@ -75,7 +83,8 @@ form{
     font-weight: bold;
 }
 
-.img-thumbnail {
+.img-thumbnail
+{
     background-color: rgba(0,0,0,0);
     border: none;
     height: auto;
@@ -84,16 +93,18 @@ form{
     max-width: 150%;
 }
 
-#other-gender, #other-race-div {
+#other-gender
+{
     display: none;
 }
 
-#submit{
-
+#submit
+{
     background-color: #3a9fb6;
 }
 
-body{
+body
+{
     display: grid;
     font-family: Avenir;
     -webkit-text-size-adjust: 100%;
