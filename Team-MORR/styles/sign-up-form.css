@@ -84,7 +84,7 @@ form{
     max-width: 150%;
 }
 
-#other-gender {
+#other-gender, #other-race-div {
     display: none;
 }
 

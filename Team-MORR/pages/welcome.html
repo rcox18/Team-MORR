@@ -62,7 +62,7 @@
 
             <!--Race/Ethnicity-->
             <fieldset class="form-group"></fieldset>
-            <label for="race-dropdown">Race/Ethnicity</label><span class="text-danger err">*required</span>
+            <label for="race-dropdown">Race/Ethnicity</label><span class="text-danger err" id="race-err">*required</span>
             <div class="form-group">
                 <select class="form-control" id="race-dropdown" name="race-ethnicity">
                     <option class="race-option" value="none">Select from the following</option>
@@ -75,7 +75,7 @@
                     <option class="race-option" value="other">Other</option>
                 </select>
             </div>
-            <div id="other-about-us" >
+            <div id="other-race-div">
                 <label for="other-race-text">Please specify</label>
                 <input type="text" class="form-control" id="other-race-text" name="other-race-ethnicity">
             </div>
