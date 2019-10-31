@@ -38,9 +38,9 @@ body {
 }
 
 fieldset {
-    border: 3px solid #3a9fb6;
-    border-radius: 20px;
-    padding: 2em;
+   // border: 3px solid #3a9fb6;
+    //border-radius: 20px;
+    //padding: 2em;
     position: relative;
 }
 
@@ -58,7 +58,7 @@ legend
 }
 
 a{
-    color: gold;
+    color: #3a9fb6;
 }
 
 form{
@@ -66,12 +66,13 @@ form{
 }
 
 .jumbotron{
-
-    background-color: #3a9fb6;
-    border-radius: 20px;
+    //background-color: #3a9fb6;
+   // border-radius: 20px;
+    background-color: rgba(0,0,0,0);
     margin-bottom: -10px;
     position: relative;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
 .img-thumbnail {
@@ -87,9 +88,16 @@ form{
     display: none;
 }
 
-
 #submit{
 
     background-color: #3a9fb6;
 }
+
+body{
+    display: grid;
+    font-family: Avenir;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased
+}
+
 
