@@ -36,20 +36,20 @@
         <fieldset class="form-group" id="personal">
             <legend>Personal Info</legend>
             <!--First Name-->
-            <label for="firstName">First name<span class="text-danger err" id="fName-err">*required</span></label>
-            <input type="text" class="form-control required-input" id="firstName" name="firstName">
+            <label for="first-name">First name<span class="text-danger err" id="fName-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="first-name" name="first-name">
 
             <!--Last Name-->
-            <label for="lastName">Last name<span class="text-danger err" id="lName-err">*required</span></label>
-            <input type="text" class="form-control required-input" id="lastName" name="lastName">
+            <label for="last-name">Last name<span class="text-danger err" id="lName-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="last-name" name="last-name">
 
             <!--Date of Birth-->
             <label for="dob">Date of Birth<span class="text-danger err" id="dob-err">*required</span></label>
-            <input type="date" class="form-control required-input" id="dob" name="Date of birth" max="2007-01-01" min="2000-12-31">
+            <input type="date" class="form-control required-input" id="dob" name="date-of-birth" max="2007-01-01" min="2000-12-31">
 
             <!--Gender-->
             <label for="gender">Gender<span class="text-danger err" id="gender-err">*required</span></label>
-            <select class="form-control required-input" id="gender" name="Gender">
+            <select class="form-control required-input" id="gender" name="gender">
                 <option value="none">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -60,31 +60,51 @@
                 <label for="pronouns">and I use the following pronouns: </label> <input type="text" id="pronouns">
             </span>
 
+            <!--Race/Ethnicity-->
+            <fieldset class="form-group"></fieldset>
+            <label for="race-dropdown">Race/Ethnicity</label><span class="text-danger err">*required</span>
+            <div class="form-group">
+                <select class="form-control" id="race-dropdown" name="race-ethnicity">
+                    <option class="race-option" value="none">Select from the following</option>
+                    <option class="race-option" value="black">Black/African American</option>
+                    <option class="race-option" value="latinx">Latinx/Hispanic</option>
+                    <option class="race-option" value="asian">Asian</option>
+                    <option class="race-option" value="pi">Pacific Islander</option>
+                    <option class="race-option" value="native">Native American</option>
+                    <option class="race-option" value="white">White</option>
+                    <option class="race-option" value="other">Other</option>
+                </select>
+            </div>
+            <div id="other-about-us" >
+                <label for="other-race-text">Please specify</label>
+                <input type="text" class="form-control" id="other-race-text" name="other-race-ethnicity">
+            </div>
+
             <!--Favorite food/snacks-->
             <label>My favorite snacks and foods are...</label><br>
-            <textarea class = "form-control" name="Snacks"></textarea>
+            <textarea class = "form-control" name="snacks"></textarea>
         </fieldset>
 
         <fieldset class="form-group" id="contact">
             <legend>Contact Information</legend>
             <!--Email-->
             <label for="email">Email address<span class="text-danger err" id="email-err">*required</span></label>
-            <input type="text" class="form-control required-input" name="Email address" id="email">
+            <input type="text" class="form-control required-input" name="email-address" id="email">
 
             <!--Phone Number-->
             <label for="phone">Phone number<span class="text-danger err" id="phone-err">*required</span></label>
             <span class="err" id="err-phone">
                 Please enter a phone number
             </span>
-            <input type="text" class="form-control required-input" name="Phone number" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
+            <input type="text" class="form-control required-input" name="phone-number" id="phone" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$">
         </fieldset>
 
         <fieldset class="form-group" id="future">
             <legend>Future Plans</legend>
 
             <!--Graduating class-->
-            <label for="graduationYear">What is your projected high school graduation year?<span class="text-danger err" id="gradYear-err">*required</span></label>
-            <select class="form-control required-input" id="graduationYear" name="graduation-year">
+            <label for="graduation-year">What is your projected high school graduation year?<span class="text-danger err" id="grad-year-err">*required</span></label>
+            <select class="form-control required-input" id="graduation-year" name="graduation-year">
                 <option value="none">Class of</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
@@ -99,13 +119,13 @@
             </span>
 
             <label>College(s) of interest</label><br>
-            <textarea class="form-control" name="Colleges of interest"></textarea><br>
+            <textarea class="form-control" name="colleges-of-interest"></textarea><br>
 
             <label>Career aspirations</label><br>
-            <textarea class="form-control" name="Career aspirations"></textarea><br>
+            <textarea class="form-control" name="career-aspirations"></textarea><br>
 
             <label>Any questions or concerns about the program</label><br>
-            <textarea class="form-control" name="Questions and concerns"></textarea>
+            <textarea class="form-control" name="questions-and-concerns"></textarea>
         </fieldset>
 
         <button id="submit" class="btn btn-success">Submit</button>

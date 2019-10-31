@@ -13,7 +13,7 @@ const lName = document.getElementById("lastName");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const dob = document.getElementById("dob");
-const gradYear = document.getElementById("graduationYear");
+const gradYear = document.getElementById("graduation-year");
 const fNameErr = document.getElementById("fName-err");
 const lNameErr = document.getElementById("lName-err");
 const dobErr = document.getElementById("dob-err");
@@ -38,7 +38,7 @@ gender.addEventListener("change", function() {
     } else {
         document.getElementById("other-gender").style.display = "none";
     }
-});
+    });
 
 function validate() {
     let isValid = true;
