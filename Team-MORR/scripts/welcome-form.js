@@ -32,12 +32,6 @@ const phoneRegex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-
 
 const btnSubmit = document.getElementById("submit");
 
-
-//date workaround for browser support
-if (dob.type != "date") {
-    dob.datepicker();
-}
-
 gender.addEventListener("change", function() {
     if (gender.value === "other") {
         document.getElementById("other-gender").style.display = "block";
