@@ -1,5 +1,5 @@
 <!--
-    Filename: volunteer-confirmation-page.php
+    Filename: welcome-confirmation-page.php
     By: Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
 	10/30/2019
@@ -21,8 +21,8 @@
 </head>
 <body>
 <?php
-$fName = $_POST["firstName"];
-$lName = $_POST["lastName"];
+$fName = $_POST["first-name"];
+$lName = $_POST["last-name"];
 $info = "<p>";
 $email = "oringhiser@mail.greenriver.edu";
 $email_body = "Applicant Information --\r\n";
@@ -32,25 +32,25 @@ $to = $email;
 $headers = "From: $email\r\n";
 $headers .= "Reply-To: $email \r\n";
 echo "<h1>Your Information Has Been Submitted</h1>
-            <p>$fName, thank you for telling us a little bit about yourself! This information
-            is vital to our goals of best serving our students. If you see any errors in
-            the following submitted info, please contact us ASAP for corrections.</p>";
+<p>$fName, thank you for telling us a little bit about yourself! This information
+    is vital to our goals of best serving our students. If you see any errors in
+    the following submitted info, please contact us ASAP for corrections.</p>";
 foreach ($_POST as $key => $value){
-    if(is_array($value)){
-        foreach ($value as $k => $v){
-            $info.= $key.': '.$v."<br>";
-            $email_body.= $key.': '.$v."\r\n";
-        }
-    }else{
-        $info.= $key.': '.$value."<br>";
-        $email_body.= $key.': '.$value."\r\n";
-    }
+if(is_array($value)){
+foreach ($value as $k => $v){
+$info.= $key.': '.$v."<br>";
+$email_body.= $key.': '.$v."\r\n";
+}
+}else{
+$info.= $key.': '.$value."<br>";
+$email_body.= $key.': '.$value."\r\n";
+}
 }
 $info .= "</p>";
 echo $info;
-$success = mail($to, $email_subject, $email_body, $headers);
+/*$success = mail($to, $email_subject, $email_body, $headers);
 echo ($success ?  "<script>console.log('success');</script>" :
-    "<script>console.log('failure');</script>" );
+"<script>console.log('failure');</script>" );*/
 ?>
 </body>
 </html>
