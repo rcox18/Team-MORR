@@ -3,7 +3,7 @@
     By: Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
     10/30/2019
-    JavaScript for volunteer-form.html
+    JavaScript for volunteer-form.php
     Adds client-side validation for the volunteer application.
 */
 
