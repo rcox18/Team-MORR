@@ -78,7 +78,7 @@ include "../php/header.php";
                         $ethnicityID = $row["ethnicityID"];
                         $ethnicity = $row["choice"];
 
-                        echo "<option value='$ethnicityID'>$ethnicity</option>";
+                        echo "<option class='race-option' value='$ethnicityID'>$ethnicity</option>";
                     }
                     ?>
                 </select>
