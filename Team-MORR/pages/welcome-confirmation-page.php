@@ -238,6 +238,8 @@ if (!empty($_POST)){
                 /*$success = mail($to, $email_subject, $email_body, $headers);
                 echo ($success ?  "<script>console.log('success');</script>" :
                 "<script>console.log('failure');</script>" );*/
+            }else{
+                echo "there is a problem";
             }
         return;
     }
