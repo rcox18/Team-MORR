@@ -239,7 +239,7 @@ if (!empty($_POST)){
                 echo ($success ?  "<script>console.log('success');</script>" :
                 "<script>console.log('failure');</script>" );*/
             }else{
-                echo "there is a problem";
+                echo "there is a problem.";
             }
         return;
     }
