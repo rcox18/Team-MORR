@@ -109,7 +109,7 @@ if (!empty($_POST)){
             $snacks = "";
         }
 
-        //Validate email
+        //Validate email test
         if (empty($_POST["email-address"])){
             echo '<p>Please provide an email.</p>';
             $isValid= false;
