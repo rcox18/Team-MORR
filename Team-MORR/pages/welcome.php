@@ -1,5 +1,5 @@
 <!--
-    Filename: volunteer-form.html
+    Filename: volunteer-form.php
     By Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
 	10/30/2019
@@ -8,29 +8,12 @@
     potentially used for Brandi Day's website, non-profit organization iD.A.Y Dream
 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+include "../php/errors.php";
+include "../php/header.php";
+?>
 
-    <!-- Bootstrap CSS -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
-    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
-
-    <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dabc823c0e45245a9c250cd/1571544129492-S9RDI79OWVWOWVJEJG7E/ke17ZwdGBToddI8pDm48kJycfsYb1urLU93EpFqOTQmoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp7zww8OjRrqjaM7_0x6HDLp42EP6IAa5vAmscK3sHI4MkNL5tmfZ3otlI9yi1IzH2Q/favicon.ico"/>
-    <title>iD.A.Y Welcome Page</title>
+<title>iD.A.Y Welcome Page</title>
 </head>
 
 <body>
@@ -74,7 +57,7 @@
             <label for="race-selector">Race/Ethnicity</label><span class="text-danger err">*required</span>
             <div class="form-group">
                 <select class="form-control" id="race-selector" name="race-ethnicity">
-                    <option class="race-option" value="none">Select from the following</option>
+                    <option class="race-option" value="none" selected>Select from the following</option>
                     <option class="race-option" value="black">Black/African American</option>
                     <option class="race-option" value="latinx">Latinx/Hispanic</option>
                     <option class="race-option" value="asian">Asian</option>
@@ -141,6 +124,10 @@
 
     </form>
 </div>
+
+<?php
+include "../php/footer.php";
+?>
 <script src="../scripts/welcome-form.js"></script>
 </body>
 </html>
