@@ -96,6 +96,7 @@ if (!empty($_POST)){
             }
         }else{
             $raceEthnicity = $_POST["race-ethnicity"];
+            $otherRace = "";
         }
 
         //Validate snacks
@@ -197,7 +198,7 @@ if (!empty($_POST)){
             the following submitted info, please contact us ASAP for corrections.</p>";
 
             /*----ADD TO DATABASE----*/
-            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
 
             $result = mysqli_query($cnxn, $sql);
 
@@ -217,7 +218,13 @@ if (!empty($_POST)){
                 echo "Name: ".$row["name"]."<br>";
                 echo "Date of Birth: ".$row["dob"]."<br>";
                 echo "Identifies as: ".$row["gender"]."<br>";
-                echo "Race/Ethnicity: ".$row2["choice"]."<br>";
+                if($otherRace === "")
+                {
+                    echo "Race/Ethnicity: ".$row2["choice"]."<br>";
+                }else{
+                    echo "Race/Ethnicity: ".$row["otherRace"]."<br>";
+                }
+
                 echo "Preferred Snacks: ".$row["snacks"]."<br>";
                 echo "Email: ".$row["email"]."<br>";
                 echo "Phone: ".$row["phone"]."<br>";
