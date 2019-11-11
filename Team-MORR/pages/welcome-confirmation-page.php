@@ -239,7 +239,7 @@ if (!empty($_POST)){
                 echo ($success ?  "<script>console.log('success');</script>" :
                 "<script>console.log('failure');</script>" );*/
             }else{
-                mysqli_error($cnxn);
+                echo mysqli_error($cnxn);
                 echo "there is a problem!";
             }
         return;
