@@ -51,7 +51,7 @@ gender.onchange =  function() {
 };
 
 raceSelector.onchange =  function() {
-    if (raceOptions[raceSelector.selectedIndex].value === "other") {
+    if (raceOptions[raceSelector.selectedIndex].value === 7) {
         otherRaceText.style.display = "block";
     } else {
         otherRaceText.style.display = "none";
