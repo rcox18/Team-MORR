@@ -81,10 +81,11 @@ if (!empty($_POST)){
         if ($_POST["race-ethnicity"] == 'none'){
             echo '<p>Please inform us about you race/ethnicity.</p>';
             $isValid= false;
-        }elseif ($_POST["race-ethnicity"] == "7"){
+        }elseif ($_POST["race-ethnicity"] === "7"){
             if (!empty($_POST["other-race-ethnicity"])){
                 if (preg_match($basicTextRegex, trim($_POST["other-race-ethnicity"]))){
-                    $raceEthnicity = mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]));
+                    $raceEthnicity = $_POST["race-ethnicity"];
+                    $otherRace = mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]));
                 }else{
                     echo '<p>Please provide valid race/ethnicity inputs.</p>';
                     $isValid = false;
@@ -108,7 +109,7 @@ if (!empty($_POST)){
             $snacks = "";
         }
 
-        //Validate email
+        //Validate email test
         if (empty($_POST["email-address"])){
             echo '<p>Please provide an email.</p>';
             $isValid= false;
