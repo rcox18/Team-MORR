@@ -1,5 +1,5 @@
 <!--
-    Filename: volunteer-form.html
+    Filename: volunteer-form.php
     By Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
 	10/30/2019
@@ -8,38 +8,24 @@
     potentially used for Brandi Day's website, non-profit organization iD.A.Y Dream
 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+require "../php/idaydreamDBconnect.php";
+include "../php/errors.php";
+include "../php/header.php";
+?>
 
-    <!-- Bootstrap CSS -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
-    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
-
-    <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dabc823c0e45245a9c250cd/1571544129492-S9RDI79OWVWOWVJEJG7E/ke17ZwdGBToddI8pDm48kJycfsYb1urLU93EpFqOTQmoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp7zww8OjRrqjaM7_0x6HDLp42EP6IAa5vAmscK3sHI4MkNL5tmfZ3otlI9yi1IzH2Q/favicon.ico"/>
-    <title>iD.A.Y Welcome Page</title>
+<title>iD.A.Y Welcome Page</title>
 </head>
 
 <body>
 <div class="container" id="main">
     <div class="jumbotron jumbotron-fluid fixed-top mb-3 pr-2">
-        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w" alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
+             alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
         <h1 class="display-4 font-weight-bold">ID.A.Y.Dream</h1>
-        <p class="lead font-weight-bold">Welcome to ID.A.Y.Dream! In order to best serve your needs, we need to get to know a little bit about you.
-            Please take a moment to fill out this form. The more you tell us about yourself, the better!</p>
+        <p class="lead font-weight-bold">Welcome to ID.A.Y.Dream! In order to best serve your needs, we need to
+            get to know a little bit about you. Please take a moment to fill out this form. The more you tell us
+            about yourself, the better!</p>
     </div>
 
     <form action="welcome-confirmation-page.php" id="welcome-form" method="post">
@@ -55,33 +41,46 @@
 
             <!--Date of Birth-->
             <label for="date-of-birth">Date of Birth<span class="text-danger err" id="dob-err">*required</span></label>
-            <input type="date" class="form-control required-input" id="date-of-birth" name="date-of-birth" max="2007-01-01" min="2000-12-31">
+            <input type="date" class="form-control required-input" id="date-of-birth" name="date-of-birth"
+                   max="2007-01-01" min="2000-12-31">
 
             <!--Gender-->
-            <label for="gender">Gender<span class="text-danger err" id="gender-err">*required</span></label>
-            <select class="form-control required-input" id="gender" name="gender">
-                <option class="gender-option" value="none">Gender</option>
-                <option class="gender-option" value="male">Male</option>
-                <option class="gender-option" value="female">Female</option>
-                <option class="gender-option" value="other">Other</option>
-            </select>
-            <div id="other-gender">
-                <label for="identity">My gender is </label> <input type="text" id="identity">
-                <label for="pronouns">and I use the following pronouns: </label> <input type="text" id="pronouns">
+            <div>
+                <div class="form-group">
+                    <label for="gender">Gender<span class="text-danger err" id="gender-err">*required</span></label>
+                    <select class="form-control required-input" id="gender" name="gender">
+                        <option class="gender-option" value="none" selected>Gender</option>
+                        <option class="gender-option" value="male">Male</option>
+                        <option class="gender-option" value="female">Female</option>
+                        <option class="gender-option" value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-inline" id="other-gender">
+                    <div class="form-group">
+                        <span for="identity">My gender is </span>
+                        <input class="form-control" type="text" value="" id="identity" name="identity">
+                        <span for="pronouns"> and I use the following pronouns </span>
+                        <input  class="form-control" type="text" value="" id="pronouns" name="pronouns">
+                    </div>
+                </div>
             </div>
 
             <!--Race/Ethnicity-->
             <label for="race-selector">Race/Ethnicity</label><span class="text-danger err">*required</span>
             <div class="form-group">
                 <select class="form-control" id="race-selector" name="race-ethnicity">
-                    <option class="race-option" value="none">Select from the following</option>
-                    <option class="race-option" value="black">Black/African American</option>
-                    <option class="race-option" value="latinx">Latinx/Hispanic</option>
-                    <option class="race-option" value="asian">Asian</option>
-                    <option class="race-option" value="pi">Pacific Islander</option>
-                    <option class="race-option" value="native">Native American</option>
-                    <option class="race-option" value="white">White</option>
-                    <option class="race-option" value="other">Other</option>
+                    <option class="race-option" value="none" selected>Select from the following</option>
+                    <?php
+                    $sql = "SELECT * FROM Ethnicity";
+                    $result = mysqli_query($cnxn, $sql);
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        $ethnicityID = $row["ethnicityID"];
+                        $ethnicity = $row["choice"];
+
+                        echo "<option class='race-option' value='$ethnicityID'>$ethnicity</option>";
+                    }
+                    ?>
                 </select>
                 <div id="other-race" >
                     <label for="other-race-text">Please specify</label>
@@ -122,6 +121,7 @@
                 <option value="2023">2023</option>
                 <option value="2024">2024</option>
                 <option value="2025">2025</option>
+                <option value="not-listed">Not listed</option>
             </select>
             <span class="err" id="err-grad-year">
                 Please enter in a graduation year
@@ -141,6 +141,10 @@
 
     </form>
 </div>
+
+<?php
+include "../php/footer.php";
+?>
 <script src="../scripts/welcome-form.js"></script>
 </body>
 </html>
