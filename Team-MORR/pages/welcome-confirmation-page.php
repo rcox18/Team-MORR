@@ -240,7 +240,7 @@ if (!empty($_POST)){
                 "<script>console.log('failure');</script>" );*/
             }else{
                 mysqli_error();
-                echo "there is a problem.";
+                echo "there is a problem!";
             }
         return;
     }
