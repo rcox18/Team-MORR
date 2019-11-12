@@ -17,7 +17,7 @@ include "../php/header.php";
 <body>
 <?php
 $nameRegex = "/^([a-zA-Z' -]+)$/";
-$basicTextRegex = "/^([a-zA-Z0-9'", \n&!?-]+)$/";
+$basicTextRegex = "/^([a-zA-Z0-9', -]+)$/";
 $emailRegex = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i";
 $phoneRegex = "/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/";
 
@@ -84,7 +84,8 @@ if (!empty($_POST)){
         }elseif ($_POST["race-ethnicity"] == "7"){
             if (!empty($_POST["other-race-ethnicity"])){
                 if (preg_match($basicTextRegex, trim($_POST["other-race-ethnicity"]))){
-                    $raceEthnicity = mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]));
+                    $raceEthnicity = $_POST["race-ethnicity"];
+                    $otherRace = mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]));
                 }else{
                     echo '<p>Please provide valid race/ethnicity inputs.</p>';
                     $isValid = false;
@@ -95,6 +96,7 @@ if (!empty($_POST)){
             }
         }else{
             $raceEthnicity = $_POST["race-ethnicity"];
+            $otherRace = "";
         }
 
         //Validate snacks
@@ -196,14 +198,14 @@ if (!empty($_POST)){
             the following submitted info, please contact us ASAP for corrections.</p>";
 
             /*----ADD TO DATABASE----*/
-            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
 
             $result = mysqli_query($cnxn, $sql);
 
             if($result) {
                 /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
 
-                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName';";
+                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
                 $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
 
                 $result2 = mysqli_query($cnxn, $sql2);
@@ -213,17 +215,23 @@ if (!empty($_POST)){
                 $row2 = mysqli_fetch_assoc($result3);
 
 
-                echo "<b>Name: </b>".$row["name"]."<br>";
-                echo "<b>Date of Birth: </b>".$row["dob"]."<br>";
-                echo "<b>Identifies as: </b>".$row["gender"]."<br>";
-                echo "<b>Race/Ethnicity: </b>".$row2["choice"]."<br>";
-                echo "<b>Preferred Snacks: </b>".$row["snacks"]."<br>";
-                echo "<b>Email: </b>".$row["email"]."<br>";
-                echo "<b>Phone: </b>".$row["phone"]."<br>";
-                echo "<b>Class of: </b>".$row["gradDate"]."<br>";
-                echo "<b>College Interests: </b>".$row["collegeInterest"]."<br>";
-                echo "<b>Career Aspirations: </b>".$row["careerAspirations"]."<br>";
-                echo "<b>Questions and Concerns: </b>".$row["concerns"]."<br>";
+                echo "Name: ".$row["name"]."<br>";
+                echo "Date of Birth: ".$row["dob"]."<br>";
+                echo "Identifies as: ".$row["gender"]."<br>";
+
+                if ($raceEthnicity != "7"){
+                    echo "Race/Ethnicity: ".$row2["choice"]."<br>";
+                }else{
+                    echo "Race/Ethnicity: ".$row["otherRace"]."<br>";
+                }
+
+                echo "Preferred Snacks: ".$row["snacks"]."<br>";
+                echo "Email: ".$row["email"]."<br>";
+                echo "Phone: ".$row["phone"]."<br>";
+                echo "Class of: ".$row["gradDate"]."<br>";
+                echo "College Interests: ".$row["collegeInterest"]."<br>";
+                echo "Career Aspirations: ".$row["careerAspirations"]."<br>";
+                echo "Questions and Concerns: ".$row["concerns"]."<br>";
 
                 foreach ($_POST as $key => $value){
                     if(is_array($value)){
@@ -247,9 +255,6 @@ if (!empty($_POST)){
 }else{
     echo "<p>Please fill out our form.</p>";
 }
-
-    echo "Expect an email welcoming you into the program within the business week. Thank you for your time!";
-
 ?>
 
 <?php
