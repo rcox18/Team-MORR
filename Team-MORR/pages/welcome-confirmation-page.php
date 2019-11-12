@@ -12,7 +12,7 @@ include "../php/errors.php";
 
 include "../php/header.php";
 ?>
-    <title>Welcome Page Confirmation</title>
+<title>Welcome Page Confirmation</title>
 </head>
 <body>
 <?php
@@ -75,6 +75,7 @@ if (!empty($_POST)){
             }
         }else{
             $gender = $_POST["gender"];
+            $pronouns = "";
         }
 
         //Validate race/ethnicity
@@ -197,59 +198,61 @@ if (!empty($_POST)){
             is vital to our goals of best serving our Dreamers. If you see any errors in
             the following submitted info, please contact us ASAP for corrections.</p>";
 
-            /*----ADD TO DATABASE----*/
-            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+        /*----ADD TO DATABASE----*/
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
 
-            $result = mysqli_query($cnxn, $sql);
+        $result = mysqli_query($cnxn, $sql);
 
-            if($result) {
-                /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
+        if($result) {
+            /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
 
-                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
-                $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
+            $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
+            $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
 
-                $result2 = mysqli_query($cnxn, $sql2);
-                $result3 = mysqli_query($cnxn, $sql3);
+            $result2 = mysqli_query($cnxn, $sql2);
+            $result3 = mysqli_query($cnxn, $sql3);
 
-                $row = mysqli_fetch_assoc($result2);
-                $row2 = mysqli_fetch_assoc($result3);
+            $row = mysqli_fetch_assoc($result2);
+            $row2 = mysqli_fetch_assoc($result3);
 
 
-                echo "Name: ".$row["name"]."<br>";
-                echo "Date of Birth: ".$row["dob"]."<br>";
-                echo "Identifies as: ".$row["gender"]."<br>";
-
-                if ($raceEthnicity != "7"){
-                    echo "Race/Ethnicity: ".$row2["choice"]."<br>";
-                }else{
-                    echo "Race/Ethnicity: ".$row["otherRace"]."<br>";
-                }
-
-                echo "Preferred Snacks: ".$row["snacks"]."<br>";
-                echo "Email: ".$row["email"]."<br>";
-                echo "Phone: ".$row["phone"]."<br>";
-                echo "Class of: ".$row["gradDate"]."<br>";
-                echo "College Interests: ".$row["collegeInterest"]."<br>";
-                echo "Career Aspirations: ".$row["careerAspirations"]."<br>";
-                echo "Questions and Concerns: ".$row["concerns"]."<br>";
-
-                foreach ($_POST as $key => $value){
-                    if(is_array($value)){
-                        foreach ($value as $k => $v){
-                            $email_body.= $key.': '.$v."\r\n";
-                        }
-                    }else{
-                        $email_body.= $key.': '.$value."\r\n";
-                    }
-                }
-
-                /*$success = mail($to, $email_subject, $email_body, $headers);
-                echo ($success ?  "<script>console.log('success');</script>" :
-                "<script>console.log('failure');</script>" );*/
-            }else{
-                echo mysqli_error($cnxn);
-                echo "there is a problem!";
+            echo "Name: ".$row["name"]."<br>";
+            echo "Date of Birth: ".$row["dob"]."<br>";
+            echo "Identifies as: ".$row["gender"]."<br>";
+            if($pronouns != ""){
+                echo "Preferred Pronouns: ".$row["pronouns"]."<br>";
             }
+            if ($raceEthnicity != "7"){
+                echo "Race/Ethnicity: ".$row2["choice"]."<br>";
+            }else{
+                echo "Race/Ethnicity: ".$row["otherRace"]."<br>";
+            }
+
+            echo "Preferred Snacks: ".$row["snacks"]."<br>";
+            echo "Email: ".$row["email"]."<br>";
+            echo "Phone: ".$row["phone"]."<br>";
+            echo "Class of: ".$row["gradDate"]."<br>";
+            echo "College Interests: ".$row["collegeInterest"]."<br>";
+            echo "Career Aspirations: ".$row["careerAspirations"]."<br>";
+            echo "Questions and Concerns: ".$row["concerns"]."<br>";
+
+            foreach ($_POST as $key => $value){
+                if(is_array($value)){
+                    foreach ($value as $k => $v){
+                        $email_body.= $key.': '.$v."\r\n";
+                    }
+                }else{
+                    $email_body.= $key.': '.$value."\r\n";
+                }
+            }
+
+            /*$success = mail($to, $email_subject, $email_body, $headers);
+            echo ($success ?  "<script>console.log('success');</script>" :
+            "<script>console.log('failure');</script>" );*/
+        }else{
+            echo mysqli_error($cnxn);
+            echo "there is a problem!";
+        }
         return;
     }
 }else{
