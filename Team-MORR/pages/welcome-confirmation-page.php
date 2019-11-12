@@ -81,7 +81,7 @@ if (!empty($_POST)){
         if ($_POST["race-ethnicity"] == 'none'){
             echo '<p>Please inform us about you race/ethnicity.</p>';
             $isValid= false;
-        }elseif ($_POST["race-ethnicity"] === "7"){
+        }elseif ($_POST["race-ethnicity"] == "7"){
             if (!empty($_POST["other-race-ethnicity"])){
                 if (preg_match($basicTextRegex, trim($_POST["other-race-ethnicity"]))){
                     $raceEthnicity = $_POST["race-ethnicity"];
@@ -205,7 +205,7 @@ if (!empty($_POST)){
             if($result) {
                 /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
 
-                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName';";
+                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
                 $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
 
                 $result2 = mysqli_query($cnxn, $sql2);
@@ -218,8 +218,8 @@ if (!empty($_POST)){
                 echo "Name: ".$row["name"]."<br>";
                 echo "Date of Birth: ".$row["dob"]."<br>";
                 echo "Identifies as: ".$row["gender"]."<br>";
-                if($otherRace === "")
-                {
+
+                if ($raceEthnicity != "7"){
                     echo "Race/Ethnicity: ".$row2["choice"]."<br>";
                 }else{
                     echo "Race/Ethnicity: ".$row["otherRace"]."<br>";
