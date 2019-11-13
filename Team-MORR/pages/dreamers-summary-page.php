@@ -22,8 +22,8 @@ include "../php/header.php";
 </head>
 <body>
 
-    <table id="myTable" class="display">
-        <thead>
+    <table id="myTable" class="display table table-striped ">
+        <thead class="thead-dark">
         <?php
         $columnSQL = "SELECT * FROM Dreamer LIMIT 1";
         $columnResult = mysqli_query($cnxn, $columnSQL);
@@ -38,7 +38,7 @@ include "../php/header.php";
         </thead>
         <tbody>
         <?php
-        $dataSQL = "SELECT * FROM Dreamer ORDER BY dreamerID DESC";
+        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
         $dataResult = mysqli_query($cnxn, $dataSQL);
         while ($row2 = mysqli_fetch_assoc($dataResult)){
             echo "<tr>";
@@ -58,7 +58,10 @@ include "../php/header.php";
         src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready( function () {
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "order": [[ 0, "desc" ]],
+                "scrollX": true
+        });
     } );
 </script>
 </body>
