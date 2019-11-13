@@ -198,8 +198,8 @@ if (!empty($_POST)){
             is vital to our goals of best serving our Dreamers. If you see any errors in
             the following submitted info, please contact us ASAP for corrections.</p>";
 
-            /*----ADD TO DATABASE----*/
-            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+        /*----ADD TO DATABASE----*/
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
 
             $result = mysqli_query($cnxn, $sql);
 
