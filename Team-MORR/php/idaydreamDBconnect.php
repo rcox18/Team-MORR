@@ -1,8 +1,8 @@
 <?php
-$username = "team-morr_idaydream_user";
-$password = "team-morr_idaydream_user";
+$username = "teammorr_idaydream_user";
+$password = "teammorr_idaydream_user";
 $hostname = "localhost";
-$database = "team-morr_idaydream";
+$database = "teammorr_idaydream";
 
 
 $cnxn =  mysqli_connect($hostname, $username, $password, $database);
