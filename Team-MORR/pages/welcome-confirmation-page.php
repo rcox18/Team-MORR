@@ -248,7 +248,7 @@ if (!empty($_POST)){
     echo "<p>Please fill out our form.</p>";
 }
 
-    echo "Expect an email welcoming you into the program within the business week. Thank you for your time!";;
+    echo "Expect an email welcoming you into the program within the business week. Thank you for your time!";
 
 ?>
 
