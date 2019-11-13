@@ -213,17 +213,17 @@ if (!empty($_POST)){
                 $row2 = mysqli_fetch_assoc($result3);
 
 
-                echo "Name: ".$row["name"]."<br>";
-                echo "Date of Birth: ".$row["dob"]."<br>";
-                echo "Identifies as: ".$row["gender"]."<br>";
-                echo "Race/Ethnicity: ".$row2["choice"]."<br>";
-                echo "Preferred Snacks: ".$row["snacks"]."<br>";
-                echo "Email: ".$row["email"]."<br>";
-                echo "Phone: ".$row["phone"]."<br>";
-                echo "Class of: ".$row["gradDate"]."<br>";
-                echo "College Interests: ".$row["collegeInterest"]."<br>";
-                echo "Career Aspirations: ".$row["careerAspirations"]."<br>";
-                echo "Questions and Concerns: ".$row["concerns"]."<br>";
+                echo "<b>Name: </b>".$row["name"]."<br>";
+                echo "<b>Date of Birth: </b>".$row["dob"]."<br>";
+                echo "<b>Identifies as: </b>".$row["gender"]."<br>";
+                echo "<b>Race/Ethnicity: </b>".$row2["choice"]."<br>";
+                echo "<b>Preferred Snacks: </b>".$row["snacks"]."<br>";
+                echo "<b>Email: </b>".$row["email"]."<br>";
+                echo "<b>Phone: </b>".$row["phone"]."<br>";
+                echo "<b>Class of: </b>".$row["gradDate"]."<br>";
+                echo "<b>College Interests: </b>".$row["collegeInterest"]."<br>";
+                echo "<b>Career Aspirations: </b>".$row["careerAspirations"]."<br>";
+                echo "<b>Questions and Concerns: </b>".$row["concerns"]."<br>";
 
                 foreach ($_POST as $key => $value){
                     if(is_array($value)){
@@ -247,6 +247,9 @@ if (!empty($_POST)){
 }else{
     echo "<p>Please fill out our form.</p>";
 }
+
+    echo "Expect an email welcoming you into the program within the business week. Thank you for your time!";;
+
 ?>
 
 <?php
