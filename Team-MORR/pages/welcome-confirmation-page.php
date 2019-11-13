@@ -246,8 +246,8 @@ if (!empty($_POST)){
                     }
                 }
 
-                /*$success = mail($to, $email_subject, $email_body, $headers);
-                echo ($success ?  "<script>console.log('success');</script>" :
+                $success = mail($to, $email_subject, $email_body, $headers);
+                /*echo ($success ?  "<script>console.log('success');</script>" :
                 "<script>console.log('failure');</script>" );*/
             }else{
                 echo mysqli_error($cnxn);
