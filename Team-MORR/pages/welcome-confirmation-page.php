@@ -8,14 +8,15 @@
 -->
 
 <?php
+//Search and execute php files for error debugger and header
 include "../php/errors.php";
-
 include "../php/header.php";
 ?>
-    <title>Welcome Page Confirmation</title>
+<title>Welcome Page Confirmation</title>
 </head>
 <body>
 <?php
+//Regex values to validate certain conventions and patterns for inputs in regards to name, text, email, and phone
 $nameRegex = "/^([a-zA-Z' -]+)$/";
 $basicTextRegex = "/^([a-zA-Z0-9'\", .()\r\n&!?-]+)$/";
 $emailRegex = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i";

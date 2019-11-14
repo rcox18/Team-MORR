@@ -7,7 +7,7 @@
     Adds client-side validation for the welcome-form application.
 */
 
-
+// Accessing all the document elements.
 const fName = document.getElementById("first-name");
 const lName = document.getElementById("last-name");
 const phone = document.getElementById("phone");
@@ -42,6 +42,7 @@ for(let i = 0; i < requiredInputValues.length; i++) {
     requiredInputValues[i].style.display = "none";
 }
 
+//When user selects other for gender, new fields will prompt user for proper identity and appropriate pronouns
 gender.onchange =  function() {
     if (genderOptions[gender.selectedIndex].value === "other") {
         otherGenderText.style.display = "block";
@@ -50,6 +51,7 @@ gender.onchange =  function() {
     }
 };
 
+//When user selects other for race, then user can input correct race they identify as
 raceSelector.onchange =  function() {
     if (raceOptions[raceSelector.selectedIndex].value === "7") {
         otherRaceText.style.display = "block";
@@ -58,6 +60,7 @@ raceSelector.onchange =  function() {
     }
 };
 
+/* Validation function ensures required fields are filled in with proper information */
 function validate() {
 
     let isValid = true;
