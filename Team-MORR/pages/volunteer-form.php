@@ -1,35 +1,27 @@
 <!--
-    Filename: volunteer-form.html
+    Filename: volunteer-form.php
     By Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
 	10/30/2019
 	url http://team-morr.greenriverdev.com/pages/volunteer-form.html
 	The HTML is used for team Morr's version of a volunteer sign-up form that could be
     potentially used for Brandi Day's website, non-profit organization iD.A.Y Dream
+
+    testing branch commits 2
 -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../styles/sign-up-form.css">
-    <link href="https://fonts.googleapis.com/css?family=Ropa+Sans&display=swap" rel="stylesheet">
+<?php
+include "../php/errors.php";
+include "../php/header.php";
+?>
 
     <title>iD.A.Y Dream Volunteer Form</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dabc823c0e45245a9c250cd/1571544129492-S9RDI79OWVWOWVJEJG7E/ke17ZwdGBToddI8pDm48kJycfsYb1urLU93EpFqOTQmoCXeSvxnTEQmG4uwOsdIceAoHiyRoc52GMN5_2H8Wp7zww8OjRrqjaM7_0x6HDLp42EP6IAa5vAmscK3sHI4MkNL5tmfZ3otlI9yi1IzH2Q/favicon.ico"/>
 </head>
 <body>
 <!--Intro-->
-
-
 <div class="container" id="main">
     <div class="jumbotron jumbotron-fluid fixed-top mb-3 pr-2">
-        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w" alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
+             alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
         <h1 class="display-4 font-weight-bold">Volunteer Form</h1>
         <p class="lead font-weight-bold">Thank you so much for your interest in ID.A.Y.Dream! Before you can volunteer with us,
             we just need to get a little bit of personal info. If you have any questions or concerns,
@@ -122,7 +114,6 @@
         <!--Interests Section-->
         <fieldset class="form-group">
             <legend>Interests</legend>
-
             <!--Select which volunteer opportunities interest you-->
             <label>Tell us in which areas you are interested in volunteering</label>
             <div class="form-check">
@@ -191,8 +182,7 @@
 
         <!--T Shirt size-->
         <fieldset class="form-group">
-            <legend>What is your t-shirt size</legend>
-            <span class="text-danger" id="tshirtErr">*required</span>
+            <legend>What is your t-shirt size<span class="text-danger" id="tshirtErr"> *required</span></legend>
             <div class="form-group">
                 <label for="shirtSize"></label>
                 <select class="form-control" name="tshirt-size" id="shirtSize">
@@ -428,15 +418,9 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<?php
+include "../php/footer.php";
+?>
 <script src="../scripts/volunteer-form-JS.js"></script>
 </body>
 </html>

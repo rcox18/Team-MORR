@@ -3,11 +3,11 @@
     By: Team MORR
 	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
     10/30/2019
-    JavaScript for volunteer-form.html
+    JavaScript for volunteer-form.php
     Adds client-side validation for the welcome-form application.
 */
 
-document.getElementById("welcome-form").onsubmit = validate;
+
 const fName = document.getElementById("first-name");
 const lName = document.getElementById("last-name");
 const phone = document.getElementById("phone");
@@ -36,6 +36,8 @@ const phoneRegex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-
 otherGenderText.style.display = "none";
 otherRaceText.style.display = "none";
 
+//document.getElementById("welcome-form").onsubmit = validate;
+
 for(let i = 0; i < requiredInputValues.length; i++) {
     requiredInputValues[i].style.display = "none";
 }
@@ -49,7 +51,7 @@ gender.onchange =  function() {
 };
 
 raceSelector.onchange =  function() {
-    if (raceOptions[raceSelector.selectedIndex].value === "other") {
+    if (raceOptions[raceSelector.selectedIndex].value === "7") {
         otherRaceText.style.display = "block";
     } else {
         otherRaceText.style.display = "none";
@@ -69,11 +71,11 @@ function validate() {
         isValid = false;
     }
     if(phone.value === "" || !phoneRegex.test(phone.value)) {
-        phoneErr.style.display = "block"
+        phoneErr.style.display = "block";
         isValid = false;
     }
     if(email.value === "" || !emailRegex.test(email.value)) {
-        emailErr.style.display = "block"
+        emailErr.style.display = "block";
         isValid = false;
     }
     if(dob.value === "") {
