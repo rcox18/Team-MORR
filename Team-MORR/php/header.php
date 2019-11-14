@@ -1,3 +1,8 @@
+<!--
+    Author: Team-Morr (Olivia Ringhiser, Robert Cox, Raj Dhaliwal, Marcos Rivera)
+    Version: 1.0
+    Objective: Default set up for html header that includes links to bootstrap, and styles
+ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
