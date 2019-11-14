@@ -235,6 +235,8 @@ if (!empty($_POST)){
                 echo "<b>College Interests:</b> ".$row["collegeInterest"]."<br>";
                 echo "<b>Career Aspirations:</b> ".$row["careerAspirations"]."<br>";
                 echo "<b>Questions and Concerns:</b> ".$row["concerns"]."<br>";
+		    
+		echo "Thank you for filling out this form! You will be receiving a welcome email within the next business week."
 
                 foreach ($_POST as $key => $value){
                     if(is_array($value)){
@@ -259,7 +261,7 @@ if (!empty($_POST)){
     echo "<p>Please fill out our form.</p>";
 }
 
-    echo "Thank you for filling out this form! You will be receiving a welcome email within the next business week."
+    
 ?>
 
 <?php
