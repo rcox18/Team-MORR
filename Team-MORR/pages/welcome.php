@@ -42,7 +42,7 @@ include "../php/header.php";
             <!--Date of Birth-->
             <label for="date-of-birth">Date of Birth<span class="text-danger err" id="dob-err">*required</span></label>
             <input type="date" class="form-control required-input" id="date-of-birth" name="date-of-birth"
-                   max="2007-01-01" min="2000-12-31">
+                   max="2006-01-01" min="2000-12-31">
 
             <!--Gender-->
             <div>

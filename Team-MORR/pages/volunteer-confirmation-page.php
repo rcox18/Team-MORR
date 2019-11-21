@@ -8,11 +8,12 @@
 -->
 
 <?php
+//Search and execute php files for error debugger, connection to database and header
 include "../php/errors.php";
 include "../php/header.php";
 ?>
 
-    <title>Volunteer Application Success</title>
+<title>Volunteer Application Success</title>
 </head>
 <body>
 <?php

@@ -8,23 +8,24 @@
 -->
 
 <?php
+//Search and execute php files for error debugger and header
 include "../php/errors.php";
-
 include "../php/header.php";
 ?>
-    <title>Welcome Page Confirmation</title>
+<title>Welcome Page Confirmation</title>
 </head>
 <body>
 <?php
+//Regex values to validate certain conventions and patterns for inputs in regards to name, text, email, and phone
 $nameRegex = "/^([a-zA-Z' -]+)$/";
-$basicTextRegex = "/^([a-zA-Z0-9', -]+)$/";
+$basicTextRegex = "/^([a-zA-Z0-9'\", .()\r\n&!?-]+)$/";
 $emailRegex = "/[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i";
 $phoneRegex = "/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/";
 
 //Form has been submitted with info
 if (!empty($_POST)){
 
-    include "../php/idaydreamDBconnect.php";
+    require "../php/idaydreamDBconnect.php";
 
     /*----CHECKING CONNECTION FIRST----*/
     if ($cnxn){
@@ -33,7 +34,7 @@ if (!empty($_POST)){
 
         //Validate first name
         if (!empty($_POST['first-name']) AND preg_match($nameRegex, trim($_POST['first-name']))){
-            $fName = mysqli_real_escape_string($cnxn, trim($_POST["first-name"]));
+            $fName = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["first-name"]))));
         }else{
             echo '<p>Please enter a valid first name.</p>';
             $isValid = false;
@@ -41,7 +42,7 @@ if (!empty($_POST)){
 
         //Validate last name
         if (!empty($_POST['last-name']) AND preg_match($nameRegex, trim($_POST['last-name']))){
-            $lName = mysqli_real_escape_string($cnxn, trim($_POST["last-name"]));
+            $lName = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["last-name"]))));
         }else{
             echo '<p>Please enter a valid last name.</p>';
             $isValid = false;
@@ -63,8 +64,8 @@ if (!empty($_POST)){
             if (!empty($_POST["identity"]) AND !empty($_POST["pronouns"])){
                 if(preg_match($basicTextRegex, trim($_POST["identity"])) AND
                     preg_match($basicTextRegex, trim($_POST["pronouns"]))){
-                    $gender = mysqli_real_escape_string($cnxn, trim($_POST["identity"]));
-                    $pronouns = mysqli_real_escape_string($cnxn, trim($_POST["pronouns"]));
+                    $gender = ucwords(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["identity"]))));
+                    $pronouns = ucwords(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["pronouns"]))));
                 }else{
                     echo '<p>Please provide valid identity inputs.</p>';
                     $isValid = false;
@@ -74,7 +75,8 @@ if (!empty($_POST)){
                 $isValid = false;
             }
         }else{
-            $gender = $_POST["gender"];
+            $gender = ucfirst($_POST["gender"]);
+            $pronouns = "";
         }
 
         //Validate race/ethnicity
@@ -84,7 +86,8 @@ if (!empty($_POST)){
         }elseif ($_POST["race-ethnicity"] == "7"){
             if (!empty($_POST["other-race-ethnicity"])){
                 if (preg_match($basicTextRegex, trim($_POST["other-race-ethnicity"]))){
-                    $raceEthnicity = mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]));
+                    $raceEthnicity = ucfirst($_POST["race-ethnicity"]);
+                    $otherRace = ucwords(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["other-race-ethnicity"]))));
                 }else{
                     echo '<p>Please provide valid race/ethnicity inputs.</p>';
                     $isValid = false;
@@ -94,12 +97,13 @@ if (!empty($_POST)){
                 $isValid= false;
             }
         }else{
-            $raceEthnicity = $_POST["race-ethnicity"];
+            $raceEthnicity = ucfirst($_POST["race-ethnicity"]);
+            $otherRace = "";
         }
 
         //Validate snacks
         if (!empty($_POST['snacks']) AND preg_match($basicTextRegex, trim($_POST['snacks']))) {
-            $snacks = mysqli_real_escape_string($cnxn, trim($_POST["snacks"]));
+            $snacks = ucfirst(mysqli_real_escape_string($cnxn, trim($_POST["snacks"])));
         }
         elseif (!empty($_POST['snacks']) AND !preg_match($basicTextRegex, trim($_POST['snacks']))){
             echo '<p>Please provide valid input for snacks.</p>';
@@ -108,7 +112,7 @@ if (!empty($_POST)){
             $snacks = "";
         }
 
-        //Validate email
+        //Validate email test
         if (empty($_POST["email-address"])){
             echo '<p>Please provide an email.</p>';
             $isValid= false;
@@ -145,7 +149,7 @@ if (!empty($_POST)){
 
         //Validate colleges of interest
         if (!empty($_POST['colleges-of-interest']) AND preg_match($basicTextRegex, trim($_POST['colleges-of-interest']))) {
-            $collegeInterests = mysqli_real_escape_string($cnxn, trim($_POST["colleges-of-interest"]));
+            $collegeInterests = ucfirst(mysqli_real_escape_string($cnxn, trim($_POST["colleges-of-interest"])));
         }
         elseif (!empty($_POST['colleges-of-interest']) AND !preg_match($basicTextRegex, trim($_POST['colleges-of-interest']))){
             echo '<p>Please provide valid input for colleges of interest.</p>';
@@ -156,7 +160,7 @@ if (!empty($_POST)){
 
         //Validate career aspirations
         if (!empty($_POST['career-aspirations']) AND preg_match($basicTextRegex, trim($_POST['career-aspirations']))) {
-            $careerAspirations = mysqli_real_escape_string($cnxn, trim($_POST["career-aspirations"]));
+            $careerAspirations = ucfirst(mysqli_real_escape_string($cnxn, trim($_POST["career-aspirations"])));
         }
         elseif (!empty($_POST['career-aspirations']) AND !preg_match($basicTextRegex, trim($_POST['career-aspirations']))){
             echo '<p>Please provide valid input for career aspirations.</p>';
@@ -167,7 +171,7 @@ if (!empty($_POST)){
 
         //Validate questions or concerns
         if (!empty($_POST['questions-and-concerns']) AND preg_match($basicTextRegex, trim($_POST['questions-and-concerns']))) {
-            $qAndConcerns = mysqli_real_escape_string($cnxn, trim($_POST["questions-and-concerns"]));
+            $qAndConcerns = ucfirst(mysqli_real_escape_string($cnxn, trim($_POST["questions-and-concerns"])));
         }
         elseif (!empty($_POST['questions-and-concerns']) AND !preg_match($basicTextRegex, trim($_POST['questions-and-concerns']))){
             echo '<p>Please provide valid input for career aspirations.</p>';
@@ -195,15 +199,15 @@ if (!empty($_POST)){
             is vital to our goals of best serving our Dreamers. If you see any errors in
             the following submitted info, please contact us ASAP for corrections.</p>";
 
-            /*----ADD TO DATABASE----*/
-            $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+        /*----ADD TO DATABASE----*/
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
 
             $result = mysqli_query($cnxn, $sql);
 
             if($result) {
                 /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
 
-                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName';";
+                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
                 $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
 
                 $result2 = mysqli_query($cnxn, $sql2);
@@ -213,17 +217,27 @@ if (!empty($_POST)){
                 $row2 = mysqli_fetch_assoc($result3);
 
 
-                echo "Name: ".$row["name"]."<br>";
-                echo "Date of Birth: ".$row["dob"]."<br>";
-                echo "Identifies as: ".$row["gender"]."<br>";
-                echo "Race/Ethnicity: ".$row2["choice"]."<br>";
-                echo "Preferred Snacks: ".$row["snacks"]."<br>";
-                echo "Email: ".$row["email"]."<br>";
-                echo "Phone: ".$row["phone"]."<br>";
-                echo "Class of: ".$row["gradDate"]."<br>";
-                echo "College Interests: ".$row["collegeInterest"]."<br>";
-                echo "Career Aspirations: ".$row["careerAspirations"]."<br>";
-                echo "Questions and Concerns: ".$row["concerns"]."<br>";
+                echo "<b>Name:</b> ".$row["name"]."<br>";
+                echo "<b>Date of Birth:</b> ".$row["dob"]."<br>";
+                echo "<b>Identifies as:</b> ".$row["gender"]."<br>";
+                if($pronouns != ""){
+                    echo "<b>Preferred Pronouns:</b> ".$row["pronouns"]."<br>";
+                }
+                if ($raceEthnicity != "7"){
+                    echo "<b>Race/Ethnicity:</b> ".$row2["choice"]."<br>";
+                }else{
+                    echo "<b>Race/Ethnicity:</b> ".$row["otherRace"]."<br>";
+                }
+
+                echo "<b>Preferred Snacks:</b> ".$row["snacks"]."<br>";
+                echo "<b>Email:</b> ".$row["email"]."<br>";
+                echo "<b>Phone:</b> ".$row["phone"]."<br>";
+                echo "<b>Class of:</b> ".$row["gradDate"]."<br>";
+                echo "<b>College Interests:</b> ".$row["collegeInterest"]."<br>";
+                echo "<b>Career Aspirations:</b> ".$row["careerAspirations"]."<br>";
+                echo "<b>Questions and Concerns:</b> ".$row["concerns"]."<br>";
+		    
+                echo "Thank you for filling out this form! You will be receiving a welcome email within the next business week.";
 
                 foreach ($_POST as $key => $value){
                     if(is_array($value)){
@@ -235,8 +249,8 @@ if (!empty($_POST)){
                     }
                 }
 
-                /*$success = mail($to, $email_subject, $email_body, $headers);
-                echo ($success ?  "<script>console.log('success');</script>" :
+                $success = mail($to, $email_subject, $email_body, $headers);
+                /*echo ($success ?  "<script>console.log('success');</script>" :
                 "<script>console.log('failure');</script>" );*/
             }else{
                 echo mysqli_error($cnxn);
