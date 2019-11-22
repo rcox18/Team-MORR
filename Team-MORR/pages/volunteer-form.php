@@ -218,6 +218,7 @@ include "../php/header.php";
                 <textarea class="form-control required-input" name="motivation" id="motivation" rows="5" form="sign-up"></textarea>
 
                 <!--Checkbox list for volunteering availability-->
+
                 <label>Please select the choices that most fit your volunteer availability:</label><br>
                 <input type="checkbox" form="sign-up" id="weekdays" value="weekdays" name="availability[]">
                 <label for="weekdays" class="form-check-label">

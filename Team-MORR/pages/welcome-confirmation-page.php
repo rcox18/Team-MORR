@@ -67,13 +67,16 @@ if (!empty($_POST)){
                     $gender = ucwords(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["identity"]))));
                     $pronouns = ucwords(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["pronouns"]))));
                 }else{
-                    echo '<p>Please provide valid identity inputs.</p>';
+                    echo '<p>Please provide valid gender inputs.</p>';
                     $isValid = false;
                 }
             }else{
                 echo '<p>Please inform us about your identity.</p>';
                 $isValid = false;
             }
+        }elseif ($_POST["gender"] != 'male' AND $_POST["gender"] != 'female'){
+            echo '<p>Please provide valid gender inputs.</p>';
+            $isValid = false;
         }else{
             $gender = ucfirst($_POST["gender"]);
             $pronouns = "";
@@ -93,9 +96,14 @@ if (!empty($_POST)){
                     $isValid = false;
                 }
             }else{
-                echo '<p>Please inform us about you race/ethnicity.</p>';
+                echo '<p>Please inform us about your race/ethnicity.</p>';
                 $isValid= false;
             }
+        }elseif ($_POST["race-ethnicity"] != "1" AND $_POST["race-ethnicity"] != "2" AND
+                 $_POST["race-ethnicity"] != "3" AND $_POST["race-ethnicity"] != "4" AND
+                 $_POST["race-ethnicity"] != "5" AND $_POST["race-ethnicity"] != "6" ){
+            echo '<p>Please provide valid race/ethnicity inputs.</p>';
+            $isValid = false;
         }else{
             $raceEthnicity = ucfirst($_POST["race-ethnicity"]);
             $otherRace = "";
@@ -194,68 +202,66 @@ if (!empty($_POST)){
         $headers = "From: $siteEmail\r\n";
         $headers .= "Reply-To: $siteEmail \r\n";
 
-        echo "<h1>Your Information Has Been Submitted</h1>
+        /*----ADD TO DATABASE----*/
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
+
+        $result = mysqli_query($cnxn, $sql);
+
+        if($result) {
+            /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
+
+            $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
+            $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
+
+            $result2 = mysqli_query($cnxn, $sql2);
+            $result3 = mysqli_query($cnxn, $sql3);
+
+            $row = mysqli_fetch_assoc($result2);
+            $row2 = mysqli_fetch_assoc($result3);
+
+            echo "<h1>Your Information Has Been Submitted</h1>
             <p>$fName, thank you for telling us a little bit about yourself! This information
             is vital to our goals of best serving our Dreamers. If you see any errors in
             the following submitted info, please contact us ASAP for corrections.</p>";
 
-        /*----ADD TO DATABASE----*/
-        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
-
-            $result = mysqli_query($cnxn, $sql);
-
-            if($result) {
-                /*----DISPLAY SUBMITTED INFO BACK TO APPLICANT----*/
-
-                $sql2 = "SELECT * FROM Dreamer WHERE name = '$fName $lName' AND dob = '$dob';";
-                $sql3 = "SELECT choice FROM Ethnicity WHERE ethnicityID = '$raceEthnicity';";
-
-                $result2 = mysqli_query($cnxn, $sql2);
-                $result3 = mysqli_query($cnxn, $sql3);
-
-                $row = mysqli_fetch_assoc($result2);
-                $row2 = mysqli_fetch_assoc($result3);
-
-
-                echo "<b>Name:</b> ".$row["name"]."<br>";
-                echo "<b>Date of Birth:</b> ".$row["dob"]."<br>";
-                echo "<b>Identifies as:</b> ".$row["gender"]."<br>";
-                if($pronouns != ""){
-                    echo "<b>Preferred Pronouns:</b> ".$row["pronouns"]."<br>";
-                }
-                if ($raceEthnicity != "7"){
-                    echo "<b>Race/Ethnicity:</b> ".$row2["choice"]."<br>";
-                }else{
-                    echo "<b>Race/Ethnicity:</b> ".$row["otherRace"]."<br>";
-                }
-
-                echo "<b>Preferred Snacks:</b> ".$row["snacks"]."<br>";
-                echo "<b>Email:</b> ".$row["email"]."<br>";
-                echo "<b>Phone:</b> ".$row["phone"]."<br>";
-                echo "<b>Class of:</b> ".$row["gradDate"]."<br>";
-                echo "<b>College Interests:</b> ".$row["collegeInterest"]."<br>";
-                echo "<b>Career Aspirations:</b> ".$row["careerAspirations"]."<br>";
-                echo "<b>Questions and Concerns:</b> ".$row["concerns"]."<br>";
-		    
-                echo "Thank you for filling out this form! You will be receiving a welcome email within the next business week.";
-
-                foreach ($_POST as $key => $value){
-                    if(is_array($value)){
-                        foreach ($value as $k => $v){
-                            $email_body.= $key.': '.$v."\r\n";
-                        }
-                    }else{
-                        $email_body.= $key.': '.$value."\r\n";
-                    }
-                }
-
-                $success = mail($to, $email_subject, $email_body, $headers);
-                /*echo ($success ?  "<script>console.log('success');</script>" :
-                "<script>console.log('failure');</script>" );*/
-            }else{
-                echo mysqli_error($cnxn);
-                echo "there is a problem!";
+            echo "<b>Name: ".$row["name"]."<br>";
+            echo "<b>Date of Birth: ".$row["dob"]."<br>";
+            echo "<b>Identifies as: ".$row["gender"]."<br>";
+            if($pronouns != ""){
+                echo "<b>Preferred Pronouns: ".$row["pronouns"]."<br>";
             }
+            if ($raceEthnicity != "7"){
+                echo "<b>Race/Ethnicity: ".$row2["choice"]."<br>";
+            }else{
+                echo "<b>Race/Ethnicity: ".$row["otherRace"]."<br>";
+            }
+
+            echo "<b>Preferred Snacks: ".$row["snacks"]."<br>";
+            echo "<b>Email: ".$row["email"]."<br>";
+            echo "<b>Phone: ".$row["phone"]."<br>";
+            echo "<b>Class of: ".$row["gradDate"]."<br>";
+            echo "<b>College Interests: ".$row["collegeInterest"]."<br>";
+            echo "<b>Career Aspirations: ".$row["careerAspirations"]."<br>";
+            echo "<b>Questions and Concerns: ".$row["concerns"]."<br>";
+
+            foreach ($_POST as $key => $value){
+                if(is_array($value)){
+                    foreach ($value as $k => $v){
+                        $email_body.= $key.': '.$v."\r\n";
+                    }
+                }else{
+                    $email_body.= $key.': '.$value."\r\n";
+                }
+            }
+
+            //$success = mail($to, $email_subject, $email_body, $headers);
+            /*echo ($success ?  "<script>console.log('success');</script>" :
+            "<script>console.log('failure');</script>" );*/
+        }else{
+            echo mysqli_error($cnxn);
+            echo "<p>Something went wrong. Please try again!</p>";
+        }
+
         return;
     }
 }else{
