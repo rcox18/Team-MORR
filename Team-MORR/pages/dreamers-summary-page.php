@@ -75,6 +75,6 @@ include "../php/header.php";
     <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <!--Call necessary DataTable method to format table to jQuery Data Table-->
-    <script src="../../GuestBook-form/scripts/dataTableJS.js"></script>
+    <script src="../scripts/dataTableJS.js"></script>
 </body>
 </html>
