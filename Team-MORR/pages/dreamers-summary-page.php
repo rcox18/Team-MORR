@@ -15,15 +15,17 @@ include "../php/header.php";
 ?>
 
 <!--Link CDN  for use of jQuery table-->
-<link rel="stylesheet"
-      type="text/css"
-      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
 <!--Title card for tab-->
 <title>Dreamer Summary Page</title>
 </head>
+
 <body>
+<div class="container">
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">
@@ -47,7 +49,7 @@ include "../php/header.php";
         <tbody>
         <?php
         //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $dataSQL);
         //Iterate so long as we have data to pull
@@ -63,22 +65,16 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
+</div>
 <?php
     //Search and execute footer php file
     include "../php/footer.php";
 ?>
     <!--Link javascript CDN for use of jQuery table-->
-<script type="text/javascript"
-        charset="utf8"
-        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <!--Call necessary DataTable method to format table to jQuery Data Table-->
-<script>
-    $(document).ready( function () {
-        $('#myTable').DataTable({
-            "order": [[ 0, "desc" ]],
-                "scrollX": true
-        });
-    } );
-</script>
+    <script src="../scripts/dataTableJS.js"></script>
 </body>
 </html>
