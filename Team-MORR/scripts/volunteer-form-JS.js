@@ -39,11 +39,14 @@ const zipRegex = /^\d{5}$/;
 // add validate() to form submission.
 document.getElementById("sign-up").onsubmit = validate;
 
+
+
 //clears all error notifications on loading of the page
 for (let i = 0; i < requiredInputErrs.length; i++)
 {
     requiredInputErrs[i].style.visibility = "hidden";
 }
+
 shirtSizeErr.style.visibility = "hidden";
 otherAboutTextArea.style.display = "none";
 otherInterestsTextArea.style.display  = "none";
