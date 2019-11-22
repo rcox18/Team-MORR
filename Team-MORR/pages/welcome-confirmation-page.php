@@ -187,7 +187,58 @@ if (!empty($_POST)){
         }else{
             $qAndConcerns = "";
         }
-    }else{
+
+        //Validate Emergency Contact Information
+
+        //Validate guardian first name
+        if (!empty($_POST['guardian-first-name']) AND preg_match($nameRegex, trim($_POST['guardian-first-name']))){
+            $gFName = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["guardian-first-name"]))));
+        }else{
+            echo '<p>Please enter a valid guardian first name.</p>';
+            $isValid = false;
+        }
+
+        //Validate guardian last name
+        if (!empty($_POST['guardian-last-name']) AND preg_match($nameRegex, trim($_POST['guardian-last-name']))){
+            $gLName = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["guardian-last-name"]))));
+        }else{
+            echo '<p>Please enter a valid guardian last name.</p>';
+            $isValid = false;
+        }
+
+        //Validate guardian relationship
+        if (!empty($_POST['guardian-relation']) AND preg_match($basicTextRegex, trim($_POST['guardian-relation']))){
+            $gRelation = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["guardian-relation"]))));
+        }else{
+            echo '<p>Please enter a valid guardian last name.</p>';
+            $isValid = false;
+        }
+
+        //Validate guardian phone
+        if (empty($_POST["g-phone-number"])){
+            echo '<p>Please provide phone number for parent/guardian.</p>';
+            $isValid= false;
+        }elseif (!empty($_POST["g-phone-number"]) AND !preg_match($phoneRegex, trim($_POST['g-phone-number']))){
+            echo '<p>Please provide a valid phone number for parent/guardian.</p>';
+            $isValid= false;
+        }
+        else{
+            $gPhone = mysqli_real_escape_string($cnxn, trim($_POST['g-phone-number']));
+        }
+
+        //Validate guardian email
+        if (empty($_POST["g-email-address"])){
+            echo '<p>Please provide an guardian email.</p>';
+            $isValid= false;
+        }elseif (!empty($_POST["g-email-address"]) AND !preg_match($emailRegex, trim($_POST['g-email-address']))){
+            echo '<p>Please provide a valid guardian email.</p>';
+            $isValid= false;
+        }
+        else{
+            $gEmail = mysqli_real_escape_string($cnxn, trim($_POST['g-email-address']));
+        }
+    }
+    else{
         echo "<h3>Connection Failed!</h3>";
         echo "<p>Please go back and resubmit.</p>";
     }
@@ -203,8 +254,7 @@ if (!empty($_POST)){
         $headers .= "Reply-To: $siteEmail \r\n";
 
         /*----ADD TO DATABASE----*/
-        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity');";
-
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID, parentName, parentRelationship, parentEmail, parentPhone) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity', '$gFName $gLName', '$gRelation', '$gEmail', '$gPhone');";
         $result = mysqli_query($cnxn, $sql);
 
         if($result) {
@@ -243,6 +293,11 @@ if (!empty($_POST)){
             echo "<b>College Interests: ".$row["collegeInterest"]."<br>";
             echo "<b>Career Aspirations: ".$row["careerAspirations"]."<br>";
             echo "<b>Questions and Concerns: ".$row["concerns"]."<br>";
+            echo "<b>Emergency Contact Info:</b>";
+            echo "<b>Parent/Guardian Name:</b>".$row["parentName"]."<br>";
+            echo "<b>Relationship:</b>".$row["parentRelationship"]."<br>";
+            echo "<b>Parent/Guardian Email:</b>".$row["parentEmail"]."<br>";
+            echo "<b>Parent/Guardian Phone:</b>".$row["parentPhone"]."<br>";
 
             foreach ($_POST as $key => $value){
                 if(is_array($value)){
