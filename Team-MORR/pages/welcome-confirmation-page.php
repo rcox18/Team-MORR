@@ -269,35 +269,40 @@ if (!empty($_POST)){
             $row = mysqli_fetch_assoc($result2);
             $row2 = mysqli_fetch_assoc($result3);
 
-            echo "<h1>Your Information Has Been Submitted</h1>
-            <p>$fName, thank you for telling us a little bit about yourself! This information
-            is vital to our goals of best serving our Dreamers. If you see any errors in
-            the following submitted info, please contact us ASAP for corrections.</p>";
+            echo "<div class=\"jumbotron jumbotron-fluid fixed-top mb-3 pr-2\">
+                  <img src=\"//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w\"
+                       alt=\"iD.A.Y. Dream\" class=\"img-fluid img-thumbnail rounded float-left\">
+                  <h1 class=\"display-4 font-weight-bold\">ID.A.Y.Dream</h1>
+                  <p class=\"lead font-weight-bold\">Your Information Has Been Submitted!</p>
+                  </div>
+                  <p>$fName, thank you for telling us a little bit about yourself! This information
+                  is vital to our goals of best serving our Dreamers. If you see any errors in
+                  the following submitted info, please contact us ASAP for corrections.</p>";
 
-            echo "<b>Name: ".$row["name"]."<br>";
-            echo "<b>Date of Birth: ".$row["dob"]."<br>";
-            echo "<b>Identifies as: ".$row["gender"]."<br>";
+            echo "<span><strong>Name:</strong> ".$row["name"]."</span><br>";
+            echo "<span><strong>Date of Birth: </strong>".$row["dob"]."</span><br>";
+            echo "<span><strong>Identifies as: </strong>".$row["gender"]."</span><br>";
             if($pronouns != ""){
-                echo "<b>Preferred Pronouns: ".$row["pronouns"]."<br>";
+                echo "<span><strong>Preferred Pronouns: </strong>".$row["pronouns"]."</span><br>";
             }
             if ($raceEthnicity != "7"){
-                echo "<b>Race/Ethnicity: ".$row2["choice"]."<br>";
+                echo "<span><strong>Race/Ethnicity: </strong>".$row2["choice"]."</span><br>";
             }else{
-                echo "<b>Race/Ethnicity: ".$row["otherRace"]."<br>";
+                echo "<span><strong>Race/Ethnicity: </strong>".$row["otherRace"]."</span><br>";
             }
 
-            echo "<b>Preferred Snacks: ".$row["snacks"]."<br>";
-            echo "<b>Email: ".$row["email"]."<br>";
-            echo "<b>Phone: ".$row["phone"]."<br>";
-            echo "<b>Class of: ".$row["gradDate"]."<br>";
-            echo "<b>College Interests: ".$row["collegeInterest"]."<br>";
-            echo "<b>Career Aspirations: ".$row["careerAspirations"]."<br>";
-            echo "<b>Questions and Concerns: ".$row["concerns"]."<br>";
-            echo "<b>Emergency Contact Info:</b>";
-            echo "<b>Parent/Guardian Name:</b>".$row["parentName"]."<br>";
-            echo "<b>Relationship:</b>".$row["parentRelationship"]."<br>";
-            echo "<b>Parent/Guardian Email:</b>".$row["parentEmail"]."<br>";
-            echo "<b>Parent/Guardian Phone:</b>".$row["parentPhone"]."<br>";
+            echo "<span><strong>Preferred Snacks: </strong>".$row["snacks"]."</span><br>";
+            echo "<span><strong>Email: </strong>".$row["email"]."</span><br>";
+            echo "<span><strong>Phone: </strong>".$row["phone"]."</span><br>";
+            echo "<span><strong>Class of: </strong>".$row["gradDate"]."</span><br>";
+            echo "<span><strong>College Interests: </strong>".$row["collegeInterest"]."</span><br>";
+            echo "<span><strong>Career Aspirations: </strong>".$row["careerAspirations"]."</span><br>";
+            echo "<span><strong>Questions and Concerns: </strong>".$row["concerns"]."</span><br>";
+            echo "<span><strong>--Emergency Contact Info-- </strong><br>";
+            echo "<span><strong>Parent/Guardian Name: </strong>".$row["parentName"]."</span><br>";
+            echo "<span><strong>Relationship: </strong>".$row["parentRelationship"]."</span><br>";
+            echo "<span><strong>Parent/Guardian Email: </strong>".$row["parentEmail"]."</span><br>";
+            echo "<span><strong>Parent/Guardian Phone: </strong>".$row["parentPhone"]."</span><br>";
 
             foreach ($_POST as $key => $value){
                 if(is_array($value)){
