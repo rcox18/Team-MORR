@@ -48,9 +48,6 @@ otherRaceText.style.display = "none";
 
 document.getElementById("welcome-form").onsubmit = validate;
 
-for(let i = 0; i < requiredInputValues.length; i++) {
-    requiredInputValues[i].style.display = "none";
-}
 
 //When user selects other for gender, new fields will prompt user for proper identity and appropriate pronouns
 gender.onchange =  function() {
@@ -72,6 +69,9 @@ raceSelector.onchange =  function() {
 
 /* Validation function ensures required fields are filled in with proper information */
 function validate() {
+    for(let i = 0; i < requiredInputValues.length; i++) {
+        requiredInputValues[i].style.display = "none";
+    }
 
     let isValid = true;
 
