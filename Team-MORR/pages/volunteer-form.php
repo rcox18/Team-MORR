@@ -25,7 +25,7 @@ include "../php/header.php";
         <h1 class="display-4 font-weight-bold">Volunteer Form</h1>
         <p class="lead font-weight-bold">Thank you so much for your interest in ID.A.Y.Dream! Before you can volunteer with us,
             we just need to get a little bit of personal info. If you have any questions or concerns,
-            feel free to contact us through <a href="https://www.idaydream.org/contact-us">this</a> link.</p>
+            please <a href="https://www.idaydream.org/contact-us">contact us</a>.</p>
     </div>
     <!--Start of the Form-->
     <form action="volunteer-confirmation-page.php" id="sign-up" method="post" name="volunteer-form">
@@ -137,7 +137,7 @@ include "../php/header.php";
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox"
-                       value="Volunteer coordination " id="volunteerCoordination" name="interests[]">
+                       value="Volunteer coordination" id="volunteerCoordination" name="interests[]">
                 <label class="form-check-label" for="volunteerCoordination">
                     Volunteer coordination
                 </label>
@@ -228,7 +228,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="monday" value="monday" name="availability[]">
                     <label for="monday" class="form-check-label">Monday</label><br>
                     <div id="mon-times" class ="time-options">
-                        <input type="checkbox" id="mon-morn" value="mon-morn " name="availability[]">
+                        <input type="checkbox" id="mon-morn" value="mon-morn" name="availability[]">
                         <label for="mon-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="mon-aft" value="mon-aft" name="availability[]">
                         <label for="mon-aft" class="form-check-label">Afternoon</label><br>
@@ -238,7 +238,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="tuesday" value="tuesday" name="availability[]">
                     <label for="tuesday" class="form-check-label">Tuesday</label><br>
                     <div id="tues-times" class ="time-options">
-                        <input type="checkbox" id="tues-morn" value="tues-morn " name="availability[]">
+                        <input type="checkbox" id="tues-morn" value="tues-morn" name="availability[]">
                         <label for="tues-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="tues-aft" value="tues-aft" name="availability[]">
                         <label for="tues-aft" class="form-check-label">Afternoon</label><br>
@@ -248,7 +248,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="wednesday" value="wednesday" name="availability[]">
                     <label for="wednesday" class="form-check-label">Wednesday</label><br>
                     <div id="wed-times" class ="time-options">
-                        <input type="checkbox" id="wed-morn" value="wed-morn " name="availability[]">
+                        <input type="checkbox" id="wed-morn" value="wed-morn" name="availability[]">
                         <label for="wed-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="wed-aft" value="wed-aft" name="availability[]">
                         <label for="wed-aft" class="form-check-label">Afternoon</label><br>
@@ -258,7 +258,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="thursday" value="thursday" name="availability[]">
                     <label for="thursday" class="form-check-label">Thursday</label><br>
                     <div id="thurs-times" class ="time-options">
-                        <input type="checkbox" id="thurs-morn" value="thurs-morn " name="availability[]">
+                        <input type="checkbox" id="thurs-morn" value="thurs-morn" name="availability[]">
                         <label for="thurs-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="thurs-aft" value="thurs-aft" name="availability[]">
                         <label for="thurs-aft" class="form-check-label">Afternoon</label><br>
@@ -268,7 +268,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="friday" value="friday" name="availability[]">
                     <label for="friday" class="form-check-label">Friday</label>
                     <div id="fri-times" class ="time-options">
-                        <input type="checkbox" id="fri-morn" value="fri-morn " name="availability[]">
+                        <input type="checkbox" id="fri-morn" value="fri-morn" name="availability[]">
                         <label for="fri-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="fri-aft" value="fri-aft" name="availability[]">
                         <label for="fri-aft" class="form-check-label">Afternoon</label><br>
@@ -284,7 +284,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="saturday" value="saturday" name="availability[]">
                     <label for="saturday" class="form-check-label">Saturday</label><br>
                     <div id="sat-times" class ="time-options">
-                        <input type="checkbox" id="sat-morn" value="sat-morn " name="availability[]">
+                        <input type="checkbox" id="sat-morn" value="sat-morn" name="availability[]">
                         <label for="sat-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="sat-aft" value="sat-aft" name="availability[]">
                         <label for="sat-aft" class="form-check-label">Afternoon</label><br>
@@ -294,7 +294,7 @@ include "../php/header.php";
                     <input type="checkbox" form="sign-up" id="sunday" value="sunday" name="availability[]">
                     <label for="sunday" class="form-check-label">Sunday</label><br>
                     <div id="sun-times" class="time-options">
-                        <input type="checkbox" id="sun-morn" value="sun-morn " name="availability[]">
+                        <input type="checkbox" id="sun-morn" value="sun-morn" name="availability[]">
                         <label for="sun-morn" class="form-check-label">Morning</label><br>
                         <input type="checkbox" id="sun-aft" value="sun-aft" name="availability[]">
                         <label for="sun-aft" class="form-check-label">Afternoon</label><br>
@@ -309,7 +309,7 @@ include "../php/header.php";
                 <div id="summer-text" class="day-options">
                     <label for="summer-avail" class="form-check-label">List any major time conflicts (vacations, other camps, etc.) that would
                         prevent you from volunteering during a certain time periods in the summer</label>
-                    <textarea id="summer-avail" ></textarea>
+                    <textarea id="summer-avail" name="summer-conflicts"></textarea>
                 </div>
             </div>
         </fieldset>
@@ -398,10 +398,10 @@ include "../php/header.php";
         <!--Agreement Section-->
         <fieldset class="form-group" id="signature-form">
             <legend >Agreement</legend>
-            <p>By agreeing to the terms above you are also agreeing to a background check.</p>
+            <p>By submitting this application, I certify that my statements in this application are true, complete and correct to the best of my knowledge. I further understand that as a part of the volunteer verification and matching process, additional personal information will be required of me. I hereby authorize iD.A.Y.dream to contact the references listed and to conduct a background check to determine if I will be a good fit as a volunteer for the organization. I understand that submitting this application does not guarantee my participation. I also hereby authorize iD.A.Y.dream without limitation, to copy, publish, exhibit or distribute photographs or video tapes of my volunteer activities for the purpose of promoting volunteerism and support. I release and hold harmless from liability any person or organization that provides information. I also agree to hold harmless iD.A.Y.dream and the officers and volunteers thereof.</p>
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="switch1" name="agreement-switch">
-                <label class="custom-control-label" for="switch1">Agree</label>
+                <label class="custom-control-label" for="switch1">I have read and agree to the statement above.</label>
             </div>
             <span class="err" id="err-agree">Because of our values as an organization and out of the safety of the youth
             we serve it is a requirement that a background check must be submitted.
