@@ -66,6 +66,9 @@ include "../php/header.php";
         </tbody>
     </table>
 </div>
+
+<a href="send-email.php"><button class="success">Send Email</button></a>
+
 <?php
     //Search and execute footer php file
     include "../php/footer.php";
