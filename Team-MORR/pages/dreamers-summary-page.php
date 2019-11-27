@@ -65,6 +65,9 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
+    <form action="emailAllForm.php" method="post" id="email-all-dreamers" name="email-all-dreamers">
+        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email all Dreamers">
+    </form>
 </div>
 <?php
     //Search and execute footer php file

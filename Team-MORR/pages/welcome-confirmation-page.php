@@ -210,7 +210,7 @@ if (!empty($_POST)){
         if (!empty($_POST['guardian-relation']) AND preg_match($basicTextRegex, trim($_POST['guardian-relation']))){
             $gRelation = ucfirst(strtolower(mysqli_real_escape_string($cnxn, trim($_POST["guardian-relation"]))));
         }else{
-            echo '<p>Please enter a valid guardian last name.</p>';
+            echo '<p>Please enter a valid guardian relationship.</p>';
             $isValid = false;
         }
 
