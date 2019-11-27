@@ -116,8 +116,8 @@ include "../php/header.php";
             <input type="text" class="form-control required-input" id="guardian-first-name" name="guardian-first-name">
 
             <!--Last Name-->
-            <label for="guardian-first-name">Last name<span class="text-danger err" id="glName-err">*required</span></label>
-            <input type="text" class="form-control required-input" id="guardian-first-name" name="guardian-last-name">
+            <label for="guardian-last-name">Last name<span class="text-danger err" id="glName-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="guardian-last-name" name="guardian-last-name">
 
             <!--Relationship-->
             <label for="guardian-relation">Relationship<span class="text-danger err" id="gRelation-err">*required</span></label>
