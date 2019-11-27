@@ -33,8 +33,8 @@ include "../php/header.php";
         <?php
         //Create Query that selects the column name
         $volunteerColumnSQL = "SELECT v.volunteerID, v.name AS VolunteerName, v.email AS VolunteerEmail, v.phone AS VolunteerPhone, 
-        v.address, v.shirtSize, v.mailingList, v.motivation, v.POBox, v.city, v.state, v.zip, v.hearAboutUs, v.rolesOfInterests,
-        v.previousExp, v.expMention, v.availability, v.interests, v.ref1, v.ref2, v.ref3
+        v.address, v.shirtSize, v.mailingList, v.motivation, v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+        v.previousExp, v.expMention, v.availability, v.active, v.ref1, v.ref2, v.ref3
         FROM Volunteer v LIMIT 1";
         //Retrieve column names from database
         $columnResult = mysqli_query($cnxn, $volunteerColumnSQL);
