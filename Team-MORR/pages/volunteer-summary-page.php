@@ -59,9 +59,9 @@ include "../php/header.php";
         v.previousExp, v.expMention, v.availability, v.active
         FROM Volunteer v";
         //Create query to retrieve each individual ref, up to 3
-        $ref1DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
-        $ref2DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
-        $ref3DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+        $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
+        $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
+        $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $volunteerDataSQL);
         $ref1Result = mysqli_query($cnxn, $ref1DataSQL);
@@ -76,18 +76,24 @@ include "../php/header.php";
             foreach ($row2 as $k => $v) {
                 echo "<td>$v</td>";
             }
-            //Iterate through reference 1's email
+            //Iterate through reference 1's info
+            $results1 = "|";
             foreach ($row3 as $k => $v) {
-                echo "<td>$v</td>";
+                $results1 .= $v." | ";
             }
-            //Iterate through reference 2's email
+            echo "<td>$results1</td>";
+            //Iterate through reference 2's info
+            $results2 = "|";
             foreach ($row4 as $k => $v) {
-                echo "<td>$v</td>";
+                $results2 .= $v." | ";
             }
-            //Iterate through reference 3's email
+            echo "<td>$results2</td>";
+            //Iterate through reference 3's info
+            $results3 = "|";
             foreach ($row5 as $k => $v) {
-                echo "<td>$v</td>";
+                $results3 .= $v." | ";
             }
+            echo "<td>$results3</td>";
             echo "</tr>";
         }
         ?>
