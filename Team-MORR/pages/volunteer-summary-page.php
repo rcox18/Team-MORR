@@ -93,8 +93,8 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
-    <form action="emailAllForm.php" method="post" id="email-all-volunteers" name="email-all-volunteers">
-        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email all Volunteers">
+    <form action="emailAllForm.php" method="post" id="email-active-volunteers" name="email-active-volunteers">
+        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Volunteers">
     </form>
 </div>
 <?php

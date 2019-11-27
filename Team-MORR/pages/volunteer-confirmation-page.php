@@ -478,7 +478,7 @@ if (!empty($_POST)){
         if ($ref1Result AND $ref2Result And $ref3Result){
 
             //to be deprecated******
-            $active = flipCoin();
+            $active = "yes";
 
             //insertion for volunteer
             $volunteerInsertSQL = "INSERT INTO Volunteer (name, email, phone, address, shirtSize, mailingList, motivation, POBox, city, state, zip, interests, hearAboutUs, rolesOfInterests, previousExp, expMention, availability, active, ref1, ref2, ref3) Values  ('$fName $lName', '$email', '$phone', '$address', '$shirtSize', '$addToEmail', '$motivation', '$aptPO', '$city', '$state', '$zip', '$interests', '$hearAboutUs', '$roles', '$prevExp', '$applicableExp', '$availability', '$active', '$ref1ID', '$ref2ID', '$ref3ID')";
@@ -557,7 +557,7 @@ if (!empty($_POST)){
                 $info .= "</p>";
                 //echo $info;
                 //sends siteEmail
-                /*$success = mail($to, $email_subject, $email_body, $headers);*/
+                $success = mail($to, $email_subject, $email_body, $headers);
             }else{
                 echo mysqli_error($cnxn);
                 echo "<p>Something went wrong. Please try again!</p>";
