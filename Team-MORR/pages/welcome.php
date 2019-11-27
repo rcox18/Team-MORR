@@ -107,6 +107,34 @@ include "../php/header.php";
             <input type="text" class="form-control required-input" name="phone-number" id="phone">
         </fieldset>
 
+        <fieldset class="form-group" id="contact">
+            <legend>Emergency Contact Information</legend>
+            <!--Parent/Guardian-->
+
+            <!--First Name-->
+            <label for="guardian-first-name">First name<span class="text-danger err" id="gfName-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="guardian-first-name" name="guardian-first-name">
+
+            <!--Last Name-->
+            <label for="guardian-first-name">Last name<span class="text-danger err" id="glName-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="guardian-first-name" name="guardian-last-name">
+
+            <!--Relationship-->
+            <label for="guardian-relation">Relationship<span class="text-danger err" id="gRelation-err">*required</span></label>
+            <input type="text" class="form-control required-input" id="guardian-relation" name="guardian-relation">
+
+            <!--Email-->
+            <label for="g-email">Email address<span class="text-danger err" id="g-email-err">*required</span></label>
+            <input type="text" class="form-control required-input" name="g-email-address" id="g-email">
+
+            <!--Phone Number-->
+            <label for="g-phone">Phone number<span class="text-danger err" id="g-phone-err">*required</span></label>
+            <span class="err" id="g-err-phone">
+                Please enter a phone number
+            </span>
+            <input type="text" class="form-control required-input" name="g-phone-number" id="g-phone">
+        </fieldset>
+
         <fieldset class="form-group" id="future">
             <legend>Future Plans</legend>
 
