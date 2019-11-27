@@ -80,7 +80,7 @@ function validate() {
         isValid = false;
     }
     if(lName.value === "") {
-        glNameErr.style.display = "block";
+        lNameErr.style.display = "block";
         isValid = false;
     }
     if(phone.value === "" || !phoneRegex.test(phone.value)) {
