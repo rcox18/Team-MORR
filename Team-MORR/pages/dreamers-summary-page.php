@@ -49,7 +49,7 @@ include "../php/header.php";
         <tbody>
         <?php
         //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone, Dreamer.active FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $dataSQL);
         //Iterate so long as we have data to pull
@@ -65,8 +65,8 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
-    <form action="emailAllForm.php" method="post" id="email-all-dreamers" name="email-all-dreamers">
-        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email all Dreamers">
+    <form action="emailAllForm.php" method="post" id="email-active-dreamers" name="email-active-dreamers">
+        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Dreamers">
     </form>
 </div>
 <?php

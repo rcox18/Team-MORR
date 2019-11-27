@@ -59,7 +59,7 @@ include "../php/header.php";
                             $tableName = "Dreamer";
                         }
 
-                        $sql = "SELECT email from $tableName";
+                        $sql = "SELECT email from $tableName WHERE active = 'yes'";
                         $result = mysqli_query($cnxn, $sql);
 
                         if ($result){
@@ -67,9 +67,12 @@ include "../php/header.php";
                             while($row = mysqli_fetch_assoc($result)){
                                 foreach ($row AS $k => $v){
                                     $to = $v;
+                                    echo $v."<br>";
                                     $success = mail($to, $subject, $body, $headers);
                                     if ($success){
                                         $count++;
+                                    }else{
+                                        echo "$v not sent";
                                     }
                                 }
                             }
@@ -87,9 +90,9 @@ include "../php/header.php";
                 echo "Something fishy is going on...try again.";
             }
         }elseif (isset($_POST['page-source'])){
-            if ($_POST['page-source'] == "Email all Volunteers" OR $_POST['page-source'] == "Email all Dreamers"){
+            if ($_POST['page-source'] == "Email active Volunteers" OR $_POST['page-source'] == "Email active Dreamers"){
                 echo "<h1>".$_POST['page-source']."</h1>";
-                if ($_POST['page-source'] == "Email all Volunteers"){
+                if ($_POST['page-source'] == "Email active Volunteers"){
                     $recipients = "Volunteers";
                 }else{
                     $recipients = "Dreamers";

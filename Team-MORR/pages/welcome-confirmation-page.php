@@ -254,7 +254,10 @@ if (!empty($_POST)){
         $headers .= "Reply-To: $siteEmail \r\n";
 
         /*----ADD TO DATABASE----*/
-        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID, parentName, parentRelationship, parentEmail, parentPhone) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity', '$gFName $gLName', '$gRelation', '$gEmail', '$gPhone');";
+        //to be deprecated******
+        $active = "yes";
+
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID, parentName, parentRelationship, parentEmail, parentPhone, active) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity', '$gFName $gLName', '$gRelation', '$gEmail', '$gPhone', '$active');";
         $result = mysqli_query($cnxn, $sql);
 
         if($result) {
@@ -314,7 +317,7 @@ if (!empty($_POST)){
                 }
             }
 
-            //$success = mail($to, $email_subject, $email_body, $headers);
+            $success = mail($to, $email_subject, $email_body, $headers);
             /*echo ($success ?  "<script>console.log('success');</script>" :
             "<script>console.log('failure');</script>" );*/
         }else{
