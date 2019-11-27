@@ -46,7 +46,7 @@ const phoneRegex = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-
 otherGenderText.style.display = "none";
 otherRaceText.style.display = "none";
 
-//document.getElementById("welcome-form").onsubmit = validate;
+document.getElementById("welcome-form").onsubmit = validate;
 
 for(let i = 0; i < requiredInputValues.length; i++) {
     requiredInputValues[i].style.display = "none";
