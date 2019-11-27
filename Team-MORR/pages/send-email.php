@@ -8,9 +8,12 @@
 require "../php/idaydreamDBconnect.php";
 include "../php/errors.php";
 include "../php/header.php";
+
 ?>
 
     <form action ="email-confirmation.php" id="send-email" name="send-email" method="post">
+        <input type="radio" name="sendTo" value="dreamers" required><br>
+        <input type="radio" name="sendTo" value="volunteers">
         <label for="subject">Subject<span class="text-danger err" id="subject-err">*required</span></label>
         <input type="text" id="subject" name="subject" class="form-control required-input"><br>
 
@@ -18,7 +21,7 @@ include "../php/header.php";
         <textarea class="form-control" id="message" name="message" class="form-control required-input">
         </textarea><br>
 
-        <button id="send" class="btn btn-success">Send Email</button>
+        <button id="submit" class="btn btn-success">Send Email</button>
     </form>
 
 include "../php/footer.php";

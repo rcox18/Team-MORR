@@ -9,7 +9,8 @@
 
 const subject = document.getElementById("subject");
 const message = document.getElementById("message");
-const send = document.getElementById("send");
+const sendTo = document.getElementById("sendTo").value;
+const send = document.getElementById("submit");
 const requiredInputValues = document.getElementsByClassName("required-input");
 
 // add validate() to form submission.
@@ -40,5 +41,11 @@ function validate() {
             requiredInputErrs[i].style.visibility = "hidden";
         }
     }
+
+    //check send to values
+    if (sendTo != "Volunteer" || sendTo != "Dreamer") {
+        isValid = false;
+    }
+
     return isValid;
 }

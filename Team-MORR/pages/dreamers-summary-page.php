@@ -67,7 +67,9 @@ include "../php/header.php";
     </table>
 </div>
 
-<a href="send-email.php"><button class="success">Send Email</button></a>
+<form action="send-email.php" method="post" id="email-dreamers" name="email-dreamers">
+    <a href="send-email.php"><button class="btn success">Send Email</button></a>
+</form>
 
 <?php
     //Search and execute footer php file
