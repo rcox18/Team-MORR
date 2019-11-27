@@ -28,6 +28,16 @@ const genderOptions = document.getElementsByClassName("gender-option");
 const raceSelector = document.getElementById("race-selector");
 const raceOptions = document.getElementsByClassName("race-option");
 const otherRaceText = document.getElementById("other-race");
+const gfName = document.getElementById("guardian-first-name");
+const glName = document.getElementById("guardian-last-name");
+const gRelation = document.getElementById("guardian-relation");
+const gPhone = document.getElementById("g-phone");
+const gEmail = document.getElementById("g-email");
+const gfNameErr = document.getElementById("gfName-err");
+const glNameErr = document.getElementById("glName-err");
+const gRelationErr = document.getElementById("gRelation-err");
+const gPhoneErr = document.getElementById("g-phone-err");
+const gEmailErr = document.getElementById("g-email-err");
 
 // from: https://www.regular-expressions.info/email.html
 const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
@@ -93,6 +103,25 @@ function validate() {
         genderErr.style.display = "block";
         isValid = false;
     }
-
+    if(gfName.value === "") {
+        gfNameErr.style.display = "block";
+        isValid = false;
+    }
+    if(glName.value === "") {
+        glNameErr.style.display = "block";
+        isValid = false;
+    }
+    if(gPhone.value === "" || !phoneRegex.test(phone.value)) {
+        gPhoneErr.style.display = "block";
+        isValid = false;
+    }
+    if(gEmail.value === "" || !emailRegex.test(email.value)) {
+        gEmailErr.style.display = "block";
+        isValid = false;
+    }
+    if(gRelation.value === "") {
+        gRelationErr.style.display = "block";
+        isValid = false;
+    }
     return isValid;
 }
