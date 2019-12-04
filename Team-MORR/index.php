@@ -2,11 +2,11 @@
 include "php/errors.php";
 include "php/header.php";
 ?>
-<title>Team Morr's HomePage</title>
+<title>Team MORR's HomePage</title>
 </head>
 <body>
 <div class="jumbotron">
-    <h1>Welcome to the Team Morr's HomePage.</h1>
+    <h1>Welcome to the Team MORR's HomePage.</h1>
     <p>Thanks for visiting our page. Below are link to some of our work samples.</p>
 </div>
 

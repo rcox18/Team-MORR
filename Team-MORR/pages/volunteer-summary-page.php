@@ -9,10 +9,14 @@
 -->
 
 <?php
+session_start();
 //Search and execute php files for error debugger, connection to database and header
 include "../php/errors.php";
 require "../php/idaydreamDBconnect.php";
 include "../php/header.php";
+//if the user is not logged in, redirect
+if (!isset($_SESSION['username'])) {
+    header("location: Team-MORR/pages/login.php");
 ?>
 
 <!--Link CDN  for use of jQuery table-->
@@ -27,6 +31,7 @@ include "../php/header.php";
 
 <body>
 <div class="container">
+    <a href="Team-MORR/pages/logout.php" class="btn btn-danger">Sign Out</a>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">
@@ -59,9 +64,9 @@ include "../php/header.php";
         v.previousExp, v.expMention, v.availability, v.active
         FROM Volunteer v";
         //Create query to retrieve each individual ref, up to 3
-        $ref1DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
-        $ref2DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
-        $ref3DataSQL = "SELECT r.email FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+        $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
+        $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
+        $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $volunteerDataSQL);
         $ref1Result = mysqli_query($cnxn, $ref1DataSQL);
@@ -76,27 +81,34 @@ include "../php/header.php";
             foreach ($row2 as $k => $v) {
                 echo "<td>$v</td>";
             }
-            //Iterate through reference 1's email
+            //Iterate through reference 1's info
+            $results1 = "|";
             foreach ($row3 as $k => $v) {
-                echo "<td>$v</td>";
+                $results1 .= $v." | ";
             }
-            //Iterate through reference 2's email
+            echo "<td>$results1</td>";
+            //Iterate through reference 2's info
+            $results2 = "|";
             foreach ($row4 as $k => $v) {
-                echo "<td>$v</td>";
+                $results2 .= $v." | ";
             }
-            //Iterate through reference 3's email
+            echo "<td>$results2</td>";
+            //Iterate through reference 3's info
+            $results3 = "|";
             foreach ($row5 as $k => $v) {
-                echo "<td>$v</td>";
+                $results3 .= $v." | ";
             }
+            echo "<td>$results3</td>";
             echo "</tr>";
         }
         ?>
         </tbody>
     </table>
-    <form action="emailAllForm.php" method="post" id="email-all-volunteers" name="email-all-volunteers">
-        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email all Volunteers">
+    <form action="emailAllForm.php" method="post" id="email-active-volunteers" name="email-active-volunteers">
+        <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Volunteers">
     </form>
 </div>
+
 <?php
 //Search and execute footer php file
 include "../php/footer.php";
