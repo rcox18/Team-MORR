@@ -12,6 +12,10 @@
 include "../php/errors.php";
 require "../php/idaydreamDBconnect.php";
 include "../php/header.php";
+//if the user is not logged in, redirect
+if (!isset($_SESSION['username'])) {
+    header("location: Team-MORR/pages/login.php");
+    exit;
 ?>
 
 <!--Link CDN  for use of jQuery table-->

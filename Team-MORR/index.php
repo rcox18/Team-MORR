@@ -2,10 +2,6 @@
 session_start();
 include "php/errors.php";
 include "php/header.php";
-//if the user is not logged in, redirect
-if (!isset($_SESSION['username']) || $_SESSION['loggedin'] !== true) {
-    header("location: Team-MORR/pages/login.php");
-    exit;
 ?>
 <title>Team MORR's HomePage</title>
 </head>

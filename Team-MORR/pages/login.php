@@ -2,7 +2,7 @@
 session_start();
 include "/php/errors.php";
 
-//if already logged in, redirect to admin page
+//if already logged in, redirect to index page
 if (isset($_SESSION['username']) && $_SESSION['loggedin'] === true) {
     header("location: Team-MORR/index.php");
     exit;
@@ -17,7 +17,6 @@ if (!empty($_POST)) {
 //If the username and password are correct
     if ($username == $adminusername && $password == $adminpassword) {
         $_SESSION['username'] = $username;
-        $_SESSION['loggedin'] = true;
         header("location: Team-MORR/index.php");
         exit;
     }
