@@ -8,6 +8,7 @@
 -->
 
 <?php
+session_start();
 //Search and execute php files for error debugger, connection to database and header
 include "../php/errors.php";
 require "../php/idaydreamDBconnect.php";
@@ -15,7 +16,7 @@ include "../php/header.php";
 //if the user is not logged in, redirect
 if (!isset($_SESSION['username'])) {
     header("location: Team-MORR/pages/login.php");
-    exit;
+    }
 ?>
 
 <!--Link CDN  for use of jQuery table-->
@@ -30,6 +31,7 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 <div class="container">
+    <a href="Team-MORR/pages/logout.php" class="btn btn-danger">Sign Out</a>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">

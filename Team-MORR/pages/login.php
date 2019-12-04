@@ -3,9 +3,8 @@ session_start();
 include "/php/errors.php";
 
 //if already logged in, redirect to index page
-if (isset($_SESSION['username']) && $_SESSION['loggedin'] === true) {
+if (isset($_SESSION['username']) {
     header("location: Team-MORR/index.php");
-    exit;
 }
 
 include "/php/creds.php";
@@ -18,7 +17,6 @@ if (!empty($_POST)) {
     if ($username == $adminusername && $password == $adminpassword) {
         $_SESSION['username'] = $username;
         header("location: Team-MORR/index.php");
-        exit;
     }
     else {
         echo "The log in info is incorrect, please try again.";

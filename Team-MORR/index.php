@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "php/errors.php";
 include "php/header.php";
 ?>
@@ -7,7 +6,6 @@ include "php/header.php";
 </head>
 <body>
 <div class="jumbotron">
-    <a href="Team-MORR/pages/logout.php" class="btn btn-danger">Sign Out</a>
     <h1>Welcome to the Team MORR's HomePage.</h1>
     <p>Thanks for visiting our page. Below are link to some of our work samples.</p>
 </div>
