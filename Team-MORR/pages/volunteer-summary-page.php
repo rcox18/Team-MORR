@@ -109,10 +109,6 @@ if (!isset($_SESSION['username'])) {
     </form>
 </div>
 
-<form action="send-email.php" method="post" id="email-volunteers" name="email-volunteers">
-    <a href="send-email.php"><button class="btn success">Send Email</button></a>
-</form>
-
 <?php
 //Search and execute footer php file
 include "../php/footer.php";

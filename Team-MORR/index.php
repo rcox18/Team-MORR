@@ -8,17 +8,7 @@ include "php/header.php";
 <body>
 <div class="jumbotron">
     <a href="Team-MORR/pages/logout.php" class="btn btn-danger">Sign Out</a>
-    <?php
-        include "guestbookDBcnx.php";
-        //Test connection
-        if ($cnxn) {
-        echo "<h2>Welcome, " .$_SESSION['username'] ."!</h2>";
-        }
-        else {
-            echo mysqli_connect_error();
-        }
-        ?>
-    <h1>Welcome to the Team Morr's HomePage.</h1>
+    <h1>Welcome to the Team MORR's HomePage.</h1>
     <p>Thanks for visiting our page. Below are link to some of our work samples.</p>
 </div>
 
