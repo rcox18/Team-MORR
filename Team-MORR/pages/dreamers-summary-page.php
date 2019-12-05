@@ -1,17 +1,21 @@
-<!--
-    Filename: welcome-confirmation-page.php
-    By: Team MORR
-	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
-	10/30/2019
-	url: http://team-morr.greenriverdev.com/pages/welcome-confirmation-page.php
-	The confirmation page when volunteer-form.html is submitted successfully. Sends email containing the submitted data.
--->
-
 <?php
+session_start();
 //Search and execute php files for error debugger, connection to database and header
 include "../php/errors.php";
 require "../php/idaydreamDBconnect.php";
 include "../php/header.php";
+//if the user is not logged in, redirect
+if (!isset($_SESSION['username'])) {
+    header("location: login.php");
+    }
+//<!--
+//    Filename: welcome-confirmation-page.php
+//    By: Team MORR
+//	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
+//	10/30/2019
+//	url: http://team-morr.greenriverdev.com/pages/welcome-confirmation-page.php
+//	The confirmation page when volunteer-form.html is submitted successfully. Sends email containing the submitted data.
+//-->
 ?>
 
 <!--Link CDN  for use of jQuery table-->
@@ -26,6 +30,7 @@ include "../php/header.php";
 
 <body>
 <div class="container">
+    <a href="logout.php" class="btn btn-danger">Sign Out</a>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">
@@ -69,6 +74,7 @@ include "../php/header.php";
         <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Dreamers">
     </form>
 </div>
+
 <?php
     //Search and execute footer php file
     include "../php/footer.php";
