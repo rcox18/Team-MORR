@@ -1,13 +1,3 @@
-<!--
-    Filename: volunteer-confirmation-page.php
-    By: Team MORR
-	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
-	10/30/2019
-	url: http://team-morr.greenriverdev.com/pages/welcome-confirmation-page.php
-	The following page displays a table that holds all information of submissions from potential volunteers
-	This includes contact information, availability, interests, and motivations for working  with the organization.
--->
-
 <?php
 session_start();
 //Search and execute php files for error debugger, connection to database and header
@@ -16,7 +6,17 @@ require "../php/idaydreamDBconnect.php";
 include "../php/header.php";
 //if the user is not logged in, redirect
 if (!isset($_SESSION['username'])) {
-    header("location: Team-MORR/pages/login.php");
+    header("location: login.php");
+}
+//<!--
+//    Filename: volunteer-confirmation-page.php
+//    By: Team MORR
+//	Marcos Rivera, Olivia Ringhiser, Raj Dhaliwal, and Robert Cox
+//	10/30/2019
+//	url: http://team-morr.greenriverdev.com/pages/welcome-confirmation-page.php
+//	The following page displays a table that holds all information of submissions from potential volunteers
+//	This includes contact information, availability, interests, and motivations for working  with the organization.
+//-->
 ?>
 
 <!--Link CDN  for use of jQuery table-->
@@ -26,12 +26,13 @@ if (!isset($_SESSION['username'])) {
 <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
 <!--Title card for tab-->
+
 <title>Volunteers Summary Page</title>
 </head>
 
 <body>
 <div class="container">
-    <a href="Team-MORR/pages/logout.php" class="btn btn-danger">Sign Out</a>
+    <a href="logout.php" class="btn btn-danger">Sign Out</a>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">

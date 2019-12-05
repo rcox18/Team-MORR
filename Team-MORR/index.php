@@ -12,10 +12,10 @@ include "php/header.php";
 
 <div class="container">
     <h2>I Day Dream Web Forms</h2>
-    <p><a href="http://team-morr.greenriverdev.com/pages/volunteer-form.php">Volunteer Form</a> </p>
-    <p><a href="http://team-morr.greenriverdev.com/pages/volunteer-summary-page.php">Volunteer Form Summary</a></p>
-    <p><a href="http://team-morr.greenriverdev.com/pages/welcome.php">Welcome Form</a></p>
-    <p><a href="http://team-morr.greenriverdev.com/pages/dreamers-summary-page.php">Welcome Form Summary</a></p>
+    <p><a href="pages/volunteer-form.php">Volunteer Form</a> </p>
+    <p><a href="pages/volunteer-summary-page.php">Volunteer Form Summary</a></p>
+    <p><a href="pages/welcome.php">Welcome Form</a></p>
+    <p><a href="pages/dreamers-summary-page.php">Welcome Form Summary</a></p>
 </div>
 
 
