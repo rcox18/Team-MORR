@@ -2,12 +2,19 @@
 session_start();
 //Search and execute php files for error debugger, connection to database and header
 include "../php/errors.php";
-require "../php/idaydreamDBconnect.php";
-include "../php/header.php";
 //if the user is not logged in, redirect
 if (!isset($_SESSION['username'])) {
-    header("location: login.php");
+    //if user didn't arrive from index page
+    if (!isset($_POST['page-source'])){
+        header("location: ../index.php");
+    }else{
+        $_SESSION['page-destination'] = $_POST['page-source'];
     }
+    header("location: login.php");
+}
+require "../php/idaydreamDBconnect.php";
+include "../php/header.php";
+
 //<!--
 //    Filename: welcome-confirmation-page.php
 //    By: Team MORR
