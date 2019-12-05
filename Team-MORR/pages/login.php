@@ -2,11 +2,6 @@
 session_start();
 include "/php/errors.php";
 
-//if already logged in, redirect to index page
-if (isset($_SESSION['username'])) {
-    header("location: ../index.php");
-}
-
 if (isset($_POST['submit'])) {
     include "../php/creds.php";
 
@@ -16,9 +11,14 @@ if (isset($_POST['submit'])) {
 //If the username and password are correct
     if ($username == $adminusername && $password == $adminpassword) {
         $_SESSION['username'] = $username;
-        header("location: ../index.php");
-    }
-    else {
+        if($_SESSION['page-destination'] == "Volunteer Admin"){
+            header("location: volunteer-summary-page.php");
+        }elseif($_SESSION['page-destination'] == "Dreamer Admin"){
+            header("location: dreamers-summary-page.php");
+        }else {
+            header("location: ../index.php");
+        }
+    }else {
         echo "The log in info is incorrect, please try again.";
     }
 }
