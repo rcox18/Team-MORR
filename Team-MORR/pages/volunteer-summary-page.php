@@ -45,9 +45,9 @@ include "../php/header.php";
         <thead class="thead-dark">
         <?php
         //Create Query that selects the column name
-        $volunteerColumnSQL = "SELECT v.volunteerID, v.name AS VolunteerName, v.email AS VolunteerEmail, v.phone AS VolunteerPhone, 
-        v.address, v.shirtSize, v.mailingList, v.motivation, v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-        v.previousExp, v.expMention, v.availability, v.active, v.ref1, v.ref2, v.ref3
+        $volunteerColumnSQL = "SELECT v.volunteerID AS 'Volunteer ID', v.name AS Name, v.active AS Status, v.email AS Email, v.phone AS Phone, v.motivation AS 'Motivation', 
+        v.previousExp, v.shirtSize AS 'Shirt Size', v.mailingList AS 'Add To Mail', v.address AS Address,v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+        v.expMention, v.availability, v.ref1, v.ref2, v.ref3
         FROM Volunteer v LIMIT 1";
         //Retrieve column names from database
         $columnResult = mysqli_query($cnxn, $volunteerColumnSQL);
@@ -66,10 +66,10 @@ include "../php/header.php";
         <tbody>
         <?php
         //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.email, v.phone, 
-        v.address, v.shirtSize, v.mailingList, v.motivation, v.POBox, v.city, 
+        $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+        v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
         v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-        v.previousExp, v.expMention, v.availability, v.active
+        v.expMention, v.availability
         FROM Volunteer v";
         //Create query to retrieve each individual ref, up to 3
         $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
@@ -87,7 +87,20 @@ include "../php/header.php";
             echo "<tr>";
             //Iterate through the array to display each data set related to each column
             foreach ($row2 as $k => $v) {
-                echo "<td>$v</td>";
+                if ($k == 'volunteerID'){
+                    $volID = $v;
+                }
+                if ($k == 'active'){
+                    echo "<td>
+                            <select class='active' data-vid='$volID'> 
+                                <option ";  echo $v == 'pending' ? "selected": ""; echo ">Pending</option>
+                                <option ";  echo $v == 'active' ? "selected": ""; echo ">Active</option>
+                                <option ";  echo $v == 'inactive' ? "selected": ""; echo ">Inactive</option>
+                            </select>
+                          </td>";
+                }else{
+                    echo "<td>$v</td>";
+                }
             }
             //Iterate through reference 1's info
             $results1 = "|";
@@ -125,6 +138,15 @@ include "../php/footer.php";
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $('.active').on('change', function () {
+        var active = $(this).val();
+        var volID = $(this).attr('data-vid');
+        //alert("Vol ID: " + volID +" active: " + active);
+        $.post("updateVolunteerStatus.php", {active: active, volID: volID});
+    });
+</script>
 <!--Call necessary DataTable method to format table to jQuery Data Table-->
 <script src="../scripts/dataTableJS.js"></script>
 </body>

@@ -1,4 +1,5 @@
 $('table').DataTable( {
+    "order": [[0, 'desc']],
     responsive: {
         details: {
             display: $.fn.dataTable.Responsive.display.modal( {
