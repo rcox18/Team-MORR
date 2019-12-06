@@ -43,7 +43,7 @@ include "../php/header.php";
         <thead class="thead-dark">
         <?php
         //Create Query that selects the column names
-        $columnSQL = "SELECT * FROM Dreamer LIMIT 1";
+        $columnSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID LIMIT 1";
         //Retrieve column names from database
         $columnResult = mysqli_query($cnxn, $columnSQL);
         //Iterate so long as we have data to pull
@@ -61,7 +61,7 @@ include "../php/header.php";
         <tbody>
         <?php
         //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.phone, Dreamer.email, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone, Dreamer.active FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $dataSQL);
         //Iterate so long as we have data to pull
@@ -70,7 +70,20 @@ include "../php/header.php";
             echo "<tr>";
             //Iterate through the array to display each data set related to each column
             foreach ($row2 as $k => $v){
-                echo "<td>$v</td>";
+                if ($k == 'dreamerID'){
+                    $dreamerID = $v;
+                }
+                if ($k == 'active'){
+                    echo "<td>
+                            <select class='active' data-did='$dreamerID'> 
+                                <option ";  echo $v == 'pending' ? "selected": ""; echo ">Pending</option>
+                                <option ";  echo $v == 'active' ? "selected": ""; echo ">Active</option>
+                                <option ";  echo $v == 'inactive' ? "selected": ""; echo ">Inactive</option>
+                            </select>
+                          </td>";
+                }else{
+                    echo "<td>$v</td>";
+                }
             }
             echo "</tr>";
         }
@@ -90,6 +103,14 @@ include "../php/header.php";
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $('.active').on('change', function () {
+            var active = $(this).val();
+            var dreamerID = $(this).attr('data-did');
+            //alert("Vol ID: " + volID +" active: " + active);
+            $.post("updateDreamerStatus.php", {active: active, dreamerID: dreamerID});
+        });
+    </script>
     <!--Call necessary DataTable method to format table to jQuery Data Table-->
     <script src="../scripts/dataTableJS.js"></script>
 </body>
