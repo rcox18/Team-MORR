@@ -477,7 +477,6 @@ if (!empty($_POST)){
         //insertions good
         if ($ref1Result AND $ref2Result And $ref3Result){
 
-            //to be deprecated******
             $active = "pending";
 
             //insertion for volunteer

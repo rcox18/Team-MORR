@@ -38,8 +38,21 @@ include "../php/header.php";
 </head>
 
 <body>
+<div class="jumbotron jumbotron-fluid mb-3 pr-2">
+    <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
+         alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+    <h1 class="display-4 font-weight-bold">Volunteer Summary</h1>
+</div>
 <div class="container">
-    <a href="logout.php" class="btn btn-danger">Sign Out</a>
+    <div class="form-group form-inline mt-4">
+        <label for="view-select" class="control-label mr-2">Status View:</label>
+        <form action="#" method="post" id="view-select">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="All">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Active">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Inactive">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Pending">
+        </form>
+    </div>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">
@@ -65,16 +78,71 @@ include "../php/header.php";
         </thead>
         <tbody>
         <?php
-        //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
-        v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
-        v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-        v.expMention, v.availability
-        FROM Volunteer v";
-        //Create query to retrieve each individual ref, up to 3
-        $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
-        $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
-        $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+        if (isset($_POST['view'])){
+            if ($_POST['view'] == 'Active'){
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+                v.expMention, v.availability
+                FROM Volunteer v WHERE v.active = 'active'";
+
+                //Create query to retrieve each individual ref, up to 3
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'active'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'active'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'active'";
+
+            }elseif ($_POST['view'] == 'Inactive'){
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+                v.expMention, v.availability
+                FROM Volunteer v WHERE v.active = 'inactive'";
+
+                //Create query to retrieve each individual ref, up to 3
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'inactive'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'inactive'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'inactive'";
+
+            }elseif ($_POST['view'] == 'Pending'){
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+                v.expMention, v.availability
+                FROM Volunteer v WHERE v.active = 'pending'";
+
+                //Create query to retrieve each individual ref, up to 3
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'pending'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'pending'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'pending'";
+
+            }else{
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+                v.expMention, v.availability
+                FROM Volunteer v";
+
+                //Create query to retrieve each individual ref, up to 3
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+
+            }
+        }else{
+            //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+            $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+            v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+            v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+            v.expMention, v.availability
+            FROM Volunteer v";
+
+            //Create query to retrieve each individual ref, up to 3
+            $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
+            $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
+            $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+
+        }
+
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $volunteerDataSQL);
         $ref1Result = mysqli_query($cnxn, $ref1DataSQL);
@@ -92,7 +160,7 @@ include "../php/header.php";
                 }
                 if ($k == 'active'){
                     echo "<td>
-                            <select class='active' data-vid='$volID'> 
+                            <select class='status' data-vid='$volID'> 
                                 <option ";  echo $v == 'pending' ? "selected": ""; echo ">Pending</option>
                                 <option ";  echo $v == 'active' ? "selected": ""; echo ">Active</option>
                                 <option ";  echo $v == 'inactive' ? "selected": ""; echo ">Inactive</option>
@@ -125,9 +193,10 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
-    <form action="emailAllForm.php" method="post" id="email-active-volunteers" name="email-active-volunteers">
+    <form class="mb-3 d-inline" action="emailAllForm.php" method="post" id="email-active-volunteers" name="email-active-volunteers">
         <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Volunteers">
     </form>
+    <a href="logout.php" class="btn btn-secondary">Sign Out</a>
 </div>
 
 <?php
@@ -140,7 +209,7 @@ include "../php/footer.php";
 <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
 <script>
-    $('.active').on('change', function () {
+    $('.status').on('change', function () {
         var active = $(this).val();
         var volID = $(this).attr('data-vid');
         //alert("Vol ID: " + volID +" active: " + active);

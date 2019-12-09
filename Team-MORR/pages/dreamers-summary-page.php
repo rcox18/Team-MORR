@@ -36,8 +36,21 @@ include "../php/header.php";
 </head>
 
 <body>
+<div class="jumbotron jumbotron-fluid mb-3 pr-2">
+    <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
+         alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+    <h1 class="display-4 font-weight-bold">Dreamer Summary</h1>
+</div>
 <div class="container">
-    <a href="logout.php" class="btn btn-danger">Sign Out</a>
+    <div class="form-group form-inline mt-4">
+        <label for="view-select" class="control-label mr-2">Status View:</label>
+        <form action="#" method="post" id="view-select">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="All">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Active">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Inactive">
+            <input class="btn btn-primary" type="submit" id="submit-selected-view" name="view" value="Pending">
+        </form>
+    </div>
     <!-- Construct table to display a summary of dreamers that have submitted to the database, via the volunteer page-->
     <table id="myTable" class="display table table-striped ">
         <thead class="thead-dark">
@@ -60,8 +73,64 @@ include "../php/header.php";
         </thead>
         <tbody>
         <?php
-        //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-        $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+        if (isset($_POST['view'])){
+            if ($_POST['view'] == 'Active'){
+                //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                            Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
+                            Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
+                            Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                            Dreamer.parentEmail, Dreamer.parentPhone 
+                            FROM Dreamer 
+                            INNER JOIN Ethnicity 
+                            ON Dreamer.ethnicityID = Ethnicity.ethnicityID
+                            WHERE Dreamer.active = 'active'";
+
+            }elseif ($_POST['view'] == 'Inactive'){
+                //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                            Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
+                            Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
+                            Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                            Dreamer.parentEmail, Dreamer.parentPhone 
+                            FROM Dreamer 
+                            INNER JOIN Ethnicity 
+                            ON Dreamer.ethnicityID = Ethnicity.ethnicityID
+                            WHERE Dreamer.active = 'inactive'";
+            }elseif ($_POST['view'] == 'Pending'){
+                //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                            Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
+                            Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
+                            Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                            Dreamer.parentEmail, Dreamer.parentPhone 
+                            FROM Dreamer 
+                            INNER JOIN Ethnicity 
+                            ON Dreamer.ethnicityID = Ethnicity.ethnicityID
+                            WHERE Dreamer.active = 'pending'";
+            }else{
+                //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                            Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
+                            Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
+                            Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                            Dreamer.parentEmail, Dreamer.parentPhone 
+                            FROM Dreamer 
+                            INNER JOIN Ethnicity 
+                            ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+            }
+        }else{
+            //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
+            $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                        Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
+                        Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
+                        Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                        Dreamer.parentEmail, Dreamer.parentPhone 
+                        FROM Dreamer 
+                        INNER JOIN Ethnicity 
+                        ON Dreamer.ethnicityID = Ethnicity.ethnicityID";
+        }
+
         //Retrieve the data from the database
         $dataResult = mysqli_query($cnxn, $dataSQL);
         //Iterate so long as we have data to pull
@@ -90,9 +159,10 @@ include "../php/header.php";
         ?>
         </tbody>
     </table>
-    <form action="emailAllForm.php" method="post" id="email-active-dreamers" name="email-active-dreamers">
+    <form class="d-inline" action="emailAllForm.php" method="post" id="email-active-dreamers" name="email-active-dreamers">
         <input class="btn btn-primary" type="submit" id="submit-page-source" name="page-source" value="Email active Dreamers">
     </form>
+    <a href="logout.php" class="btn btn-secondary">Sign Out</a>
 </div>
 
 <?php
