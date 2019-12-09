@@ -56,7 +56,14 @@ include "../php/header.php";
         <thead class="thead-dark">
         <?php
         //Create Query that selects the column names
-        $columnSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer INNER JOIN Ethnicity ON Dreamer.ethnicityID = Ethnicity.ethnicityID LIMIT 1";
+        $columnSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.submissionDate AS 'Submission Date', 
+                      Dreamer.email, Dreamer.phone, Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, 
+                      Dreamer.otherRace, Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, 
+                      Dreamer.concerns, Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
+                      Dreamer.parentEmail, Dreamer.parentPhone FROM Dreamer 
+                      INNER JOIN Ethnicity 
+                      ON Dreamer.ethnicityID = Ethnicity.ethnicityID 
+                      LIMIT 1";
         //Retrieve column names from database
         $columnResult = mysqli_query($cnxn, $columnSQL);
         //Iterate so long as we have data to pull
@@ -76,7 +83,7 @@ include "../php/header.php";
         if (isset($_POST['view'])){
             if ($_POST['view'] == 'Active'){
                 //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, DATE_FORMAT(Dreamer.submissionDate, '%M %d, %Y'), Dreamer.email, Dreamer.phone, 
                             Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
                             Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
                             Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
@@ -88,7 +95,7 @@ include "../php/header.php";
 
             }elseif ($_POST['view'] == 'Inactive'){
                 //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, DATE_FORMAT(Dreamer.submissionDate, '%M %d, %Y'), Dreamer.email, Dreamer.phone, 
                             Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
                             Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
                             Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
@@ -99,7 +106,7 @@ include "../php/header.php";
                             WHERE Dreamer.active = 'inactive'";
             }elseif ($_POST['view'] == 'Pending'){
                 //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, DATE_FORMAT(Dreamer.submissionDate, '%M %d, %Y'), Dreamer.email, Dreamer.phone, 
                             Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
                             Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
                             Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
@@ -110,7 +117,7 @@ include "../php/header.php";
                             WHERE Dreamer.active = 'pending'";
             }else{
                 //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+                $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, DATE_FORMAT(Dreamer.submissionDate, '%M %d, %Y'), Dreamer.email, Dreamer.phone, 
                             Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
                             Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
                             Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 
@@ -121,7 +128,7 @@ include "../php/header.php";
             }
         }else{
             //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-            $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, Dreamer.email, Dreamer.phone, 
+            $dataSQL = "SELECT Dreamer.dreamerID, Dreamer.name, Dreamer.active, DATE_FORMAT(Dreamer.submissionDate, '%M %d, %Y'), Dreamer.email, Dreamer.phone, 
                         Dreamer.dob, Dreamer.gradDate, Dreamer.gender, Dreamer.pronouns, Dreamer.otherRace, 
                         Dreamer.snacks, Dreamer.collegeInterest, Dreamer.careerAspirations, Dreamer.concerns, 
                         Ethnicity.choice AS ethnicity, Dreamer.parentName, Dreamer.parentRelationship, 

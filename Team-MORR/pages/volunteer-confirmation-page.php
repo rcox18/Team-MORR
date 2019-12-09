@@ -480,7 +480,7 @@ if (!empty($_POST)){
             $active = "pending";
 
             //insertion for volunteer
-            $volunteerInsertSQL = "INSERT INTO Volunteer (name, email, phone, address, shirtSize, mailingList, motivation, POBox, city, state, zip, interests, hearAboutUs, rolesOfInterests, previousExp, expMention, availability, active, ref1, ref2, ref3) Values  ('$fName $lName', '$email', '$phone', '$address', '$shirtSize', '$addToEmail', '$motivation', '$aptPO', '$city', '$state', '$zip', '$interests', '$hearAboutUs', '$roles', '$prevExp', '$applicableExp', '$availability', '$active', '$ref1ID', '$ref2ID', '$ref3ID')";
+            $volunteerInsertSQL = "INSERT INTO Volunteer (name, email, phone, address, shirtSize, mailingList, motivation, POBox, city, state, zip, interests, hearAboutUs, rolesOfInterests, previousExp, expMention, availability, active, submissionDate, ref1, ref2, ref3) Values  ('$fName $lName', '$email', '$phone', '$address', '$shirtSize', '$addToEmail', '$motivation', '$aptPO', '$city', '$state', '$zip', '$interests', '$hearAboutUs', '$roles', '$prevExp', '$applicableExp', '$availability', '$active', NOW(), '$ref1ID', '$ref2ID', '$ref3ID')";
             $volunteerResult = mysqli_query($cnxn, $volunteerInsertSQL);
 
             if($volunteerResult) {

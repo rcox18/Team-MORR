@@ -58,10 +58,13 @@ include "../php/header.php";
         <thead class="thead-dark">
         <?php
         //Create Query that selects the column name
-        $volunteerColumnSQL = "SELECT v.volunteerID AS 'Volunteer ID', v.name AS Name, v.active AS Status, v.email AS Email, v.phone AS Phone, v.motivation AS 'Motivation', 
-        v.previousExp, v.shirtSize AS 'Shirt Size', v.mailingList AS 'Add To Mail', v.address AS Address,v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-        v.expMention, v.availability, v.ref1, v.ref2, v.ref3
-        FROM Volunteer v LIMIT 1";
+        $volunteerColumnSQL = "SELECT v.volunteerID AS 'Volunteer ID', v.name AS Name, v.active AS Status, 
+                               v.submissionDate AS 'Submission Date', v.email AS Email, v.phone AS Phone, 
+                               v.motivation AS 'Motivation', v.previousExp, v.shirtSize AS 'Shirt Size', 
+                               v.mailingList AS 'Add To Mail', v.address AS Address, v.POBox, v.city, v.state, 
+                               v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests, v.expMention, v.availability, 
+                               v.ref1, v.ref2, v.ref3 
+                               FROM Volunteer v LIMIT 1";
         //Retrieve column names from database
         $columnResult = mysqli_query($cnxn, $volunteerColumnSQL);
         //Iterate so long as we have data to pull
@@ -80,66 +83,113 @@ include "../php/header.php";
         <?php
         if (isset($_POST['view'])){
             if ($_POST['view'] == 'Active'){
-                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
-                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
-                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-                v.expMention, v.availability
-                FROM Volunteer v WHERE v.active = 'active'";
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, DATE_FORMAT(v.submissionDate, '%M %d, %Y'), v.email, 
+                                     v.phone, v.motivation, v.previousExp, v.shirtSize, v.mailingList, 
+                                     v.address, v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, 
+                                     v.rolesOfInterests, v.expMention, v.availability 
+                                     FROM Volunteer v 
+                                     WHERE v.active = 'active'";
 
                 //Create query to retrieve each individual ref, up to 3
-                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'active'";
-                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'active'";
-                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'active'";
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'active'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'active'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'active'";
 
             }elseif ($_POST['view'] == 'Inactive'){
-                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
-                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
-                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-                v.expMention, v.availability
-                FROM Volunteer v WHERE v.active = 'inactive'";
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, DATE_FORMAT(v.submissionDate, '%M %d, %Y'), v.email, 
+                                     v.phone, v.motivation, v.previousExp, v.shirtSize, v.mailingList, 
+                                     v.address, v.POBox, v.city, v.state, v.zip, v.interests, v.hearAboutUs, 
+                                     v.rolesOfInterests, v.expMention, v.availability
+                                     FROM Volunteer v 
+                                     WHERE v.active = 'inactive'";
 
                 //Create query to retrieve each individual ref, up to 3
-                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'inactive'";
-                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'inactive'";
-                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'inactive'";
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'inactive'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'inactive'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'inactive'";
 
             }elseif ($_POST['view'] == 'Pending'){
-                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, DATE_FORMAT(v.submissionDate, '%M %d, %Y'), v.email, v.phone, v.motivation, 
                 v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
                 v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
                 v.expMention, v.availability
                 FROM Volunteer v WHERE v.active = 'pending'";
 
                 //Create query to retrieve each individual ref, up to 3
-                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'pending'";
-                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'pending'";
-                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'pending'";
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref1 AND Volunteer.active = 'pending'";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref2 AND Volunteer.active = 'pending'";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref3 AND Volunteer.active = 'pending'";
 
             }else{
-                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
-                v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
-                v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-                v.expMention, v.availability
-                FROM Volunteer v";
+                $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, DATE_FORMAT(v.submissionDate, '%M %d, %Y'), v.email, v.phone,
+                                     v.motivation, v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, 
+                                     v.city, v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
+                                     v.expMention, v.availability
+                                     FROM Volunteer v";
 
                 //Create query to retrieve each individual ref, up to 3
-                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
-                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
-                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+                $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref1";
+                $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref2";
+                $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                                FROM Ref r 
+                                INNER JOIN Volunteer 
+                                WHERE r.refID = Volunteer.ref3";
 
             }
         }else{
             //Create query that selects data stored in each field and display the value each ethnicity rather than the key value
-            $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, v.email, v.phone, v.motivation, 
-            v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
-            v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests,
-            v.expMention, v.availability
-            FROM Volunteer v";
+            $volunteerDataSQL = "SELECT v.volunteerID, v.name, v.active, DATE_FORMAT(v.submissionDate, '%M %d, %Y'), v.email, v.phone, 
+                                 v.motivation, v.previousExp, v.shirtSize, v.mailingList, v.address, v.POBox, v.city, 
+                                 v.state, v.zip, v.interests, v.hearAboutUs, v.rolesOfInterests, v.expMention, 
+                                 v.availability 
+                                 FROM Volunteer v";
 
             //Create query to retrieve each individual ref, up to 3
-            $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref1";
-            $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref2";
-            $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship FROM Ref r INNER JOIN Volunteer WHERE r.refID = Volunteer.ref3";
+            $ref1DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                            FROM Ref r 
+                            INNER JOIN Volunteer 
+                            WHERE r.refID = Volunteer.ref1";
+            $ref2DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                            FROM Ref r 
+                            INNER JOIN Volunteer 
+                            WHERE r.refID = Volunteer.ref2";
+            $ref3DataSQL = "SELECT r.name, r.phone, r.email, r.relationship 
+                            FROM Ref r 
+                            INNER JOIN Volunteer 
+                            WHERE r.refID = Volunteer.ref3";
 
         }
 
@@ -158,14 +208,23 @@ include "../php/header.php";
                 if ($k == 'volunteerID'){
                     $volID = $v;
                 }
-                if ($k == 'active'){
+                if ($k == 'active') {
                     echo "<td>
                             <select class='status' data-vid='$volID'> 
-                                <option ";  echo $v == 'pending' ? "selected": ""; echo ">Pending</option>
-                                <option ";  echo $v == 'active' ? "selected": ""; echo ">Active</option>
-                                <option ";  echo $v == 'inactive' ? "selected": ""; echo ">Inactive</option>
+                                <option ";
+                    echo $v == 'pending' ? "selected" : "";
+                    echo ">Pending</option>
+                                <option ";
+                    echo $v == 'active' ? "selected" : "";
+                    echo ">Active</option>
+                                <option ";
+                    echo $v == 'inactive' ? "selected" : "";
+                    echo ">Inactive</option>
                             </select>
                           </td>";
+                /*}elseif($k == 'submissionDate'){
+                    $submission = date_format($v, "M d, Y");
+                    echo "<td>$submission</td>";*/
                 }else{
                     echo "<td>$v</td>";
                 }
