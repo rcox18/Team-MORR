@@ -30,18 +30,18 @@ include "../php/header.php";
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
-
+<link rel="stylesheet" href="../styles/sign-up-form.css" type="text/css">
 <!--Title card for tab-->
 <title>Dreamer Summary Page</title>
 </head>
 
 <body>
-<div class="jumbotron jumbotron-fluid mb-3 pr-2">
-    <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
-         alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
-    <h1 class="display-4 font-weight-bold">Dreamer Summary</h1>
-</div>
 <div class="container">
+    <div class="jumbotron jumbotron-fluid mb-3 pr-2">
+        <img src="//static1.squarespace.com/static/5dabc823c0e45245a9c250cd/t/5dacd1ebfe152f3a7aa1de79/1572281708171/?format=1500w"
+             alt="iD.A.Y. Dream" class="img-fluid img-thumbnail rounded float-left">
+        <h1 class="display-4 font-weight-bold">Dreamer Summary</h1>
+    </div>
     <div class="form-group form-inline mt-4">
         <label for="view-select" class="control-label mr-2">Status View:</label>
         <form action="#" method="post" id="view-select">
