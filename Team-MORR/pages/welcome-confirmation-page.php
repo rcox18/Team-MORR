@@ -254,10 +254,9 @@ if (!empty($_POST)){
         $headers .= "Reply-To: $siteEmail \r\n";
 
         /*----ADD TO DATABASE----*/
-        //to be deprecated******
-        $active = "yes";
+        $active = "pending";
 
-        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID, parentName, parentRelationship, parentEmail, parentPhone, active) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity', '$gFName $gLName', '$gRelation', '$gEmail', '$gPhone', '$active');";
+        $sql = "INSERT INTO Dreamer (name, dob, gradDate, gender, pronouns, otherRace, phone, email, snacks, collegeInterest, careerAspirations, concerns, ethnicityID, parentName, parentRelationship, parentEmail, parentPhone, active, submissionDate) VALUES ('$fName $lName', '$dob', '$gradYear', '$gender', '$pronouns', '$otherRace', '$phone', '$email', '$snacks', '$collegeInterests', '$careerAspirations', '$qAndConcerns', '$raceEthnicity', '$gFName $gLName', '$gRelation', '$gEmail', '$gPhone', '$active', NOW());";
         $result = mysqli_query($cnxn, $sql);
 
         if($result) {

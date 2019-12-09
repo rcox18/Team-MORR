@@ -1,3 +1,3 @@
 <?php
-$adminusername = "abc";
-$adminpassword = "123";
+$adminusername = "admin";
+$adminpassword = "iD@yDr3@m";

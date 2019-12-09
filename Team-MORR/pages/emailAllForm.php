@@ -59,7 +59,7 @@ include "../php/header.php";
                             $tableName = "Dreamer";
                         }
 
-                        $sql = "SELECT email from $tableName WHERE active = 'yes'";
+                        $sql = "SELECT email from $tableName WHERE active = 'active'";
                         $result = mysqli_query($cnxn, $sql);
 
                         if ($result){
@@ -76,13 +76,9 @@ include "../php/header.php";
                                     }
                                 }
                             }
-
                             echo "<p>$count emails were successfully sent.</p>";
                         }
-
                     }
-
-
                 }else{
                     echo "Connection error...try again.";
                 }
